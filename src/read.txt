@@ -1,0 +1,8 @@
+ é aqui onde meu Marshaw mora.
+
+ its here that my Marshaw lives.
+
+MARSHAWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+ (também, o arquivo [ .dll ] vai pra pasta [ src\bin\Debug\net48] kkkk)
+ (also, the [ .dll ] file goes to [ src\bin\Debug\net48] folder lol)
