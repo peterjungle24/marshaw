@@ -7,7 +7,7 @@ Of course, I'm from Brazil
 
 # Features so far:
 
-- ``Ascension Code`` - which allows Marshaw to Ascend as a Saint. although I think he's weird for ***this*** slugcat. maybe I'll remove
+- ``Ascension Code`` - which allows Marshaw to Ascend as a Saint. although I think he's weird for ***this*** slugcat. Fully removed
 - ``Pup`` - you are a pup.
 - ``Spear Double`` - heavily inspired by an idea I had in the past in Modding Dev, about Spear Dealer. you can get 2 spears
 - ``Craft`` *plays Minecraft music* - has Craft table:
