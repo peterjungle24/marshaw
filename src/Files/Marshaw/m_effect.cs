@@ -1,17 +1,22 @@
-﻿#region Using
+﻿#region using
 
-using System;
 using BepInEx;
 using UnityEngine;
-using System.IO;
 using BepInEx.Logging;
 using System.Collections.Generic;
 using RWCustom;
-using Vector2 = UnityEngine.Vector2;
 using objType = AbstractPhysicalObject.AbstractObjectType;
 using objPhy = AbstractPhysicalObject;
 using MoreSlugcats;
 using m_skill;
+using PedroGrey;
+using RewiredConsts;
+using SPR;
+using ExtensionHelp;
+using m_s;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using m_smth;
 
 #endregion
 
@@ -51,11 +56,6 @@ namespace m_effects
             orig(self);
 
         }
-
-        #endregion
-        #region FlipSkill
-
-        //nothing LMAO
 
         #endregion
 

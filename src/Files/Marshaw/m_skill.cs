@@ -1,27 +1,22 @@
 ﻿#region using
 
-using System;
+using BepInEx;
 using UnityEngine;
+using BepInEx.Logging;
 using System.Collections.Generic;
 using RWCustom;
-using Vector2 = UnityEngine.Vector2;
 using objType = AbstractPhysicalObject.AbstractObjectType;
 using objPhy = AbstractPhysicalObject;
-using System.Runtime.CompilerServices;
-using BepInEx.Logging;
-using BepInEx;
-using System.Security.Permissions;
-using System.Security;
-using MonoMod.RuntimeDetour;
+using MoreSlugcats;
+using m_skill;
 using PedroGrey;
-using System.IO;
-using UnityEngine.Rendering;
-using HUD;
-using On;
-using m_smth;
-using IL;
+using RewiredConsts;
+using SPR;
+using ExtensionHelp;
+using m_s;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using m_smth;
 
 #endregion
 
@@ -37,6 +32,7 @@ namespace m_skill
         //turn the marshaw a Pup!
         public static void Marshaw_Pup(On.Player.orig_ctor orig, Player self, AbstractCreature abstractCreature, World world)
         {
+
             orig(self, abstractCreature, world);
 
             if (self.SlugCatClass.value == "marshaw")           //check the slugcar is Marshawwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
@@ -46,9 +42,8 @@ namespace m_skill
                 self.playerState.isPup = true;                  //is pup. Only this
 
             }
+
         }
-
-
 
     }
     #endregion
@@ -62,11 +57,7 @@ namespace m_skill
 
         #region PostMod
 
-        /// <summary>
-        /// create the hooks for let the craft works
-        /// </summary>
-        /// <param name="orig"></param>
-        /// <param name="self"></param>
+        //create the hooks for let the craft worksaram>
         public static void MarshawCraft_PostMod(On.RainWorld.orig_PostModsInit orig, RainWorld self)
         {
 

@@ -1,24 +1,22 @@
 ﻿#region using
 
-using System;
+using BepInEx;
 using UnityEngine;
+using BepInEx.Logging;
 using System.Collections.Generic;
 using RWCustom;
-using Vector2 = UnityEngine.Vector2;
 using objType = AbstractPhysicalObject.AbstractObjectType;
 using objPhy = AbstractPhysicalObject;
-using System.Runtime.CompilerServices;
-using BepInEx.Logging;
-using BepInEx;
-using System.Security.Permissions;
-using System.Security;
-using MonoMod.RuntimeDetour;
+using MoreSlugcats;
+using m_skill;
 using PedroGrey;
-using System.IO;
-using UnityEngine.Rendering;
-using HUD;
-using On;
-using Loggers;
+using RewiredConsts;
+using SPR;
+using ExtensionHelp;
+using m_s;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using m_smth;
 
 #endregion
 
