@@ -16,16 +16,8 @@ Of course, I'm from Brazil
 >  - ``Spear`` + ``Granade (ScavengerBomb)`` = ``Explosive Spear``
 
 - ``Bro did a flip 💀💀💀💀`` - every time when you do a flip, creats a green light in you. Literally
+- ***IDK if the sanity bar is ready, but needs more work.***
 
-### Current tests:
+# Update:
 
-- ``Sanity Bar`` - its new for me. I am still working on it
-
-# hmm
-
-nothing else. i have a lot of desnescessary things.
-
-![slugca](slugcat.gif)    ![slugca](slugcat.gif)
-
-enjoy two slugcats dancing above.  
-they are cute. you agree.
+- Several namespaces, files, etc. were renamed.
