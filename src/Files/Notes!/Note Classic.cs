@@ -1,4 +1,7 @@
-﻿#region Modding notes (again)
+﻿//Don't read this with Github, it's rubbish because there's no way to collapse ``#region``
+//unless you can read it, good luck
+
+#region Modding notes (again)
 
 #region Noted lol
 
@@ -833,7 +836,7 @@ Se você quiser... é com você. As aulas expandem seu controle. Isso não é al
 #endregion
 #region idk4
 /*
- * 
+
 Enquanto estamos nas instruções switch:
 Você deve definir um padrão ao criar um enum como este, ou o primeiro valor definido em seu enum será o padrão automaticamente
 Se você não tiver um, o compilador fará com que Lower seja o padrão porque ele é definido primeiro.
@@ -847,12 +850,18 @@ Você pode atribuir valores numéricos específicos às suas enumerações. O en
 
 ao ter um comentário com ///, tu pode colocar o mouse encima do alvo e trocar a descrição.
 Isso ajuda na legibilidade.
+mas tambéem achei inúil.
+
+When you have a comment with ///, you can place the mouse over the target and change the description.
+This helps with readability.
+but I also found it useless.
 
 ------------------------------------------------------------------------------------------
+
 /// <summary>
-/// A sua descrição irá aparecer.
+/// A sua descrição irá aparecer.   // your description will show
 /// </summary>
-/// <param name="orig"> Esta descrição descreve o [ orig ] </param>
+/// <param name="orig"> Esta descrição descreve o [ orig ] // This description describes the [orig] </param>
 
 ------------------------------------------------------------------------------------------
 
@@ -971,9 +980,6 @@ Um deles deve ser chamado para cada recurso antes que um recurso possa ser usado
 
  -- Armazenar o retorno destes métodos é opcional.
 
-
-
-
 */
 /* 3. Buscando um recurso
 
@@ -1002,6 +1008,9 @@ Existem também texturas que você pode criar e definir. Não sei muito sobre co
 CONSELHO:
 
  -- Use a mesma fonte de caminho em todos os locais em que for usado. Recriar a origem do caminho aumenta a chance de erros.
+ -- Não incluir a extensão do arquivo é bom, você precisa usar LoadImage ou LoadAtlas para adicionar o elemento à lista de nomes de elementos que o jogo pode reconhecer e acessar
+ ^-- isso inclui em LoadImage
+
 */
 
 #endregion
@@ -1024,20 +1033,6 @@ Technically you don't need to call GetElementWithName, you can just let the cons
 but if you aren't creating a new FSprite, you can just modify the element field instead
 
 */
-/* Triangle Meshsssssssssss
-
-TriangleMesh também é um FSprite
-Você pode olhar as centenas de referências de jogos ao FSprite e observar como o jogo lida com isso. Isso pouparia muita confusão
-
-TriangleMesh is also a FSprite
-You could look at the hundreds of game references to FSprite and take note of how the game handles it. It would save you much confusion
-
-Minha maneira original sugerida de obter o FAtlasElement primeiro parece quase não ser usada pelo jogo. Na maioria das vezes, o recurso é inserido no construtor FSPrite.
-My original suggested way of getting the FAtlasElement first seems to barely be used by the game. Most of the time, the resource is fed into the FSprite constructor.
-
-FNode é a classe base para todos os drawables e não drawables fúteis
-FNode is the base class for all of theos Futile drawables and non-drawables
-*/
 /*
 
 //PUT ME IN AddChild, I'm begging you. 
@@ -1046,17 +1041,116 @@ FSprite mySprite = new FSprite(PUT SOMETHING HERE);
 */
 
 #endregion
-
-#endregion
-
-#endregion
-#region IL
+#region <> <> Generics <> <> <> <> <> <> <>
 /*
 
-Você não precisa fazer isso, a menos que precise dele para referência. Não deixe o mod executar o gancho, pois isso lançará uma exceção.
+portanto, genéricos são uma forma de escrever código que pode funcionar com diferentes tipos de dados e ainda ter comportamento semelhante. você pode escrever uma classe ou um método que funcione com dados sem saber exatamente com o que eles estão lidando.
 
-Para registro, MoveAfterLabels é para quando você precisa alterar um destino de ramificação ou outra instrução IL que usa um ILLabel.
-Não é algo que você precise usar, exceto para esse propósito específico
+você já sabe que em genéricos C# usam colchetes angulares <>. funciona assim:
+
+1) tipo ou método especifica seus parâmetros genéricos:
+
+____________________________________
+
+class GenericClass<T> {  
+  public T item;
+}
+
+//...
+
+public U GenericMetod<U>(U item) {
+  return item;
+}
+
+____________________________________
+
+parâmetros genéricos são tipos, não valores. Se uma classe ou método possui parâmetros genéricos, dentro deles esse parâmetro genérico pode ser usado como um tipo normal. no exemplo acima,
+GenericClass possui parâmetro genérico T, o que significa que dentro dessa classe você pode usar T como tipo para campos, variáveis ​​locais, retornos de métodos, etc, veja o item de campo. 
+a mesma história com GenericMethod, que possui parâmetro genérico U.
+
+ambos os exemplos têm um parâmetro genérico, mas uma classe/método genérico pode ter quantos você quiser
+
+2) essas classes e métodos genéricos não estão prontos para serem usados, são como protótipos para criar mais classes e métodos. cada parâmetro genérico é um espaço em branco que você precisa preencher. 
+você não pode dizer var thing = new GenericClass<T>(), mas pode dizer var thing = new GenericClass<int>().
+
+apenas identificadores de tipo (string, int, SlugcatStats.Name) ficam entre colchetes angulares.
+por exemplo, List é uma classe genérica. List<T> é um protótipo para qualquer lista - List<int>, List<string>, List<SlugcatStats.Name>. List<T> e List<int> são tipos diferentes (mas relacionados)
+
+_____________________________
+
+public class Generic<T, E>
+{
+
+    public static T Base;
+    public static E Average;
+
+}
+
+_____________________________
+
+além disso, classes/métodos genéricos podem adicionar requisitos (restrições) aos seus parâmetros genéricos, para garantir que você não tente armazenar um cavalo em um porta-copos.
+funciona assim:
+
+_______________________________________________________________________________________________________________
+
+interface ICanBeDescribed {
+  public string GetDescription();
+}
+
+public void GenericMethod<T>(T item) where T : ICanBeDescribed //this is a constraint, you can put parent interface or class requirements here
+{
+  Console.WriteLine(item.GetDescription());
+}
+
+_______________________________________________________________________________________________________________
+
+aqui o método é genérico, mas graças ao parâmetro genérico, [ where T ] só pode ser preenchido com um tipo que implemente ICanBeDescribed. 
+Além disso, o compilador sabe que qualquer T aqui sempre seria um ICanBeDescribed, então você pode usar métodos de [ ICanBeDescribed ] nele dentro do método
+
+você pode restringir genéricos por classe pai, por interfaces, e também existem várias restrições especiais como class, struct ou notnull
+
+meu progrresso:
+
+_________________________
+
+public class Something<something>
+{
+
+    public static something idk;
+
+}
+
+public static void Main()
+{
+
+    //something();
+    Something<float>.idk = 454f;
+    Console.WriteLine(Something<float>.idk);
+
+}
+
+______________________
 
 */
 #endregion
+
+#endregion
+
+#endregion
+
+/*
+
+apenas um aviso sobre arrastar arquivos para uma pasta em vez de copiar/colar.
+A operação de arrastar pode excluir o arquivo que está lá antes de saber se a operação de movimentação falhará e, se a movimentação falhar, seu arquivo na origem e no destino será poof.
+
+Isso não acontece em uma operação de cópia, pois o arquivo original não está sendo tocado.
+
+just a warning about dragging files into a folder versus copy/paste.
+
+----
+
+The drag operation could delete the file that is there before it knows if the move operation will fail, and if the move fails, your file at both the source and destination goes poof.
+This doesn't happen in a copy operation as the original file is not being touched. 
+
+ */
+
