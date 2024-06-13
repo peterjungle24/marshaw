@@ -1,11 +1,22 @@
 ﻿using BepInEx;
-using UnityEngine;
 using BepInEx.Logging;
-using marshaw;
-using slugg;
+using marshaw.skill;
+using marshaw.effect;
+using slugg.skills;
+using sanity;
+using UnityEngine;
+using System;
+using sounded;
+using particle_manager;
+using marshaw.gui;
 
-namespace slugg // name of the space lol
+namespace Helpers // name of the space init_the_mod
 {
+
+    /// <summary>
+    /// Player 
+    /// self.abstractCreature.Room.world.game.cameras[0]
+    /// </summary>
 
     [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
     public class Plugin : BaseUnityPlugin
@@ -16,9 +27,13 @@ namespace slugg // name of the space lol
         public const string PLUGIN_GUID = "grey.grey.grey.grey";                                //the ID for the my mod in [ modinfo.json]
         public const string PLUGIN_NAME = "Marshawwwwwwwwwwwww";                                //mthe name for my mod in [ modinfo.json]
         public const string PLUGIN_VERSION = "0.1.1";                                           //the version for my mod in [ modinfo.json]
-        public static readonly SlugcatStats.Name Marshaw = new SlugcatStats.Name("marshaw");    //name of my slugcat
+
+        public static readonly SlugcatStats.Name Marshaw = new SlugcatStats.Name("marshaw");    //name of the Marshaw
+        public static readonly SlugcatStats.Name slugg = new SlugcatStats.Name("slugg_the_scug");    //name of the Marshaw
+
         public static new ManualLogSource Logger { get; private set; }                          //for logs
         public static RoomCamera c;
+        public static Player p;
 
         #endregion
 
@@ -27,71 +42,88 @@ namespace slugg // name of the space lol
         {
 
             Logger = base.Logger;                                                   //for the log base
+            On.RainWorld.Awake += register_sound;
 
-            //We need hooks below for run the code else this code can't run bc will throw exception bc its not set to a object or something but idk as well bc i've never seen this exception before bc i always prevent that error bc the VS warn about that for me that its not exists in a context or something but ik you dont wanna know that you have a interest of the code, so stop reading this big comment bc this is so looong OMG. but anyways, when you see the code, you are able to see the comments. but i dont wanna a lot of serious comments (but some of them are and some confusing) but i wanna humor of this. so, read the code.
+            //please, dont enter on this site, you will see my favourite cyan lizard ;-;
+            //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTK8R7tsGQsYuwrsrv6VRIbSgcOI9rr1OZ0w&s
 
-            On.Player.CraftingResults += marshaw.skill.MarshawCraft.Marshaw_CResults;           // for Craft: the results of Crafting.
-            On.Player.ctor += marshaw.skill.Pupfy.Marshaw_Pup;                                  // for Player: pup.
-            On.Player.GraspsCanBeCrafted += marshaw.skill.MarshawCraft.Marshaw_Gapes;           // for Craft: hand.
-            On.Player.Grabability += marshaw.skill.SpearDeal.SpearDealer;                       // for Player: double spear lol.
-            On.Player.UpdateAnimation += marshaw.effect.marshaw_effect.FLipEffect;              // for Player: the flip effect lol.
-            On.Player.Update += marshaw.gui.sanity_bar.SanityActive;                            // for sanity_bar: actives the sanity bar if its Marshaw.
-            On.Player.Update += distance_please;                                                // for sanity_bar: calculates the distance for increase/decrease bar
-            On.RainWorld.OnModsInit += lol;                                                     // Log always when its enabled and initialize the mod
-            On.RainWorld.PostModsInit += marshaw.skill.MarshawCraft.MarshawCraft_PostMod;       // for Mods / Craft: when the mods initialize
+            // Marshaw
+
+            On.Player.CraftingResults += Hookeds.MarshawCraft.Marshaw_CResults;     // [ CRAFT ] Craft: the results of Crafting.
+            On.Player.GraspsCanBeCrafted += Hookeds.MarshawCraft.Marshaw_Gapes;     // [ CRAFT ] hand.
+            On.RainWorld.PostModsInit += Hookeds.MarshawCraft.MarshawCraft_PostMod; // [ CRAFT ] affter the mods initialize.
+
+            On.RainWorld.OnModsInit += init_the_mod;                                // [ INIT ] Log always when its enabled and initialize the mod
+
+            On.Player.Update += marshaw_effect.mushroom_effect_lol;                 // [ PARTICLE ] testing
+
+            On.Player.ctor += Hookeds.Pupfy.Marshaw_Pup;                            // [ PLAYER ] pup.
+            On.Player.Grabability += Hookeds.SpearDeal.SpearDealer;                 // [ PLAYER ] double spear init_the_mod.
+            On.Player.UpdateAnimation += marshaw_effect.FLipEffect;                 // [ PLAYER ] the flip effect init_the_mod.
+
+            On.Player.Update += sanity_bar.sanity_active;                           // [ SANITY ] actives the sanity bar if its Marshaw.
+            On.Player.Update += Hookeds.distance;                                   // [ SANITY ] makes the distance work, in Player Update.
+            On.SaveState.SessionEnded += sanity_bar.reset_sanityBar;                // [ SANITY ] resets the bar when you pass the cycle.
+
+            // slugg
+
+            On.Player.Die += slugg_dies_illa;                                       // [ COSMETIC ] plays the random sound everytime in your death
+            On.Player.Grabability += Skills.slugg_spearDealer;                      // [ SKILL ] allows Slugg to pick 2 spears in both of hands.
+
+            // slugg - Graphics
+
 
         }
 
-        #region distance_please
+
+        #region slugg_dies_illa
 
         /// <summary>
-        /// calculates the distance for trigger the effects for the sanity bar
+        /// Every time if Slugg dies, will play a random sound. Cool, right?
         /// </summary>
-        /// <param name="orig"> original code </param>
-        /// <param name="self"> player </param>
-        /// <param name="eu"> eu </param>
-        private void distance_please(On.Player.orig_Update orig, Player self, bool eu)
+        /// <param name="orig"></param>
+        /// <param name="self"></param>
+        private void slugg_dies_illa(On.Player.orig_Die orig, Player self)
         {
-
-            foreach (var list in self.room.physicalObjects)
+            try
             {
 
-                foreach (PhysicalObject obj in list)
-                {
+                //Reference for a Deepwoken OST init_the_mod
+                Room room = self.room;
 
-                    if (obj != self && obj is Creature creature)
-                    {
+                room.PlaySound(Sounded.random_sound[UnityEngine.Random.Range(1, 19)], self.mainBodyChunk.pos);
+                room.AddObject(new ShockWave(self.mainBodyChunk.pos, 130f, 50f, 10, true));
 
-                        var dist = (creature.mainBodyChunk.pos - self.mainBodyChunk.pos).magnitude;     // variable for the distance. returns Float
+                orig(self);
 
-                        if (dist <= 120f)                                                               // if [ disst ] its less than [ 120 ]
-                        {
+            }
+            catch (Exception ex)
+            {
 
-                            shader_manage.shader_col.f_sprite.alpha -= 0.0030f;                                   // decrease
-
-                        }
-                        else
-                        {
-
-                            shader_manage.shader_col.f_sprite.alpha = shader_manage.shader_col.f_sprite.alpha;                                   // increase
-
-                        }
-
-                    }
-                    else
-                    {
-
-                        shader_manage.shader_col.f_sprite.alpha += 0.0025f;                                   // increase
-
-                    }
-
-                }
+                Logger.LogError("An error ocurred. Please run to the montains!! " + ex);
 
             }
 
-            orig(self, eu);
+        }
+
+        #endregion
+
+        #region register sound
+
+        /// <summary>
+        /// It registers the sound. 
+        /// </summary>
+        /// <param name="orig"></param>
+        /// <param name="self"></param>
+        private void register_sound(On.RainWorld.orig_Awake orig, RainWorld self)
+        {
+
+            Sounded.sound_init();   //register. Bruh
+
+            orig(self);
 
         }
+
 
         #endregion
         #region lol
@@ -100,18 +132,26 @@ namespace slugg // name of the space lol
         /// log this text every time when the mod initialize. Requires 10 or 20 QI in Modding for understand
         /// </summary>
         /// <param name="orig"> original code </param>
-        /// <param name="self"> player </param>
-        private void lol(On.RainWorld.orig_OnModsInit orig, RainWorld self)
+        /// <param name="self"> _player </param>
+        private void init_the_mod(On.RainWorld.orig_OnModsInit orig, RainWorld self)
         {
-
-            Logger.LogInfo("Marshaw says MARSHAWWWWWWWWWWWWWWWW");
-
             orig(self);
 
+            try
+            {
+                Logger.LogInfo("Marshaw says: \'he said nothing\'");
+
+                sanity_bar.crit_dict_values();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError("crashed lol");
+                Logger.LogError(ex);
+            }
         }
 
         #endregion
-
+         
     }
 
 }

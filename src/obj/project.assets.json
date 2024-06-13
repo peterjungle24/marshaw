@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\POSITO\\Pictures\\Camera Roll\\NÃO\\Caralh\\Rain World\\Programação\\c#\\SlugTemplate-master\\src\\Plugin.csproj",
+      "projectUniqueName": "C:\\Users\\POSITO\\Pictures\\Camera Roll\\NÃO\\Caralh\\Rain World\\Programação\\C#\\Marshaw\\src\\Plugin.csproj",
       "projectName": "Plugin",
-      "projectPath": "C:\\Users\\POSITO\\Pictures\\Camera Roll\\NÃO\\Caralh\\Rain World\\Programação\\c#\\SlugTemplate-master\\src\\Plugin.csproj",
+      "projectPath": "C:\\Users\\POSITO\\Pictures\\Camera Roll\\NÃO\\Caralh\\Rain World\\Programação\\C#\\Marshaw\\src\\Plugin.csproj",
       "packagesPath": "C:\\Users\\POSITO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\POSITO\\Pictures\\Camera Roll\\NÃO\\Caralh\\Rain World\\Programação\\c#\\SlugTemplate-master\\src\\obj\\",
+      "outputPath": "C:\\Users\\POSITO\\Pictures\\Camera Roll\\NÃO\\Caralh\\Rain World\\Programação\\C#\\Marshaw\\src\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\POSITO\\AppData\\Roaming\\NuGet\\NuGet.Config",

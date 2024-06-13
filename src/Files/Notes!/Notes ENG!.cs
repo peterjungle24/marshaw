@@ -1,7 +1,7 @@
 ﻿#region Opening
 /*
 
-A cutscene ocorrurs in the opening, showing fire and many escaping, while Marshaw is hiding in a room writing something on his pearl.
+A cutscene ocorrurs in the opening, showing fire and many escaping, while Marshaw is hiding in a room writing bool_something on his pearl.
 
 Food Pips: ●●|●●
 Start Region: Desertic Plains (PD_M01)

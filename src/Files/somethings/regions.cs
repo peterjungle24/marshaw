@@ -3,13 +3,13 @@ using UnityEngine;
 using BepInEx.Logging;
 
 
-namespace slugg.regions
+namespace Helpers.regions
 {
 
     public static class regionReg
     {
 
-        //literally register all the regions. for now its useless lol
+        //literally register all the regions. for now its useless init_the_mod
         public static void regionName(Player self)
         {
 

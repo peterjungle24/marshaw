@@ -18,7 +18,7 @@ namespace SlugCWTCat
             public List<Creature> CreaturesYouPickedUp;
 
             public YourSlugcat(){
-                // Initialize your variables here! (Anything not added here will be null or false or 0 (default values))
+                // sound_init your variables here! (Anything not added here will be null or false or 0 (default crit_dict_values))
                 this.HowManyJumps = 0;
                 this.IsYourSlugcat = false;
                 this.CreaturesYouPickedUp = new List<Creature>();
@@ -27,6 +27,6 @@ namespace SlugCWTCat
 
         // This part lets you access the stored stuff by simply doing "self.GetCat()" in Plugin.cs or everywhere else!
         private static readonly ConditionalWeakTable<Player, YourSlugcat> CWT = new();
-        public static YourSlugcat GetCat(this Player player) => CWT.GetValue(player, _ => new());
+        public static YourSlugcat GetYourSlugcatFromAExampleOfCWTMadeBySomeoneThatIDK(this Player player) => CWT.GetValue(player, _ => new());
     }
 }

@@ -1,7 +1,7 @@
 ﻿//Notas PY!
 //Direto de W3Schools, traduzido PT BR por ambos Google Tradutor e eu junto com o original
 //Direct from W3Schools, translated PT BR by both Google Translate and me along with the original
-//by Slugg (Pedro)
+//by slugg (Pedro)
 //Its incoommplete
 //Está incompleto
 
@@ -209,10 +209,10 @@ my_variable_name = "John"
 ]
 
 */
-/* variable multi values
+/* variable multi crit_dict_values
 
 Python permite atribuir valores a múltiplas variáveis ​​em uma linha:
-Python allows you to assign values to multiple variables in one line:
+Python allows you to assign crit_dict_values to multiple variables in one line:
 [
 
 x, y, z = "Japanese", "Chinese", "Black"
@@ -234,7 +234,7 @@ print(z)
 ]
 
 Se você tiver uma coleção de valores em uma lista, tupla etc. Python permite extrair os valores em variáveis. Isso é chamado de descompactação .
-If you have a collection of values in a list, tuple etc. Python allows you to extract the values into variables. This is called unpacking.
+If you have a collection of crit_dict_values in a list, tuple etc. Python allows you to extract the crit_dict_values into variables. This is called unpacking.
 [
 
 languages = ["one", "two", "three"]
@@ -456,7 +456,7 @@ Python has the following data types built-in by default, in these categories:
 Text Type // tipo Texto:                        str
 Numeric Types // tipo Numéricos:                int, float, complex
 Sequence Types // tipo Sequências:              list, tuple, range
-Mapping Type // tipo Mapeamennto:               dict
+Mapping Type // tipo Mapeamennto:               crit_dict
 Set Types // tipo Set:                          set, frozenset
 Boolean Type // tipo Booleano:                  bool
 Binary Types // tipo Binários:                  bytes, bytearray, memoryview
@@ -477,7 +477,7 @@ x = 1j	                                                = complex
 x = ["apple", "banana", "cherry"]	                    = list	
 x = ("apple", "banana", "cherry")   	                = tuple	
 x = range(6)	                                        = range	
-x = {"name" : "John", "age" : 36}	                    = dict	
+x = {"name" : "John", "age" : 36}	                    = crit_dict	
 x = {"apple", "banana", "cherry"}	                    = set	
 x = frozenset({"apple", "banana", "cherry"})	        = frozenset	
 x = True	                                            = bool	
@@ -502,7 +502,7 @@ x = complex(1j)	                                    = complex
 x = list(("apple", "banana", "cherry"))	            = list	
 x = tuple(("apple", "banana", "cherry"))	        = tuple	
 x = range(6)	                                    = range	
-x = dict(name="John", age=36)	                    = dict	
+x = crit_dict(name="John", age=36)	                    = crit_dict	
 x = set(("apple", "banana", "cherry"))	            = set	
 x = frozenset(("apple", "banana", "cherry"))	    = frozenset	
 x = bool(5)	                                        = bool	
@@ -1101,7 +1101,7 @@ Python possui um conjunto de métodos integrados que você pode usar em strings.
 Python has a set of built-in methods that you can use on strings.
 
 NOTA: Todos os métodos de string retornam novos valores. Eles não alteram a string original.
-NOTE: All string methods return new values. They do not change the original string.
+NOTE: All string methods return new crit_dict_values. They do not change the original string.
 
 capitalize()                Converts the first character to upper case
 casefold()                  Converts string into lower case
@@ -1111,8 +1111,8 @@ encode()	                Returns an encoded version of the string
 endswith()	                Returns true if the string ends with the specified value 
 expandtabs()	            Sets the tab size of the string
 find()	                    Searches the string for a specified value and returns the position of where it was found
-format()	                Formats specified values in a string
-format_map()	            Formats specified values in a string
+format()	                Formats specified crit_dict_values in a string
+format_map()	            Formats specified crit_dict_values in a string
 index()	                    Searches the string for a specified value and returns the position of where it was found
 isalnum()	                Returns True if all characters in the string are alphanumeric
 isalpha()	                Returns True if all characters in the string are in the alphabet
@@ -1147,7 +1147,7 @@ swapcase()	                Swaps cases, lower case becomes upper case and vice v
 title()	                    Converts the first character of each word to upper case
 translate()	                Returns a translated string
 upper()	                    Converts a string into upper case
-zfill()	                    Fills the string with a specified number of 0 values at the beginning
+zfill()	                    Fills the string with a specified number of 0 crit_dict_values at the beginning
 
 */
 
@@ -1157,13 +1157,13 @@ zfill()	                    Fills the string with a specified number of 0 values
 /* bools
 
 Booleanos representam um de dois valores: [ True ] ou [ False ].
-Booleans represent one of two values: True or False.
+Booleans represent one of two crit_dict_values: True or False.
 
 Na programação, muitas vezes você precisa saber se uma expressão é Trueou False. Você pode avaliar qualquer expressão em Python e obter uma de duas respostas, Trueou False.
 In programming you often need to know if an expression is True or False. You can evaluate any expression in Python, and get one of two answers, True or False.
 
 Quando você compara dois valores, a expressão é avaliada e o Python retorna a resposta booleana:
-When you compare two values, the expression is evaluated and Python returns the Boolean answer:
+When you compare two crit_dict_values, the expression is evaluated and Python returns the Boolean answer:
 [
 
 print(10 > 9)
@@ -1212,7 +1212,7 @@ print(bool(y))
 ]
 
 */
-/* Most values are True
+/* Most crit_dict_values are True
 
                         PT BR
 
@@ -1240,10 +1240,10 @@ bool(["apple", "cherry", "banana"])
 ]
 
 */
-/* Some values are False
+/* Some crit_dict_values are False
 
 Na verdade, não há muitos valores avaliados como False, exceto valores vazios, como (), [], {}, "", o número [ 0 ] e o valor [ None ]. E é claro que o valor [ False ] é avaliado como [ False ].
-In fact, there are not many values that evaluate to False, except empty values, such as (), [], {}, "", the number [ 0 ], and the value [ None ]. And of course the value [ False ] evaluates to [ False ].
+In fact, there are not many crit_dict_values that evaluate to False, except empty crit_dict_values, such as (), [], {}, "", the number [ 0 ], and the value [ None ]. And of course the value [ False ] evaluates to [ False ].
 
 
 O seguinte retornará [ False ]:
@@ -1306,10 +1306,10 @@ print(isinstance(x, int))
 /* Operators
 
 Operadores são usados ​​para realizar operações em variáveis ​​e valores.
-Operators are used to perform operations on variables and values.
+Operators are used to perform operations on variables and crit_dict_values.
 
 No exemplo abaixo, usamos o +operador para somar dois valores:
-In the example below, we use the + operator to add together two values:
+In the example below, we use the + operator to add together two crit_dict_values:
 [
 
 print(10 + 5)
@@ -1346,7 +1346,7 @@ Python divides the operators in the following groups:
 /* Arithmetic Operators
 
 Operadores aritméticos são usados ​​com valores numéricos para realizar operações matemáticas comuns:
-Arithmetic operators are used with numeric values to perform common mathematical operations:
+Arithmetic operators are used with numeric crit_dict_values to perform common mathematical operations:
 
                         PT BR
 
@@ -1373,7 +1373,7 @@ Arithmetic operators are used with numeric values to perform common mathematical
 /* Comparison Operators
 
 Operadores de comparação são usados ​​para comparar dois valores:
-Comparison operators are used to compare two values:
+Comparison operators are used to compare two crit_dict_values:
 
                         PT BR
 
@@ -1550,7 +1550,7 @@ print(thislist)
 Os itens da lista são ordenados, alteráveis ​​e permitem valores duplicados.
 Os itens da lista são indexados, o primeiro item possui index [0], o segundo item possui index [1], etc.
 
-List items are ordered, changeable, and allow duplicate values.
+List items are ordered, changeable, and allow duplicate crit_dict_values.
 List items are indexed, the first item has index [0], the second item has index [1], etc.
 
 
@@ -1782,11 +1782,11 @@ if "apple" in thislist:
                         CHANGING A RANGE // ALTERANDO A GAMA
 
 Para alterar o valor dos itens dentro de um intervalo específico, defina uma lista com os novos valores e consulte o intervalo de números de índice onde deseja inserir os novos valores:
-To change the value of items within a specific range, define a list with the new values, and refer to the range of index numbers where you want to insert the new values:
+To change the value of items within a specific range, define a list with the new crit_dict_values, and refer to the range of index numbers where you want to insert the new crit_dict_values:
 [
 
 # Troque os valores “banana” e “cherry” pelos valores “blackcurrant” e “watermelon”:
-# Change the values "banana" and "cherry" with the values "blackcurrant" and "watermelon":
+# Change the crit_dict_values "banana" and "cherry" with the crit_dict_values "blackcurrant" and "watermelon":
 thislist = ["apple", "banana", "cherry", "orange", "kiwi", "mango"]
 thislist[1:3] = ["blackcurrant", "watermelon"]
 print(thislist) 
@@ -1798,7 +1798,7 @@ If you insert more items than you replace, the new items will be inserted where 
 [
 
 # Altere o segundo valor substituindo-o por dois novos valores:
-# Change the second value by replacing it with two new values:
+# Change the second value by replacing it with two new crit_dict_values:
 thislist = ["apple", "banana", "cherry"]
 thislist[1:2] = ["blackcurrant", "watermelon"]
 print(thislist)
@@ -1823,7 +1823,7 @@ print(thislist)
 /* Insert Items
 
 Para inserir um novo item da lista, sem substituir nenhum dos valores existentes, podemos utilizar o método [ insert() ]
-To insert a new list item, without replacing any of the existing values, we can use the [ insert() ] method.
+To insert a new list item, without replacing any of the existing crit_dict_values, we can use the [ insert() ] method.
 
 O método [ insert() ] insere um item no índice especificado:
 The [ insert() ] method inserts an item at the specified index:
@@ -2030,7 +2030,7 @@ thislist = ["apple", "banana", "cherry"]
 /* List Comprehension
 
 A compreensão de lista oferece uma sintaxe mais curta quando você deseja criar uma nova lista com base nos valores de uma lista existente.
-List comprehension offers a shorter syntax when you want to create a new list based on the values of an existing list.
+List comprehension offers a shorter syntax when you want to create a new list based on the crit_dict_values of an existing list.
 
 Com base em uma lista de frutas, deseja-se uma nova lista, contendo apenas as frutas com a letra “a” no nome.
 Sem compreensão da lista você terá que escrever uma fordeclaração com um teste condicional dentro:
@@ -2132,7 +2132,7 @@ The expression is the current item in the iteration, but it is also the outcome,
 [
 
 # Coloca os valores na newlist para maiúsculo:
-# Set the values in the new list to upper case:
+# Set the crit_dict_values in the new list to upper case:
 
 newlist = [x.upper() for x in fruits]
 
@@ -2143,7 +2143,7 @@ You can set the outcome to whatever you like:
 [
 
 # Defina todos os valores na nova lista como 'hello':
-# Set all values in the new list to 'hello':
+# Set all crit_dict_values in the new list to 'hello':
 
 newlist = ['hello' for x in fruits]
 
@@ -2568,10 +2568,10 @@ Com a instrução [ continue ], podemos parar a iteração atual do loop e conti
 With the [ continue ] statement, we can stop the current iteration of the loop, and continue with the next:
 [
 
-# Não imprime [ Slugg ]
-# Dont print [ Slugg ]
+# Não imprime [ slugg ]
+# Dont print [ slugg ]
 
-fruits = ["Nuclear Pasta", "Slugg", "NaCIO"]
+fruits = ["Nuclear Pasta", "slugg", "NaCIO"]
 for x in fruits:
   if x == "banana":
     continue
@@ -2936,7 +2936,7 @@ f = open("demofile.txt", "rt")
 
 ]
 
-Because [ "r" ] for read, and [ "t"  ] for text are the default values, you do not need to specify them.
+Because [ "r" ] for read, and [ "t"  ] for text are the default crit_dict_values, you do not need to specify them.
 Como [ "r" ] for read e [ "t" ] for text são os valores padrão, não é necessário especificá-los.
 
 Nota: Certifique-se de que o arquivo exista, caso contrário você receberá um erro.

@@ -351,14 +351,14 @@ Rain World usa esse tipo de coisa pra poder pegar os inputs do ``Player``
 [ .thrw ]           - quando aperta pra jogar
 [ .pckp ]           - quando aperta pra pegar
 
-if (player.input[0].jmp && player.input[0].pckp)
+if (_player.input[0].jmp && _player.input[0].pckp)
 {
 
   //faz algo
 
 }
 
-player.input[0] aparenta ser um array de ``Int``, mas ainda não sei pq
+_player.input[0] aparenta ser um array de ``Int``, mas ainda não sei pq
 
  */
 #endregion
@@ -440,7 +440,7 @@ Sim, você precisa incluir LogLevel como parte do nome do método ou fornecê-lo
 
  Os [ . ] são pegos da ESQUERDA pela DIREITA. então:
 
- ---- self.something.something.something
+ ---- self.bool_something.bool_something.bool_something
 
  é basicamente isso
 
@@ -744,7 +744,7 @@ Deixe-o de fora e o código base nunca será executado.
 
 Observe o [ : ]
 
-public CustomExplosion(Creature creature, Vector2 pos) : this(creature.room, creature, pos, null) <------------------------------->
+public CustomExplosion(Creature creature, Vector2 Pos) : this(creature.room, creature, Pos, null) <------------------------------->
 {
     //faz código
 }
@@ -793,7 +793,7 @@ Limitações disso:
  ---- A lógica base será aplicada antes que o valor entre chaves seja atribuído. Às vezes isso será importante, especialmente com a lógica do RainWorld. Tome cuidado.
  ---- Isto é funcionalmente o mesmo que atribuir dentro do próprio construtor
 
-public CustomExplosion(Creature creature): this(creature, creature.bodyChunks[0].pos, null)
+public CustomExplosion(Creature creature): this(creature, creature.bodyChunks[0].Pos, null)
 {
   //Isso não será alterado até que a lógica base seja executada primeiro
   LifetIme = 5;
@@ -870,24 +870,32 @@ but I also found it useless.
 #region cwt
 /*
 
-Isso é um template de como fazer um CWT..... (foi uma merda)
+..shit
 
 ________________________________________________________________________________________________________________________________________
 
-    public static class CWTclass //THE CLASS
+public static class cwt_slugg
+{
+    public class bool_something
     {
 
-        public class CWT //IDK WHAT CLASS IS THIS. MAYBE ITS A CWT??? IDK
+        //insert data here. i guess
+        public bool bool_something;
+
+        public bool_something()
         {
-
-            //do code.................................?
-
+            this.bool_something = true;
         }
-
-        public static readonly ConditionalWeakTable<Player , CWT> CWTvar = new(); //A CWT VARIABLE
-        public static CWT GetCWT(this [ the class target ] self) => CWTvar.GetValue(self, _ => new()); //BRO WTH I AM DOING HERE
-
     }
+
+    public static readonly ConditionalWeakTable<Player, bool_something> CWT = new();
+    public static bool_something get_cwt(this Player self) => CWT.GetValue(self, _ => new());
+
+    public static void PLS(Player self)
+    {
+        self.get_cwt();
+    }
+}
 
 _________________________________________________________________________________________________________________________________________
 */
@@ -895,8 +903,8 @@ ________________________________________________________________________________
 #region self.Input[0.input
 /*
 
-Input[0] é a entrada atual do player, Input[1] é a entrada do player de 1 quadro atrás. 
-Portanto, verificar se self.Input[0].jmp && !self.Input[1].jmp testa se o player acabou de pressionar pular este quadro
+Input[0] é a entrada atual do _player, Input[1] é a entrada do _player de 1 quadro atrás. 
+Portanto, verificar se self.Input[0].jmp && !self.Input[1].jmp testa se o _player acabou de pressionar pular este quadro
 
 os Inputs que já existem são:
 
@@ -921,7 +929,7 @@ self.input[0].y;        //Y coordinate (up - down)
 #region Directorys Types
 /*_
 
-Slugg, slugg, entenda isso.
+slugg, Helpers, entenda isso.
 
 Existem dois tipos de caminhos:
 
@@ -1113,19 +1121,19 @@ meu progrresso:
 
 _________________________
 
-public class Something<something>
+public class Something<bool_something>
 {
 
-    public static something idk;
+    public static bool_something bool_something;
 
 }
 
 public static void Main()
 {
 
-    //something();
-    Something<float>.idk = 454f;
-    Console.WriteLine(Something<float>.idk);
+    //bool_something();
+    Something<float>.bool_something = 454f;
+    Console.WriteLine(Something<float>.bool_something);
 
 }
 
@@ -1133,7 +1141,88 @@ ______________________
 
 */
 #endregion
+#region about Delegates more
+/*
 
+- Delegate      - Pode armazenar praticamente qualquer método
+- Action<T>     - Armazena qualquer método que não retorne nada que tenha um parâmetro do tipo T
+- Func<T1, T2>  - Armazena qualquer método que retorne um membro do tipo T2 e possua um parâmetro do tipo T1.
+- Func<T>       – Apenas um argumento de tipo refere-se ao tipo de retorno. O tipo de retorno sempre será o argumento do tipo mais à direita
+
+Eles podem ser estendidos para incluir quantos parâmetros você precisar
+
+Delegate myDel;
+
+Ah, e tudo isso é anulável. Certifique-se de armazenar algo neles ou verifique se há nulo antes de tentar chamar.
+Você também pode usar um operador condicional nulo:
+
+myDel?.Invoke(); //Isso pode ser nulo, então verifique com [ ? ]
+
+Se tiver certeza de que não será nulo, você pode chamar como um método normal.
+
+myDel();
+
+Para maior clareza, [ myDel ] é uma variável do tipo Delegate. Não confunda definir um tipo Delegate com estabelecer uma variável.
+
+_______________________________________________________________________________________________________________________________________________
+
+- Delegate      - Can store any method pretty much
+- Action<T>     - Stores any method that returns nothing that has a parameter of type T
+- Func<T1, T2>  - Stores any method that returns a member of type T2, and has a parameter of type T1.
+- Func<T>       - Only one type argument refers to the return type. The return type will always be the right-most type argument
+
+These can be extended to include as many parameters as you need
+
+Delegate myDel;
+
+Oh and these are all nullable. Make sure that you store bool_something in them, or check for null before trying to call.
+You can also use a null-conditional operator:
+
+myDel?.Invoke(); //This may be null, so check with [ ? ]
+
+If you are certain that it wont be null, you can call like a normal method.
+
+myDel();
+
+For clarity, [ myDel ] is a variable of a Delegate type. Do not confuse defining a Delegate type with establishing a variable. 
+
+*/
+#endregion
+
+#region Extension methods
+/*
+
+Como usar métodos de extensão
+
+- Crie uma classe estática (qualquer classe estática)
+- Crie um método estático nessa classe
+- Inclua um parâmetro para esse método que comece com this com o tipo de classe à qual você deseja adicionar uma extensão.
+
+How to use extension methods
+
+- Create a static class (any static class)
+- Create a static method in that class
+- Include a parameter for that method that starts with this with the type of the class you want to add an extension to.
+
+____________________________________________
+
+public static class SomeClass
+{
+|
+|   public static void MyExtension(this Player self)
+|   {
+|   |    
+|   |   var self_room = self.room;
+|   |   
+|   }
+|
+}
+
+____________________________________________
+
+
+*/
+#endregion
 #endregion
 
 #endregion
