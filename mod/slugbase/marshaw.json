@@ -1,0 +1,82 @@
+{
+	"id": "marshaw",
+	"name": "Marshaw",
+	"description": "MARSHAWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW<LINE>WWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
+	"features": {
+		
+		"custom_colors": [
+			{
+				"name": "Body", 
+				"story": "656565", "arena": ["FFFFFF", "F1D943", "FF88A5", "3D3EA2"]
+			},
+			{
+				"name": "Eyes", 
+				"story": "141414", "arena": ["141414", "141414", "141414", "FFFFFF"]
+			}
+		],
+		
+		"world_state": [ "marshaw", "Rivulet", "Red" ],
+		"karma": 4,
+		"the_mark": true,
+		"has_dreams": true,
+		"use_default_dreams": true,
+		"food_min": 2,
+		"food_max": 4,
+		"weight": 0.5,
+		"loudness": 2.0,
+		"the_glow": true,
+		"color": "656565",
+		"auto_grab_batflies": false,
+		"walk_speed": 2.4,
+		"climb_speed": 2.2,
+		"tunnel_speed": 2.0,
+		"throw_skill": [ 2, 2 ],
+		"lung_capacity": 3.5,
+		"back_spear": false,
+		"can_maul": true,
+		"maul_blacklist": [ "Centipede", "Centiwing", "AquaCenti", "RedCentipede" ],
+		"maul_damage": 1.5,
+		
+		"diet": {
+			"base": "White",
+			"corpses": 0,
+			"plants": 1,
+			"meat": 2,
+			"overrides": {
+				"DangleFruit": 1.5,
+				"AquaCenti": -1,
+				"Centipede": -1,
+				"RedCentipede": -1,
+				"Centiwing": -1,
+				"SmallCentipede": -1,
+				"SeedCob": 4,
+				"WaterNut": 1.5,
+				"NeedleEgg": -1,
+				"GooieDuck": 3,
+				"Seed": 1,
+				"GreenLizard": 1.5,
+				"BlueLizard": 1.5,
+				"YellowLizard": 1.5,
+				"WhiteLizard": 1.5,
+				"RedLizard": 1.5,
+				"BlackLizard": 1.5,
+				"Salamander": 1.5,
+				"CyanLizard": 1.5,
+				"ZoopLizard": 1.5,
+				"SpitLizard": 1.5,
+				"EelLizard": 1.5,
+				"Fly" :  1.5
+			}
+		},
+
+		"perma_unlock_gates": false,
+		"cycle_length_min": 3.10,
+		"cycle_length_max": 6.10,
+		"expedition_enabled": true,
+		"expedition_description": "grey scug",
+		"start_room": [ "PD_S01", "HI_S01"],
+		"select_menu_scene": "Slugcat_marshaw",
+		"select_menu_scene_ascended": "Ghost_marshaw",
+		"sleep_scene": "sleep_marshaw"
+	}
+}

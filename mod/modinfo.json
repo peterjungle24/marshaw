@@ -1,0 +1,12 @@
+﻿{
+	"id": "grey.grey.grey.grey",
+	"name": "Marshawwwwwwwwwwwww",
+	"version": "0.1.1",
+	"target_game_version" :  "v1.9.15b",
+	"authors": "Slug (Pedro)",
+	"description": "-Um scug que foi feito no brasil. -A scug that was made in Brazil. ",
+	"requirements": [ "slime-cubed.slugbase", "moreslugcats" ],
+	"requirements_names": [ "SlugBase ", "DLC of More Slugcats, AKA [ MSC ]" ],
+	"tags": [ "Custom Slugcat", "Hi there!" ],
+	"checksum_override_version" : false
+}
