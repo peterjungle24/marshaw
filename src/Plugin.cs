@@ -14,6 +14,7 @@ using MoreSlugcats;
 using Collectables_Misc;
 using static Pom.Pom;
 using System.IO;
+using image;
 
 namespace Helpers // name of the space init
 {
@@ -46,6 +47,7 @@ namespace Helpers // name of the space init
 
             Logger = base.Logger;                                                   //for the log base
             pom_objects();
+            On.RainWorld.OnModsInit += LoadImages;
 
             //please, dont enter on this site, you will see my favourite cyan lizard ;-;
             //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTK8R7tsGQsYuwrsrv6VRIbSgcOI9rr1OZ0w&s
@@ -75,6 +77,16 @@ namespace Helpers // name of the space init
             //On.RoomCamera.ChangeMainPalette += image.mBack_spr.mBack_bk;
             On.RainWorld.Update += RainWorld_Update;
 
+        }
+
+        private void LoadImages(On.RainWorld.orig_OnModsInit orig, RainWorld self)
+        {
+            orig(self);
+
+            ImageFiles.MedallionPath = Path.Combine("sprites", "colletables", "medallion");
+            ImageFiles.MedallionFile = Futile.atlasManager.LoadImage(ImageFiles.MedallionPath);
+
+            Futile.atlasManager.LogAllElementNames();
         }
 
         private void RainWorld_Update(On.RainWorld.orig_Update orig, RainWorld self)

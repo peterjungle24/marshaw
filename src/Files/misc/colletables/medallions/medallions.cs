@@ -7,6 +7,7 @@ using static Pom.Pom;
 using Helpers;
 using BepInEx.Logging;
 using System.Collections.Generic;
+using image;
 
 namespace Collectables_Misc
 {
@@ -70,21 +71,19 @@ namespace Collectables_Misc
         
         public void InitiateSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam)
         {
+            
             sLeaser.sprites = new FSprite[1];
-            sLeaser.sprites[0] = new FSprite("Futile_White", true);
+            sLeaser.sprites[0] = new FSprite(ImageFiles.MedallionPath, true) ;
 
-            sLeaser.sprites[0].scale = 6f;
-            sLeaser.sprites[0].color = Color.green;
+            sLeaser.sprites[0].scale = 2.2f;
+            sLeaser.sprites[0].color = Color.cyan;
 
             AddToContainer(sLeaser, rCam, null);
-
-            Debug.Log("init sprites");
         }
         public void DrawSprites(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float Float, Vector2 camPos)
         {
             sLeaser.sprites[0].x = obj.pos.x - rCam.pos.x;
             sLeaser.sprites[0].y = obj.pos.y - rCam.pos.y;
-            //sLeaser.sprites[0].shader = rCam.game.rainWorld.Shaders["VectorCircle"];
         }
         public void ApplyPalette(RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, RoomPalette pal)
         {

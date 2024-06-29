@@ -6,6 +6,14 @@ using Helpers;
 namespace image
 {
 
+    public class ImageFiles
+    {
+
+        public static string MedallionPath;
+        public static FAtlas MedallionFile;
+
+    }
+
     //get ready for a lot of lines :3
     // [ init ]  means the #region that have a hook for initialize the Sprite
     // [ usage ] means the #region that have a hook for use the Sprite
@@ -33,7 +41,6 @@ namespace image
         //the start of the image...
         public static void mBack_bk(On.RoomCamera.orig_ChangeMainPalette orig, RoomCamera self, int palA)
         {
-
             FSprite FS_mBack = new FSprite(mBack);   //variable for the FSprite. i hate Atlas for real
 
             self.ReturnFContainer("Shadows").AddChild(FS_mBack);    //çet you add this element to the container
@@ -45,7 +52,6 @@ namespace image
             //if you doesnt uderstood what X or Y means, go learn 2D Coordinates
 
             orig(self, palA);
-
         }
 
         #endregion
