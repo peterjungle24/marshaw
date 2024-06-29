@@ -29,7 +29,7 @@
   [ int ]         te deixa escrever numero inteiro. ---- 82
   [ float ]       te deixa escrever algo com.. [ f ]...? ---- 82f
   [ double ]      te deixa escrever numero decimal. ---- 82.2
-  [ char ]        te deixa escrever só uma letra. QUAL UTILIDADE?? ---- 'O'
+  [ char ]        te deixa escrever só uma letra. QUAL UTILIDADE?? ---- 'PO'
   [ var ]         deixa uma variável que de alguma forma, descobre o tipo dele. Oculta isso do compilador, e claro, o GML já faz isso automaticamente. ---- var myVar = 34;
   [ dynamic ]     deixa uma variável que possa ser guardado de alguma forma. tipo, o compilador irá literal ignorar isso, e se tu colocou algo de errado aqui, tu se fudeu.
   [ public ]      deixa público (piada boa), mas fora as piadas, te deixa acessar no namespace inteiro.
@@ -79,7 +79,7 @@ Você cria um método personalizado e uma classe como um controle do Windows pod
 public delegate string GeneralCreatures("Lizards", "Centipedes");
 
 
-Qualquer método de qualquer classe ou estrutura acessível que tenha o mesmo tipo delegado pode ser usado ao delegado. O método pode ser estático ou de instância. 
+Qualquer método de qualquer classe ou estrutura acessível que tenha o mesmo tipo delegado pode ser usado ao delegado. PO método pode ser estático ou de instância. 
 Essa flexibilidade deixa você pode alterar programaticamente as chamadas de método ou inserir novo código em classes existentes.
 
 
@@ -108,10 +108,10 @@ Mas no contexto dos delegados, a assinatura inclui o valor de retorno. Em outras
 Você não precisa de uma classe especial, a menos que precise armazenar referências estáticas aos delegados do seu programa.
 
 
-Isso cria um tipo delegado com o nome Callback que não retorna nada e possui uma string para o argumento. O nome usado como argumento não tem sentido. Isso não muda a forma como o delegado funciona.
+Isso cria um tipo delegado com o nome Callback que não retorna nada e possui uma string para o argumento. PO nome usado como argumento não tem sentido. Isso não muda a forma como o delegado funciona.
 Delegados gostam desta função de forma semelhante às classes. Seu delegado se torna um tipo que você usa para variáveis ​​e declarações de campo.
 
-O código de exemplo definiu um delegado chamado Callback. O exemplo então criou uma variável chamada handler com o nome do tipo Callback.
+PO código de exemplo definiu um delegado chamado Callback. PO exemplo então criou uma variável chamada handler com o nome do tipo Callback.
 
 //create a delegate
 public delegate void Callback(string message);
@@ -129,11 +129,11 @@ Callback handler = DelegateMethod;
 handler("Hello World");
 
 
-O exemplo mostra que você pode armazenar um método com a assinatura definida pelo delegado em que está sendo colocado, ou seja, um método que não retorna nada e lida com exatamente uma string.
+PO exemplo mostra que você pode armazenar um método com a assinatura definida pelo delegado em que está sendo colocado, ou seja, um método que não retorna nada e lida com exatamente uma string.
 
- ---- O nome do método deste método não importa
- ---- O modificador de acesso não deveria importar. Você pode colocar um privado, público, protegido? método em um delegado. Se quebrar para você me avise.
- ---- O nome do argumento não importa.
+ ---- PO nome do método deste método não importa
+ ---- PO modificador de acesso não deveria importar. Você pode colocar um privado, público, protegido? método em um delegado. Se quebrar para você me avise.
+ ---- PO nome do argumento não importa.
  ---- Método pode ser um estático ou não estátco.
 
 
@@ -194,7 +194,7 @@ method name + arguments - assinatura
 Os eventos permitem que uma classe ou objeto notifique outras classes ou objetos quando algo de interesse ocorre. 
 A classe que envia (ou gera ) o evento é chamada de editor e as classes que recebem (ou tratam ) do evento são chamadas de assinantes
 
- ---- O editor determina quando um evento é gerado; os assinantes determinam que ação será tomada em resposta ao evento.
+ ---- PO editor determina quando um evento é gerado; os assinantes determinam que ação será tomada em resposta ao evento.
  ---- Um evento pode ter vários assinantes. Um assinante pode lidar com vários eventos de vários editores.
  ---- Eventos que não têm assinantes nunca são gerados.
  ---- Os eventos normalmente são usados ​​para sinalizar ações do usuário, como cliques em botões ou seleções de menu em interfaces gráficas de usuário.
@@ -268,9 +268,9 @@ public static class ClassC
   }
 }
 
-O resultado:
+PO resultado:
 
- ---- O método OnEventTrigger definido em ClassA será acionado em DoSomething. ClassB não precisa acessar ClassA para acionar código controlado por ClassA.
+ ---- PO método OnEventTrigger definido em ClassA será acionado em DoSomething. ClassB não precisa acessar ClassA para acionar código controlado por ClassA.
 
                                                 --------|       |--------
 
@@ -453,7 +453,7 @@ Sim, você precisa incluir LogLevel como parte do nome do método ou fornecê-lo
 #endregion
 #region Non-Statics and Statics info
 
-//um gancho sendo estático ou não é quase sem sentido. O fato de você poder ter ganchos não estáticos não o ajudará.
+//um gancho sendo estático ou não é quase sem sentido. PO fato de você poder ter ganchos não estáticos não o ajudará.
 //Comparar o gancho com qualquer coisa não tem sentido. Isso não vai te ajudar.
 
 #endregion
@@ -652,7 +652,7 @@ public class MyNewClass : MyBaseClass
         base.Method1();
     }
     
-    //O método2 só pode ser ocultado por esta classe, pois não está marcado como virtual.
+    //PO método2 só pode ser ocultado por esta classe, pois não está marcado como virtual.
     //Em alguns casos, a lógica base pode ser executada em vez desta lógica. É uma prática de codificação melhor substituir em vez de ocultar métodos.
     public new void Method2()
     {
@@ -779,7 +779,7 @@ Somente este chama InitializeChildren, o resto dos construtores não é necessá
 
 Você pode atribuir valores padrão aos argumentos dos métodos/construtores como este.
 Imagem ---<
-Se killTagHolder não for necessário, você não precisa colocar null como argumento. O compilador pode colocar null lá para você.
+Se killTagHolder não for necessário, você não precisa colocar null como argumento. PO compilador pode colocar null lá para você.
 
 Todos os parâmetros opcionais devem ser definidos após todos os parâmetros obrigatórios.
 
@@ -799,7 +799,7 @@ public CustomExplosion(Creature creature): this(creature, creature.bodyChunks[0]
   LifetIme = 5;
 }
 
-O valor pode ser adicionado desde que o campo não seja privado, protegido ou somente leitura. Se for somente leitura, deverá ser definido no construtor.
+PO valor pode ser adicionado desde que o campo não seja privado, protegido ou somente leitura. Se for somente leitura, deverá ser definido no construtor.
 
 
                                                     ||||-----------------------||||
@@ -826,7 +826,7 @@ Mas você precisa de experiência na criação de classes para essas coisas.
 Sugiro que você dê um nome mais relacionado a explosões, só para que eu não precise perder tempo explicando por que você ficou confuso mais tarde.
 Mas depende de você (pelo jeito, to lascado)
 
-O poder pode referir-se a vários campos. Você pode querer adicionar um resumo que diga o que ele faz.
+PO poder pode referir-se a vários campos. Você pode querer adicionar um resumo que diga o que ele faz.
 É perfeitamente normal ter um argumento que altera vários campos ao mesmo tempo!!!
 
 Você poderia codificar o que significa poder em seu construtor. Isso pode alterar vários campos para você.
@@ -841,7 +841,7 @@ Enquanto estamos nas instruções switch:
 Você deve definir um padrão ao criar um enum como este, ou o primeiro valor definido em seu enum será o padrão automaticamente
 Se você não tiver um, o compilador fará com que Lower seja o padrão porque ele é definido primeiro.
 
-Você pode atribuir valores numéricos específicos às suas enumerações. O enum definido com 0 sempre será o padrão.
+Você pode atribuir valores numéricos específicos às suas enumerações. PO enum definido com 0 sempre será o padrão.
 
  */
 #endregion
@@ -937,7 +937,7 @@ Existem dois tipos de caminhos:
  ---- caminhos absolutos (completos)
 
 Um caminho relativo é o que você tem. Ele contém apenas uma parte do endereço do arquivo. É relativo a algum diretório.
-O que você precisa é de um caminho completo.
+PO que você precisa é de um caminho completo.
 
 ResolveFilepath e ResolveDirectory usam um caminho relativo ou um nome de arquivo/pasta e retornam um caminho completo válido para você.
 Se você não deseja usar isso, você deve fornecer um caminho completo por algum outro meio. Não é recomendado não usá-lo, pois o caminho completo pode ser diferente de usuário para usuário. 
@@ -959,12 +959,12 @@ mas StreamingAssets não é o diretório raiz, então você precisa de um caminh
 string myPath;
 
 - Sim:
-myPath = Path.Combine("dirName1", "dirName2", "fileName");
+myPath = image_path.Combine("dirName1", "dirName2", "fileName");
 dirName não pode incluir o nome da pasta do seu mod.
 
 
 - Não:
-myPath = "file name";
+myPath = "file_check name";
 
 Em ambos os casos, não inclua a extensão do arquivo ao usar o Futile.
 
@@ -1007,7 +1007,7 @@ Adicione o FAtlasElement como parâmetro a um construtor que usa um. (FSprite, F
 Exemplo
 new FSprite(Futile.atlasManager.GetElementWithName(myPath)); ]
 
-- O elemento também pode ser definido através da propriedade element de um drawable existente.
+- PO elemento também pode ser definido através da propriedade element de um drawable existente.
 
 existingFSprite.element = Futile.atlasManager.GetElementWithName(myPath); ]
 
@@ -1147,7 +1147,7 @@ ______________________
 - Delegate      - Pode armazenar praticamente qualquer método
 - Action<T>     - Armazena qualquer método que não retorne nada que tenha um parâmetro do tipo T
 - Func<T1, T2>  - Armazena qualquer método que retorne um membro do tipo T2 e possua um parâmetro do tipo T1.
-- Func<T>       – Apenas um argumento de tipo refere-se ao tipo de retorno. O tipo de retorno sempre será o argumento do tipo mais à direita
+- Func<T>       – Apenas um argumento de tipo refere-se ao tipo de retorno. PO tipo de retorno sempre será o argumento do tipo mais à direita
 
 Eles podem ser estendidos para incluir quantos parâmetros você precisar
 
@@ -1223,6 +1223,54 @@ ____________________________________________
 
 */
 #endregion
+#region advices
+
+#region look for the code fool
+/*
+
+just look at it and think about how the code should work
+You're referencing by index, so you don't need to assign with a loop
+
+*/
+#endregion
+#region File.ReadAllLines
+/*
+
+/*
+
+File.ReadAllLines --> reads the entire file.
+File.ReadAllLines(filepath);
+
+*/
+
+#endregion
+#region 'AssetManager.ResolveFilePath'
+/*  
+
+- 'AssetManager.ResolveFilePath' is your friend
+    - it can lead your directory for the mod folder
+
+AssetManger.ResolveFilePath(filepath);
+
+*/
+#endregion
+#region string
+/*
+
+You can never change a string's value directly by invoking one of its helper method. 
+The changed result is also returned as a value you must store
+
+*/
+#endregion
+#region string.Trim()
+/*
+
+Trim doesn't change the original string, it returns a modified string that is trimmed
+
+*/
+#endregion
+
+#endregion
 #endregion
 
 #endregion
@@ -1238,8 +1286,7 @@ just a warning about dragging files into a folder versus copy/paste.
 
 ----
 
-The drag operation could delete the file that is there before it knows if the move operation will fail, and if the move fails, your file at both the source and destination goes poof.
-This doesn't happen in a copy operation as the original file is not being touched. 
+The drag operation could delete the file_check that is there before it knows if the move operation will fail, and if the move fails, your file_check at both the source and destination goes poof.
+This doesn't happen in a copy operation as the original file_check is not being touched. 
 
  */
-

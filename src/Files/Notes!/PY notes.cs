@@ -136,7 +136,7 @@ A variable name can be short or descriptive. But there are some rules:
 
                         PT BR
 
- -- O nome de uma variável deve começar com uma letra ou sublinhado
+ -- PO nome de uma variável deve começar com uma letra ou sublinhado
  -- Um nome de variável não pode começar com um número
  -- Um nome de variável só pode conter caracteres alfanuméricos e sublinhados (Az, 0-9 e _)
  -- Os nomes das variáveis ​​diferenciam maiúsculas de minúsculas (idade, Idade e IDADE são três variáveis ​​diferentes)
@@ -933,7 +933,7 @@ Espaço em branco é o espaço antes e/ou depois do texto real, e muitas vezes v
 Whitespace is the space before and/or after the actual text, and very often you want to remove this space.
 
 The [ strip() ] method removes any whitespace from the beginning or the end:
-O método [ strip() ] remove qualquer espaço em branco do início ou do fim:
+PO método [ strip() ] remove qualquer espaço em branco do início ou do fim:
 [
 
 a = " Hello, World! "
@@ -1010,7 +1010,7 @@ isso dá erro
 that gaves a fuckin error
 
 Mas podemos combinar strings e números usando o método [ format() ]!
-O método [ format() ] pega os argumentos passados, formata-os e os coloca na string onde {} estão os espaços reservados:
+PO método [ format() ] pega os argumentos passados, formata-os e os coloca na string onde {} estão os espaços reservados:
 
 But we can combine strings and numbers by using the [ format() ] method!
 The [ format() ] method takes the passed arguments, formats them, and places them in the string where the placeholders {} are:
@@ -1022,7 +1022,7 @@ print(txt.format(age))
 
 ]
 
-O método [ format() ] aceita um número ilimitado de argumentos e são colocados nos respectivos espaços reservados:
+PO método [ format() ] aceita um número ilimitado de argumentos e são colocados nos respectivos espaços reservados:
 The [ format() ] method takes unlimited number of arguments, and are placed into the respective placeholders:
 [
 
@@ -1067,7 +1067,7 @@ Para corrigir esse problema, use o caractere de escape \":
 To fix this problem, use the escape character \":
 [
 
-# O caractere de escape permite que você use aspas duplas quando normalmente não seria permitido:
+# PO caractere de escape permite que você use aspas duplas quando normalmente não seria permitido:
 # The escape character allows you to use double quotes when you normally would not be allowed:
 txt = "We are the so-called \"Vikings\" from the north."
 
@@ -1229,7 +1229,7 @@ print(bool(y))
  -- Any list, tuple, set, and dictionary are True, except empty ones.
 
 
-O seguinte ira retornar [ true ]:
+PO seguinte ira retornar [ true ]:
 The following will return [ true ]:
 [
 
@@ -1246,7 +1246,7 @@ Na verdade, não há muitos valores avaliados como False, exceto valores vazios,
 In fact, there are not many crit_dict_values that evaluate to False, except empty crit_dict_values, such as (), [], {}, "", the number [ 0 ], and the value [ None ]. And of course the value [ False ] evaluates to [ False ].
 
 
-O seguinte retornará [ False ]:
+PO seguinte retornará [ False ]:
 the folowwing will return [ false ]
 [
 
@@ -1694,7 +1694,7 @@ print(thislist[1])
 
 ]
 
-Nota: O primeiro item possui índice [ 0 ].
+Nota: PO primeiro item possui índice [ 0 ].
 Note: the first item has index [ 0 ].
 
                         Negative Indexing // Indexação Negativa
@@ -1763,7 +1763,7 @@ print(thislist[-4:-1])
 
 ]
 
-                        IF THE ITEM EXISTS // SE O ITEM EXISTE
+                        IF THE ITEM EXISTS // SE PO ITEM EXISTE
 
 Para determinar se um item especificado está presente em uma lista, use a palavra-chave [ in ]:
 To determine if a specified item is present in a list use the [ in ] keyword:
@@ -1805,7 +1805,7 @@ print(thislist)
 
 ]
 
-Nota: O comprimento da lista mudará quando o número de itens inseridos não corresponder ao número de itens substituídos.
+Nota: PO comprimento da lista mudará quando o número de itens inseridos não corresponder ao número de itens substituídos.
 Note: The length of the list will change when the number of items inserted does not match the number of items replaced.
 
 Se você inserir menos itens do que substitui, os novos itens serão inseridos onde você especificou e os itens restantes serão movidos de acordo:
@@ -1825,7 +1825,7 @@ print(thislist)
 Para inserir um novo item da lista, sem substituir nenhum dos valores existentes, podemos utilizar o método [ insert() ]
 To insert a new list item, without replacing any of the existing crit_dict_values, we can use the [ insert() ] method.
 
-O método [ insert() ] insere um item no índice especificado:
+PO método [ insert() ] insere um item no índice especificado:
 The [ insert() ] method inserts an item at the specified index:
 [
 
@@ -1870,7 +1870,7 @@ print(thislist)
 
                         Add Iterables // Adicionar Iteráveis
 
-O método [ extend()] não precisa anexar listas, você pode adicionar qualquer objeto iterável (tuples, sets, dicionáaries etc.).
+PO método [ extend()] não precisa anexar listas, você pode adicionar qualquer objeto iterável (tuples, sets, dicionáaries etc.).
 The [ extend() ] method does not have to append lists, you can add any iterable object (tuples, sets, dictionaries etc.).
 
 Adiciona elementos de um tuple para a lista:
@@ -1887,7 +1887,7 @@ print(thislist)
 */
 /* Removes
 
-O método [ remove() ] remove o item especificado.
+PO método [ remove() ] remove o item especificado.
 The [ remove() ] method removes the specified item.
 [
 
@@ -2070,7 +2070,7 @@ newlist = [expression for item in iterable if condition == True]
 ]
 
 The return value is a new list, leaving the old list unchanged.
-O valor de retorno é uma nova lista, deixando a lista antiga inalterada.
+PO valor de retorno é uma nova lista, deixando a lista antiga inalterada.
 
 
                         Condition // Condição (google trdutor traduziu isso pra [ doença ], então foi eu que traduzi
@@ -2102,7 +2102,7 @@ newlist = [x for x in fruits]
 
                         Iterable // Iterável
 
-O iterável pode ser qualquer objeto iterável, como uma lista, tupla, conjunto etc.
+PO iterável pode ser qualquer objeto iterável, como uma lista, tupla, conjunto etc.
 The iterable can be any iterable object, like a list, tuple, set etc.
 [
 
@@ -2440,7 +2440,7 @@ Nota: lembre-se de incrementar i, caso contrário o loop continuará para sempre
 Note: remember to increment i, or else the loop will continue forever.
 
 
-O loop while requer que variáveis ​​relevantes estejam prontas, neste exemplo precisamos definir uma variável de indexação, [ i ] , que definimos como 1.
+PO loop while requer que variáveis ​​relevantes estejam prontas, neste exemplo precisamos definir uma variável de indexação, [ i ] , que definimos como 1.
 The while loop requires relevant variables to be ready, in this example we need to define an indexing variable, [ i ], which we set to 1.
 
 
@@ -2519,7 +2519,7 @@ for x in fruits:
 
 ]
 
-O loop [ for ] não requer que uma variável de indexação seja definida antecipadamente.
+PO loop [ for ] não requer que uma variável de indexação seja definida antecipadamente.
 The [ for ] loop does not require an indexing variable to set beforehand.
 
                         Loop in a string
@@ -2639,7 +2639,7 @@ Os argumentos são especificados após o nome da função, entre parênteses. Vo
 Information can be passed into functions as arguments.
 Arguments are specified after the function name, inside the parentheses. You can add as many arguments as you want, just separate them with a comma.
 
-O exemplo a seguir possui uma função com um argumento (fname). Quando a função é chamada, passamos um primeiro nome, que é usado dentro da função para imprimir o nome completo:
+PO exemplo a seguir possui uma função com um argumento (fname). Quando a função é chamada, passamos um primeiro nome, que é usado dentro da função para imprimir o nome completo:
 The following example has a function with one argument (fname). When the function is called, we pass along a first name, which is used inside the function to print the full name:
 [
 
@@ -2678,7 +2678,7 @@ From a function's perspective:
 
                         Argument Number // Número de argumentos
 
-Por padrão, uma função deve ser chamada com o número correto de argumentos. O que significa que se sua função espera 2 argumentos, você deve chamar a função com 2 argumentos, nem mais, nem menos.
+Por padrão, uma função deve ser chamada com o número correto de argumentos. PO que significa que se sua função espera 2 argumentos, você deve chamar a função com 2 argumentos, nem mais, nem menos.
 By default, a function must be called with the correct number of arguments. Meaning that if your function expects 2 arguments, you have to call the function with 2 arguments, not more, and not less.
 
 Esta função espera 2 argumentos e obtém 2 argumentos:
@@ -2753,7 +2753,7 @@ The phrase Keyword Arguments are often shortened to [ kwargs ] in Python documen
 
                         Default Value (i love this way) // Valor Padrão (eu amo essa forma)
 
-O exemplo a seguir mostra como usar um valor de parâmetro padrão.
+PO exemplo a seguir mostra como usar um valor de parâmetro padrão.
 Se chamarmos a função sem argumento, ela usará o valor padrão:
 
 The following example shows how to use a default parameter value.
@@ -2826,7 +2826,7 @@ def myfunction():
 Python também aceita recursão de função, o que significa que uma função definida pode chamar a si mesma.
 A recursão é um conceito matemático e de programação comum. Isso significa que uma função chama a si mesma. Isso tem a vantagem de significar que você pode percorrer os dados para chegar a um resultado.
 
-O desenvolvedor deve ter muito cuidado com a recursão, pois pode ser muito fácil escrever uma função que nunca termina ou que usa quantidades excessivas de memória ou potência do processador. No entanto, quando escrita corretamente, a recursão pode ser uma abordagem de programação muito eficiente e matematicamente elegante.
+PO desenvolvedor deve ter muito cuidado com a recursão, pois pode ser muito fácil escrever uma função que nunca termina ou que usa quantidades excessivas de memória ou potência do processador. No entanto, quando escrita corretamente, a recursão pode ser uma abordagem de programação muito eficiente e matematicamente elegante.
 Neste exemplo, tri_recursion() é uma função que definimos para chamar a si mesma ("recurse"). Usamos a variável k como dados, que diminui ( -1 ) toda vez que recorremos. A recursão termina quando a condição não é maior que 0 (ou seja, quando é 0).
 Para um novo desenvolvedor, pode levar algum tempo para descobrir exatamente como isso funciona. A melhor maneira de descobrir é testando e modificando-o.
 
@@ -2880,7 +2880,7 @@ Existem quatro métodos (modos) diferentes para abrir um arquivo:
 
 The key function for working with files in Python is the [ open() ] function.
 The [ open() ] function takes two parameters; filename, and mode.
-There are four different methods (modes) for opening a file:
+There are four different methods (modes) for opening a file_check:
 [
 
                         PT BR
@@ -2905,15 +2905,15 @@ There are four different methods (modes) for opening a file:
 
                         ENG
 
-[ "r" ] - Read - Default value. Opens a file for reading, error if the file does not exist
+[ "r" ] - Read - Default value. Opens a file_check for reading, error if the file_check does not exist
 
-[ "a" ] - Append - Opens a file for appending, creates the file if it does not exist
+[ "a" ] - Append - Opens a file_check for appending, creates the file_check if it does not exist
 
-[ "w" ] - Write - Opens a file for writing, creates the file if it does not exist
+[ "w" ] - Write - Opens a file_check for writing, creates the file_check if it does not exist
 
-[ "x" ] - Create - Creates the specified file, returns an error if the file exists
+[ "x" ] - Create - Creates the specified file_check, returns an error if the file_check exists
 
-# In addition you can specify if the file should be handled as binary or text mode
+# In addition you can specify if the file_check should be handled as binary or text mode
 
 [ "t" ] - Text - Default value. Text mode
 
@@ -2924,12 +2924,12 @@ There are four different methods (modes) for opening a file:
                         Sintaxe
 
 Para abrir um arquivo para leitura basta especificar o nome do arquivo:
-To open a file for reading it is enough to specify the name of the file:
+To open a file_check for reading it is enough to specify the name of the file_check:
 [
 
 f = open("demofile.txt")
 
-# O código acima é igual a:
+# PO código acima é igual a:
 # The code above is the same as:
 
 f = open("demofile.txt", "rt")
@@ -2940,7 +2940,7 @@ Because [ "r" ] for read, and [ "t"  ] for text are the default crit_dict_values
 Como [ "r" ] for read e [ "t" ] for text são os valores padrão, não é necessário especificá-los.
 
 Nota: Certifique-se de que o arquivo exista, caso contrário você receberá um erro.
-Note: Make sure the file exists, or else you will get an error.
+Note: Make sure the file_check exists, or else you will get an error.
 
 
 */

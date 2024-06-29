@@ -10,13 +10,15 @@ using SlugCWTCat;
 using System;
 using System.Runtime.InteropServices;
 using sanity;
+using particle_manager;
+using sounded;
 
 namespace marshaw.skill
 {
     /// <summary>
     /// public static hooks my beloved
     /// </summary>
-    public class Hookeds
+    public class MarshawSkills
     {
         public static SlugcatStats.Name marshaw { get => Plugin.Marshaw; }    //name of my slugcat
         public static ManualLogSource Logger { get => Plugin.Logger; }
@@ -205,32 +207,77 @@ namespace marshaw.skill
         }
 
         #endregion
-    }
-    #region CWT
 
-    public static class cwt
-    {
-        public class idk
+        // Obtainable Skills/Abilities (you obtain them when you get some collectable)
+        #region double_jump
+
+        public class DoubleJump
         {
 
-            //insert data here. i guess
-            public float boost;
-            public float grav;
+            public static bool already_jumped;
+            
+            #region jump_ground
 
-            public idk()
+            public static void jump_ground(On.Player.orig_TerrainImpact orig, Player self, int chunk, RWCustom.IntVector2 direction, float speed, bool firstContact)
             {
+                already_jumped = false;
 
-                boost = 10f;
-                grav = 0f;
-
+                orig(self, chunk, direction, speed, firstContact);
             }
 
+            #endregion
+            #region movement_upd
+
+            public static void movement_upd(On.Player.orig_MovementUpdate orig, Player self, bool eu)
+            {
+                Room room = self.room;
+                if (already_jumped == true && self.slugcatStats.name == marshaw && !self.input[1].jmp && self.input[0].jmp)
+                {
+                    room.PlaySound(CustomSFX.EFF_doubleJump, self.mainBodyChunk.pos);
+                    room.AddObject(new PlayerBubbles(self, 3f, 0f, 1f, self.ShortCutColor()));
+                    self.canJump = 1;
+                    self.wantToJump++;
+                }
+
+                orig(self, eu); //call Orig
+
+                if (self.slugcatStats.name == marshaw && already_jumped == true)
+                {
+                    if (!self.Consious ||
+                    self.Stunned || self.animation == Player.AnimationIndex.HangFromBeam ||
+                    self.animation == Player.AnimationIndex.ClimbOnBeam || self.animation == Player.AnimationIndex.AntlerClimb ||
+                    self.animation == Player.AnimationIndex.VineGrab || self.animation == Player.AnimationIndex.ZeroGPoleGrab ||
+                    self.bodyMode == Player.BodyModeIndex.WallClimb || self.bodyMode == Player.BodyModeIndex.Swimming ||
+                    (self.bodyMode == Player.BodyModeIndex.ZeroG || self.room.gravity <= 0.5f) && (self.wantToJump > 0))
+                    {
+                        already_jumped = false;
+                    }
+                }
+            }
+
+            #endregion
+            #region 
+
+            public static void jump_state(On.Player.orig_Jump orig, Player self)
+            {
+                orig(self);
+
+                if (self.slugcatStats.name == marshaw)
+                {
+                    if (already_jumped == true)
+                    {
+                        already_jumped = false;
+                    }
+                    else
+                    {
+                        already_jumped = true;
+                        self.canJump = 1;
+                    }
+                }
+            }
+
+            #endregion
         }
-
-        public static readonly ConditionalWeakTable<Player, idk> CWT = new();
-        public static idk get_cwt(this Player self) => CWT.GetValue(self, _ => new());
-
+        #endregion
     }
-
-    #endregion
 }

@@ -39,7 +39,7 @@ namespace marshaw.effect
         {
             Room room = self.room;
 
-            if (shader_manage.sanity_bar.f_sprite.alpha <= 0.10f)
+            if (shader_manage.sanity_bar.sanity_fSprite.alpha <= 0.10f)
             {
                 room.AddObject(new PlayerBubbles(self, 1f, 1f, 1f, new Color(255, 90, 0, 0)));
             }

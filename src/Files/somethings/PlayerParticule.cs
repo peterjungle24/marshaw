@@ -9,7 +9,6 @@ namespace particle_manager
     /// <summary>
     /// Hmmm bubbles hmm i see mmm good yes i see hmm
     /// </summary>
-
     public class PlayerBubbles : CosmeticSprite
     {
 

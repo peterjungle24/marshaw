@@ -72,3 +72,4 @@ C:\Users\POSITO\Pictures\Camera Roll\NÃO\Caralh\Rain World\Programação\C#\Mar
 C:\Users\POSITO\Pictures\Camera Roll\NÃO\Caralh\Rain World\Programação\C#\Marshaw\src\bin\Debug\net48\UnityEngine.InputLegacyModule.dll
 C:\Users\POSITO\Pictures\Camera Roll\NÃO\Caralh\Rain World\Programação\C#\Marshaw\src\bin\Debug\net48\UnityEngine.InputModule.dll
 C:\Users\POSITO\Pictures\Camera Roll\NÃO\Caralh\Rain World\Programação\C#\Marshaw\src\obj\Debug\net48\Plugin.csproj.CopyComplete
+C:\Users\POSITO\Pictures\Camera Roll\NÃO\Caralh\Rain World\Programação\C#\Marshaw\src\bin\Debug\net48\Pom.dll

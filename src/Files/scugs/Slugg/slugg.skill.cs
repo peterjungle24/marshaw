@@ -7,7 +7,7 @@ using UnityEngine;
 namespace slugg.skills
 {
 
-    public class Skills
+    public class SluggSkills
     {
 
         public static ManualLogSource Logger { get => Plugin.Logger; }

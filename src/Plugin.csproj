@@ -39,6 +39,9 @@
       <Reference Include="Plugin">
         <HintPath>dlls\Plugin.dll</HintPath>
       </Reference>
+      <Reference Include="Pom">
+        <HintPath>dlls\Pom.dll</HintPath>
+      </Reference>
       <Reference Include="UnityEngine.InputLegacyModule">
         <HintPath>dlls\UnityEngine.InputLegacyModule.dll</HintPath>
       </Reference>

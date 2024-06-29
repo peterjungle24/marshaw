@@ -9,7 +9,7 @@ namespace Helpers.regions
     public static class regionReg
     {
 
-        //literally register all the regions. for now its useless init_the_mod
+        //literally register all the regions. for now its useless init
         public static void regionName(Player self)
         {
 

@@ -18,7 +18,7 @@ namespace SlugCWTCat
             public List<Creature> CreaturesYouPickedUp;
 
             public YourSlugcat(){
-                // sound_init your variables here! (Anything not added here will be null or false or 0 (default crit_dict_values))
+                // DeathSound_Init your variables here! (Anything not added here will be null or false or 0 (default crit_dict_values))
                 this.HowManyJumps = 0;
                 this.IsYourSlugcat = false;
                 this.CreaturesYouPickedUp = new List<Creature>();

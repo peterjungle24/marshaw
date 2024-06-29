@@ -22,34 +22,24 @@ namespace sanity
 
         #region SanityActive
 
-        public static void sanity_active(On.Player.orig_Update orig, Player self, bool eu)
+        public static void add_sanityBar(Player self)
         {
-
             if (self.slugcatStats.name == marshaw)                                              //check if the slugcat its Marshwawwww
             {
-
-                shader_manage.sanity_bar.s_literally_circles(self.room.game.cameras[0], self);            //draw the bar and the circles
-
+                shader_manage.sanity_bar.sanityBar_add(self.room.game.cameras[0], self);        //draw the bar and the circles
                 float alphaFactor = 0.02f;                                                      //the float consumes/desconsumes
 
                 if (Input.GetKey(KeyCode.W))                                                    //increase
                 {
-
-                    shader_manage.sanity_bar.f_sprite.alpha += alphaFactor;
-
-
+                    shader_manage.sanity_bar.sanity_fSprite.alpha += alphaFactor;
+                    shader_manage.no_idea_bar.no_idea_FSprite.alpha -= alphaFactor;
                 }
                 if (Input.GetKey(KeyCode.S))                                                    //decrease
                 {
-
-                    shader_manage.sanity_bar.f_sprite.alpha -= alphaFactor;
-
+                    shader_manage.sanity_bar.sanity_fSprite.alpha -= alphaFactor;
+                    shader_manage.no_idea_bar.no_idea_FSprite.alpha += alphaFactor;
                 }
-
             }
-
-            orig(self, eu);
-
         }
 
         #endregion
@@ -134,14 +124,14 @@ namespace sanity
             float idwtwton = 0.0015f;
             float timer = 100f;
 
-            shader_manage.sanity_bar.f_sprite.alpha -= accumulative;
+            shader_manage.sanity_bar.sanity_fSprite.alpha -= accumulative;
             if (!threat)
             {
 
                 if (lastThreat >= timer)
                 {
 
-                    shader_manage.sanity_bar.f_sprite.alpha += idwtwton;
+                    shader_manage.sanity_bar.sanity_fSprite.alpha += idwtwton;
 
                 }
 
@@ -155,7 +145,7 @@ namespace sanity
 
             }
 
-            if (shader_manage.sanity_bar.f_sprite.alpha == 0f)
+            if (shader_manage.sanity_bar.sanity_fSprite.alpha == 0f)
             {
 
                 self.Blink(5);
@@ -180,7 +170,7 @@ namespace sanity
         {
 
             lastThreat = 0f;
-            shader_manage.sanity_bar.f_sprite.alpha = 1f;
+            shader_manage.sanity_bar.sanity_fSprite.alpha = 1f;
 
             orig(self, game, survived, newMalnourished);
 

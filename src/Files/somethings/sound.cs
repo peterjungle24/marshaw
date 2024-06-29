@@ -6,7 +6,7 @@ using UnityEngine;
 namespace sounded
 {
 
-    public static class Sounded
+    public static class DeathSounds
     {
      
         //Sounds YAYDAYDAYDADOHSADIAODASODWP
@@ -89,7 +89,7 @@ namespace sounded
         /// <summary>
         /// Initialize these fucking sounds in the [ RainWorld.Awake ] hook.
         /// </summary>
-        internal static void sound_init()
+        internal static void DeathSound_Init()
         {
 
             //part 1
@@ -128,6 +128,17 @@ namespace sounded
             why_this_price_is_so_hight_wawa =   new("why-this-price-is-so-hight-wawa", true);
             wii_theme =                         new("wii-theme", true);
 
+        }
+
+    }
+    public static class CustomSFX
+    {
+
+        public static SoundID EFF_doubleJump { get; private set; }
+
+        public static void CustomSFX_Init()
+        {
+            EFF_doubleJump = new("double-jump", true);
         }
 
     }

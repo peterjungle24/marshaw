@@ -3,7 +3,7 @@ using System.Security.Permissions;
 using UnityEngine;
 
 /*
- * This file contains fixes to some common problems when modding Rain World.
+ * This file_check contains fixes to some common problems when modding Rain World.
  * Unless you know what you're doing, you shouldn't modify anything here.
  */
 

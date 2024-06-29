@@ -9,8 +9,13 @@ using System;
 using sounded;
 using particle_manager;
 using marshaw.gui;
+using System.Collections.Generic;
+using MoreSlugcats;
+using Collectables_Misc;
+using static Pom.Pom;
+using System.IO;
 
-namespace Helpers // name of the space init_the_mod
+namespace Helpers // name of the space init
 {
 
     /// <summary>
@@ -21,7 +26,7 @@ namespace Helpers // name of the space init_the_mod
     [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
     public class Plugin : BaseUnityPlugin
     {
-
+        
         #region Fields
 
         public const string PLUGIN_GUID = "grey.grey.grey.grey";                                //the ID for the my mod in [ modinfo.json]
@@ -32,8 +37,6 @@ namespace Helpers // name of the space init_the_mod
         public static readonly SlugcatStats.Name slugg = new SlugcatStats.Name("slugg_the_scug");    //name of the Marshaw
 
         public static new ManualLogSource Logger { get; private set; }                          //for logs
-        public static RoomCamera c;
-        public static Player p;
 
         #endregion
 
@@ -42,39 +45,48 @@ namespace Helpers // name of the space init_the_mod
         {
 
             Logger = base.Logger;                                                   //for the log base
-            On.RainWorld.Awake += register_sound;
+            pom_objects();
 
             //please, dont enter on this site, you will see my favourite cyan lizard ;-;
             //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTK8R7tsGQsYuwrsrv6VRIbSgcOI9rr1OZ0w&s
 
             // Marshaw
-
-            On.Player.CraftingResults += Hookeds.MarshawCraft.Marshaw_CResults;     // [ CRAFT ] Craft: the results of Crafting.
-            On.Player.GraspsCanBeCrafted += Hookeds.MarshawCraft.Marshaw_Gapes;     // [ CRAFT ] hand.
-            On.RainWorld.PostModsInit += Hookeds.MarshawCraft.MarshawCraft_PostMod; // [ CRAFT ] affter the mods initialize.
-
-            On.RainWorld.OnModsInit += init_the_mod;                                // [ INIT ] Log always when its enabled and initialize the mod
-
-            On.Player.Update += marshaw_effect.mushroom_effect_lol;                 // [ PARTICLE ] testing
-
-            On.Player.ctor += Hookeds.Pupfy.Marshaw_Pup;                            // [ PLAYER ] pup.
-            On.Player.Grabability += Hookeds.SpearDeal.SpearDealer;                 // [ PLAYER ] double spear init_the_mod.
-            On.Player.UpdateAnimation += marshaw_effect.FLipEffect;                 // [ PLAYER ] the flip effect init_the_mod.
-
-            On.Player.Update += sanity_bar.sanity_active;                           // [ SANITY ] actives the sanity bar if its Marshaw.
-            On.Player.Update += Hookeds.distance;                                   // [ SANITY ] makes the distance work, in Player Update.
-            On.SaveState.SessionEnded += sanity_bar.reset_sanityBar;                // [ SANITY ] resets the bar when you pass the cycle.
+            On.Player.CraftingResults += MarshawSkills.MarshawCraft.Marshaw_CResults;       // [ CRAFT ] Craft: the results of Crafting.
+            On.Player.GraspsCanBeCrafted += MarshawSkills.MarshawCraft.Marshaw_Gapes;       // [ CRAFT ] hand.
+            On.RainWorld.PostModsInit += MarshawSkills.MarshawCraft.MarshawCraft_PostMod;   // [ CRAFT ] affter the mods initialize.
+            On.Player.MovementUpdate += MarshawSkills.DoubleJump.movement_upd;              // [ DOUBLE JUMP ] update for the movement check.
+            On.Player.Jump += MarshawSkills.DoubleJump.jump_state;                          // [ DOUBLE JUMP ] when you jump. Manage the boolean
+            On.Player.TerrainImpact += MarshawSkills.DoubleJump.jump_ground;                // [ DOUBLE JUMP ] sets the boolean to False when you are on the ground
+            On.Player.Update += MarshawGUI.add_gui_MARSHAW;                                 // [ GUI ] add gui elements when is Marshaw
+            On.RainWorld.OnModsInit += init;                                                // [ INIT ] do action when the mod is initialized
+            On.Player.Update += marshaw_effect.mushroom_effect_lol;                         // [ PARTICLE ] testing
+            On.Player.ctor += MarshawSkills.Pupfy.Marshaw_Pup;                              // [ PLAYER ] pup.
+            On.Player.Grabability += MarshawSkills.SpearDeal.SpearDealer;                   // [ PLAYER ] double spear init.
+            On.Player.UpdateAnimation += marshaw_effect.FLipEffect;                         // [ PLAYER ] the flip effect init.
+            On.Player.Update += MarshawSkills.distance;                                     // [ SANITY ] makes the distance work, in Player Update.
+            On.SaveState.SessionEnded += sanity_bar.reset_sanityBar;                        // [ SANITY ] resets the bar when you pass the cycle
 
             // slugg
+            On.Player.Die += slugg_dies_illa;                                               // [ COSMETIC ] plays the random sound everytime in your death
+            On.Player.Grabability += SluggSkills.slugg_spearDealer;                         // [ SKILL ] allows Slugg to pick 2 spears in both of hands.
 
-            On.Player.Die += slugg_dies_illa;                                       // [ COSMETIC ] plays the random sound everytime in your death
-            On.Player.Grabability += Skills.slugg_spearDealer;                      // [ SKILL ] allows Slugg to pick 2 spears in both of hands.
-
-            // slugg - Graphics
-
+            // test
+            //On.RainWorld.OnModsInit += image.mBack_spr.spr_mBack_int;
+            //On.RoomCamera.ChangeMainPalette += image.mBack_spr.mBack_bk;
+            On.RainWorld.Update += RainWorld_Update;
 
         }
 
+        private void RainWorld_Update(On.RainWorld.orig_Update orig, RainWorld self)
+        {
+            if (GML_input.keyboard_check(KeyCode.LeftControl) && GML_input.keyboard_check_down(KeyCode.P))
+            {
+                File.ReadAllLines(file_manager.file_name);
+                file_manager.medallionFile_checklines();
+            }
+
+            orig(self);
+        }
 
         #region slugg_dies_illa
 
@@ -87,11 +99,11 @@ namespace Helpers // name of the space init_the_mod
         {
             try
             {
-
-                //Reference for a Deepwoken OST init_the_mod
+                //Reference for a Deepwoken OST init
                 Room room = self.room;
 
-                room.PlaySound(Sounded.random_sound[UnityEngine.Random.Range(1, 19)], self.mainBodyChunk.pos);
+                room.PlaySound(DeathSounds.random_sound[UnityEngine.Random.Range(1, 19)], self.mainBodyChunk.pos);
+                room.PlaySound(DeathSounds.bitconeeee, self.mainBodyChunk);
                 room.AddObject(new ShockWave(self.mainBodyChunk.pos, 130f, 50f, 10, true));
 
                 orig(self);
@@ -99,49 +111,54 @@ namespace Helpers // name of the space init_the_mod
             }
             catch (Exception ex)
             {
-
                 Logger.LogError("An error ocurred. Please run to the montains!! " + ex);
-
             }
 
         }
 
         #endregion
-
-        #region register sound
+        #region POM objects
 
         /// <summary>
-        /// It registers the sound. 
+        /// add POM objects
         /// </summary>
-        /// <param name="orig"></param>
-        /// <param name="self"></param>
-        private void register_sound(On.RainWorld.orig_Awake orig, RainWorld self)
+        private void pom_objects()
         {
 
-            Sounded.sound_init();   //register. Bruh
+            RegisterManagedObject<medallion_UAD, medallion_managedData, medallion_repr>("Medallion", "slugg objects", true);
+            //RegisterEmptyObjectType<medallion_managedData, medallion_repr>("Medallion test", "slugg objects");
 
-            orig(self);
+            Debug.Log($"Registering POM objects... sad ('slugg' mod)");
 
         }
 
-
         #endregion
-        #region lol
+        #region init
 
         /// <summary>
         /// log this text every time when the mod initialize. Requires 10 or 20 QI in Modding for understand
         /// </summary>
         /// <param name="orig"> original code </param>
         /// <param name="self"> _player </param>
-        private void init_the_mod(On.RainWorld.orig_OnModsInit orig, RainWorld self)
+        private void init(On.RainWorld.orig_OnModsInit orig, RainWorld self)
         {
             orig(self);
 
             try
             {
-                Logger.LogInfo("Marshaw says: \'he said nothing\'");
+                Logger.LogInfo("Marshaw says: (he said nothing)");
+                shader_manage.no_idea_bar.no_idea_FSprite.alpha = 0f;
 
+                //REGISTER
                 sanity_bar.crit_dict_values();
+                
+                //SOUNDS
+                DeathSounds.DeathSound_Init();
+                CustomSFX.CustomSFX_Init();
+
+                // File Manager - medallions.txt
+                file_manager.create_files();
+
             }
             catch (Exception ex)
             {

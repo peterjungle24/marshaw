@@ -33,11 +33,11 @@ Região de início: Desertic Plains (PD_M01)
 #region Mudanças Mundiais
 /* 
 
- ---- O timeline se passa depois de Saint ascender ambos os iteradores.
+ ---- PO timeline se passa depois de Saint ascender ambos os iteradores.
  ---- Adicionará mais 3 regiões, uma delas de forma colapsada.
  ---- Uma nova tribo poderá encontrá-lo e tentar matá-lo. Sniffers traíras.
  ---- Silent Construct está ainda mais desabado.
- ---- O Filtration System está mais consumido que antes.
+ ---- PO Filtration System está mais consumido que antes.
  ---- Karma Flowers de outras cores podem aparecer durante a jornada, menos do Saint e Hunter, já que se transformou num eco e Hunter foi ascendido.
  ---- 
 
