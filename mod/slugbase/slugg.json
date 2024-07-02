@@ -9,6 +9,17 @@
 			{ "name": "Eyes", "story": "141414", "arena": ["141414", "141414", "141414", "FFFFFF"] },
 			{ "name": "scarf", "story": "656565", "arena": [ "656565", "656565", "656565", "656565" ] }
 		],
+		"alignments": {
+  			"Scavengers": { "like": 50, "locked": true }
+		},
+		"diet": {
+		"base": "White",
+		"corpses": -1,
+		"plants": 1,
+		"overrides": {
+			"DangleFruit": 0.5
+			}
+		},
 		
 		"karma": 1,
 		"food_min": 4,
@@ -18,19 +29,19 @@
 		"auto_grab_batflies": true,
 		"back_spear": false,
 		"weight": 0.25,
-		"loudness": 3.0,
-		"walk_speed": 2.75,
-		"climb_speed": 2.50,
+		"loudness": 2,
+		"walk_speed": 2.0,
+		"climb_speed": 2.10,
 		"tunnel_speed": 2.25,
 		"throw_skill": [ 2, 2 ],
 		"cycle_length_min": 5.5,
 		"cycle_length_max": 8.25,
-		"lung_capacity": 3.5,
+		"lung_capacity": 1,
 		"world_state" : ["slugg_the_scug", "Saint"],
-		"timeline_after": "Rivulet",
+		"timeline_after": "Yellow",
 		"timeline_before": "Saint",
 		"start_room": [ "SL_S06", "SL_S05" ],
-		"story_regions": ["SL", "SH"],
+		"story_regions": ["SL", "SH", "GW", "HI", "SU", "LF", "SI", "CC", "UW"],
 		"color": "2C7D2C",
 		"select_menu_scene": "slugcat_slugg",
 		"select_menu_scene_ascended": "ghost_slugg"

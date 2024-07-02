@@ -333,7 +333,7 @@ Mexico
 #region Update Hooks
 /*
 
-Qualquer coisa com [ Update ] no nome, será reproduzido a cada frame
+Qualquer coisa com [ Collect ] no nome, será reproduzido a cada frame
 ou seja, nem loop precisa :3
 
  */

@@ -179,33 +179,6 @@ namespace Helpers
             }
         }
 
-        public static void random()
-        {
-            float vec = 4f;
-
-            if (GML_input.keyboard_check(KeyCode.Keypad4))
-            {
-                medallion_UAD.X -= vec;
-            }
-            if (GML_input.keyboard_check(KeyCode.Keypad6))
-            {
-                medallion_UAD.X += vec;
-            }
-            if (GML_input.keyboard_check(KeyCode.Keypad8))
-            {
-                medallion_UAD.Y += vec;
-            }
-            if (GML_input.keyboard_check(KeyCode.Keypad2))
-            {
-                medallion_UAD.Y -= vec;
-            }
-            if (GML_input.keyboard_check_down(KeyCode.Space))
-            {
-                Debug.Log($"X is: {medallion_UAD.X}");
-                Debug.Log($"Y is: {medallion_UAD.Y}");
-            }
-        }
-
     }
     public class GML_input
     {

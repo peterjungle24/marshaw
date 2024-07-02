@@ -123,8 +123,7 @@ namespace shader_manage
             {
                 //create circles
 
-                sanity_fSprite.shader = self.game.rainWorld.Shaders[shaders.HoldButtonCircle];  //create the circle
-                self.ReturnFContainer("HUD").AddChild(sanity_fSprite);    //put the sprite in a HUD layer
+                self.ReturnFContainer("ForeGround").AddChild(sanity_fSprite);    //put the sprite in a HUD layer
 
                 sanity_fSprite.scaleX = 10f;    //
                 sanity_fSprite.scaleY = 10f;    //

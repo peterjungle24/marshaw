@@ -44,63 +44,56 @@ namespace Helpers // name of the space init
         //Add hooks to the hooks for the mod work bc the codes mod can't run without hooks
         public void OnEnable()
         {
-
             Logger = base.Logger;                                                   //for the log base
             pom_objects();
-            On.RainWorld.OnModsInit += LoadImages;
 
             //please, dont enter on this site, you will see my favourite cyan lizard ;-;
             //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTK8R7tsGQsYuwrsrv6VRIbSgcOI9rr1OZ0w&s
 
-            // Marshaw
+            //////// Marshaw
             On.Player.CraftingResults += MarshawSkills.MarshawCraft.Marshaw_CResults;       // [ CRAFT ] Craft: the results of Crafting.
             On.Player.GraspsCanBeCrafted += MarshawSkills.MarshawCraft.Marshaw_Gapes;       // [ CRAFT ] hand.
             On.RainWorld.PostModsInit += MarshawSkills.MarshawCraft.MarshawCraft_PostMod;   // [ CRAFT ] affter the mods initialize.
-            On.Player.MovementUpdate += MarshawSkills.DoubleJump.movement_upd;              // [ DOUBLE JUMP ] update for the movement check.
-            On.Player.Jump += MarshawSkills.DoubleJump.jump_state;                          // [ DOUBLE JUMP ] when you jump. Manage the boolean
-            On.Player.TerrainImpact += MarshawSkills.DoubleJump.jump_ground;                // [ DOUBLE JUMP ] sets the boolean to False when you are on the ground
+            On.Player.MovementUpdate += MarshawSkills.DoubleJumpHooks.movement_upd;         // [ DOUBLE JUMP ] update for the movement check.
+            On.Player.Jump += MarshawSkills.DoubleJumpHooks.jump_state;                     // [ DOUBLE JUMP ] when you jump. Manage the boolean
+            On.Player.TerrainImpact += MarshawSkills.DoubleJumpHooks.jump_ground;           // [ DOUBLE JUMP ] sets the boolean to False when you are on the ground
             On.Player.Update += MarshawGUI.add_gui_MARSHAW;                                 // [ GUI ] add gui elements when is Marshaw
             On.RainWorld.OnModsInit += init;                                                // [ INIT ] do action when the mod is initialized
-            On.Player.Update += marshaw_effect.mushroom_effect_lol;                         // [ PARTICLE ] testing
+            On.Player.Update += marshaw_effect.mushroom_effect_lol;                         // [ PARTICLE ] makes idk.
             On.Player.ctor += MarshawSkills.Pupfy.Marshaw_Pup;                              // [ PLAYER ] pup.
             On.Player.Grabability += MarshawSkills.SpearDeal.SpearDealer;                   // [ PLAYER ] double spear init.
             On.Player.UpdateAnimation += marshaw_effect.FLipEffect;                         // [ PLAYER ] the flip effect init.
-            On.Player.Update += MarshawSkills.distance;                                     // [ SANITY ] makes the distance work, in Player Update.
-            On.SaveState.SessionEnded += sanity_bar.reset_sanityBar;                        // [ SANITY ] resets the bar when you pass the cycle
+            On.Player.Update += MarshawSkills.distance;                                     // [ SANITY ] makes the distance work, in Player Collect.
+            On.SaveState.SessionEnded += sanity_bar.reset_sanityBar;                        // [ SANITY ] resets the bar when you pass the cycle.
 
-            // slugg
-            On.Player.Die += slugg_dies_illa;                                               // [ COSMETIC ] plays the random sound everytime in your death
+            //////// Marshaw -  MEDALLION HOOKS
+            On.Room.AddObject += add;                                                       // [ MEDALLION ] add to the 'Room.Loaded'
+
+            //////// slugg
+            On.Player.Die += slugg_dies_illa;                                               // [ COSMETIC ] plays the random sound everytime in your death.
             On.Player.Grabability += SluggSkills.slugg_spearDealer;                         // [ SKILL ] allows Slugg to pick 2 spears in both of hands.
 
-            // test
-            //On.RainWorld.OnModsInit += image.mBack_spr.spr_mBack_int;
-            //On.RoomCamera.ChangeMainPalette += image.mBack_spr.mBack_bk;
-            On.RainWorld.Update += RainWorld_Update;
+            //////// test
 
         }
 
-        private void LoadImages(On.RainWorld.orig_OnModsInit orig, RainWorld self)
+        #region add
+
+        private void add(On.Room.orig_AddObject orig, Room self, UpdatableAndDeletable obj)
         {
-            orig(self);
-
-            ImageFiles.MedallionPath = Path.Combine("sprites", "colletables", "medallion");
-            ImageFiles.MedallionFile = Futile.atlasManager.LoadImage(ImageFiles.MedallionPath);
-
-            Futile.atlasManager.LogAllElementNames();
-        }
-
-        private void RainWorld_Update(On.RainWorld.orig_Update orig, RainWorld self)
-        {
-            if (GML_input.keyboard_check(KeyCode.LeftControl) && GML_input.keyboard_check_down(KeyCode.P))
+            if (self.game != null)
             {
-                File.ReadAllLines(file_manager.file_name);
-                file_manager.medallionFile_checklines();
+                if (self.game.IsStorySession && self.game.StoryCharacter != Marshaw && obj is medallion_UAD)
+                {
+                    return; //Return early as this collectable should not be drawn for this campaign
+                }
             }
 
-            orig(self);
+            orig(self, obj);
         }
 
-        #region slugg_dies_illa
+        #endregion
+        #region RANDOM DEATH SOUNDS
 
         /// <summary>
         /// Every time if Slugg dies, will play a random sound. Cool, right?
@@ -115,7 +108,6 @@ namespace Helpers // name of the space init
                 Room room = self.room;
 
                 room.PlaySound(DeathSounds.random_sound[UnityEngine.Random.Range(1, 19)], self.mainBodyChunk.pos);
-                room.PlaySound(DeathSounds.bitconeeee, self.mainBodyChunk);
                 room.AddObject(new ShockWave(self.mainBodyChunk.pos, 130f, 50f, 10, true));
 
                 orig(self);
@@ -137,7 +129,7 @@ namespace Helpers // name of the space init
         private void pom_objects()
         {
 
-            RegisterManagedObject<medallion_UAD, medallion_managedData, medallion_repr>("Medallion", "slugg objects", true);
+            RegisterManagedObject<medallion_UAD, medallion_managedData, medallion_repr>("Medallion", "slugg objects", false);
             //RegisterEmptyObjectType<medallion_managedData, medallion_repr>("Medallion test", "slugg objects");
 
             Debug.Log($"Registering POM objects... sad ('slugg' mod)");
@@ -168,9 +160,9 @@ namespace Helpers // name of the space init
                 DeathSounds.DeathSound_Init();
                 CustomSFX.CustomSFX_Init();
 
-                // File Manager - medallions.txt
-                file_manager.create_files();
-
+                //LOAD IMAGES
+                ImageFiles.MedallionPath = Path.Combine("sprites", "colletables", "medallion");
+                ImageFiles.MedallionFile = Futile.atlasManager.LoadImage(ImageFiles.MedallionPath);
             }
             catch (Exception ex)
             {
@@ -187,17 +179,18 @@ namespace Helpers // name of the space init
 
 #region Credits
 
+// FluffBall
+// Nuclear Pasta
 // Thalber
+// BensoneWhite
 // NaCio
+// Magica
+// Alduris
 // luna ☾fallen/endspeaker☽
 // Pocky(Burnout/Forager/Siren)
 // Elliot (Solace's creator)
 // IWannaPresents
-// Magica
-// Alduris
-// FluffBall
 // Rose
-// Nuclear Pasta
 // doppelkeks
 // Tat011
 // Human Resource
@@ -209,10 +202,8 @@ namespace Helpers // name of the space init
 // Bro
 // Orinaari (kiki the Scugs)
 // Nope
-// BensoneWhite
 // AT
 // GreatestGrasshopper
 // StormTheCat (Slugpup Safari Dev)
-// Santiny
 
 #endregion

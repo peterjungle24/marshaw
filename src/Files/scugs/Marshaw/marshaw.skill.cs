@@ -22,6 +22,7 @@ namespace marshaw.skill
     {
         public static SlugcatStats.Name marshaw { get => Plugin.Marshaw; }    //name of my slugcat
         public static ManualLogSource Logger { get => Plugin.Logger; }
+        public static uint MedallionsGot;
 
         #region Puppied
         public static class Pupfy
@@ -211,16 +212,16 @@ namespace marshaw.skill
         // Obtainable Skills/Abilities (you obtain them when you get some collectable)
         #region double_jump
 
-        public class DoubleJump
+        public class DoubleJumpHooks
         {
-
-            public static bool already_jumped;
-            
             #region jump_ground
 
             public static void jump_ground(On.Player.orig_TerrainImpact orig, Player self, int chunk, RWCustom.IntVector2 direction, float speed, bool firstContact)
             {
-                already_jumped = false;
+                if (self.CanSkill().HasDoubleJumpMedallion == true)
+                {
+                    self.CanSkill().playerAlreadyJumped = false;
+                }
 
                 orig(self, chunk, direction, speed, firstContact);
             }
@@ -231,7 +232,7 @@ namespace marshaw.skill
             public static void movement_upd(On.Player.orig_MovementUpdate orig, Player self, bool eu)
             {
                 Room room = self.room;
-                if (already_jumped == true && self.slugcatStats.name == marshaw && !self.input[1].jmp && self.input[0].jmp)
+                if (self.CanSkill().playerAlreadyJumped == true && self.CanSkill().HasDoubleJumpMedallion == true &&!self.input[1].jmp && self.input[0].jmp)
                 {
                     room.PlaySound(CustomSFX.EFF_doubleJump, self.mainBodyChunk.pos);
                     room.AddObject(new PlayerBubbles(self, 3f, 0f, 1f, self.ShortCutColor()));
@@ -241,7 +242,7 @@ namespace marshaw.skill
 
                 orig(self, eu); //call Orig
 
-                if (self.slugcatStats.name == marshaw && already_jumped == true)
+                if (self.CanSkill().HasDoubleJumpMedallion == true && self.CanSkill().playerAlreadyJumped == true)
                 {
                     if (!self.Consious ||
                     self.Stunned || self.animation == Player.AnimationIndex.HangFromBeam ||
@@ -250,27 +251,27 @@ namespace marshaw.skill
                     self.bodyMode == Player.BodyModeIndex.WallClimb || self.bodyMode == Player.BodyModeIndex.Swimming ||
                     (self.bodyMode == Player.BodyModeIndex.ZeroG || self.room.gravity <= 0.5f) && (self.wantToJump > 0))
                     {
-                        already_jumped = false;
+                        self.CanSkill().playerAlreadyJumped = false;
                     }
                 }
             }
 
             #endregion
-            #region 
+            #region jump_state
 
             public static void jump_state(On.Player.orig_Jump orig, Player self)
             {
                 orig(self);
 
-                if (self.slugcatStats.name == marshaw)
+                if (self.CanSkill().HasDoubleJumpMedallion == true)
                 {
-                    if (already_jumped == true)
+                    if (self.CanSkill().playerAlreadyJumped == true)
                     {
-                        already_jumped = false;
+                        self.CanSkill().playerAlreadyJumped = false;
                     }
                     else
                     {
-                        already_jumped = true;
+                        self.CanSkill().playerAlreadyJumped = true;
                         self.canJump = 1;
                     }
                 }
@@ -278,6 +279,24 @@ namespace marshaw.skill
 
             #endregion
         }
+
         #endregion
+    }
+    public static class GetSkills
+    {
+        public class skill   //store data
+        {
+            /// DOUBLE JUMP
+
+            public bool HasDoubleJumpMedallion; //if this scug have the [DOUBLE JUMP] medallion
+            public bool playerAlreadyJumped;    //if this scug already jumped
+
+            /// OTHER SKILL
+
+        }
+
+        public static readonly ConditionalWeakTable<Player, skill> CWT = new();          //????
+        public static skill CanSkill(this Player self) => CWT.GetValue(self, _ => new()); ////????
+
     }
 }

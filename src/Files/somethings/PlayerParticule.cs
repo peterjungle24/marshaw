@@ -74,7 +74,7 @@ namespace particle_manager
         }
 
         /// <summary>
-        /// Update.
+        /// Collect.
         /// </summary>
         /// <param name="eu"></param>
         public override void Update(bool eu)
