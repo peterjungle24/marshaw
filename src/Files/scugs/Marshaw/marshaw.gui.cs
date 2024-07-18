@@ -16,7 +16,6 @@ namespace marshaw.gui
         {
             if (self.slugcatStats.name == marshaw)
             {
-                shader_manage.no_idea_bar.noIdea_add(self.room.game.cameras[0]);  //add a No Idea bar
                 sanity_bar.add_sanityBar(self);
             }
             orig(self, eu);

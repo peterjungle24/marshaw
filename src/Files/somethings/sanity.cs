@@ -12,7 +12,6 @@ namespace sanity
     ///class for the sanity bar.
     public static class sanity_bar
     {
-
         public static SlugcatStats.Name marshaw { get => Plugin.Marshaw; }    //name of my slugcat
         public static ManualLogSource Logger { get => Plugin.Logger; }
         public static Dictionary<CreatureTemplate.Type, float> crit_dict { get => dict_storage.crit_dict; }
@@ -31,13 +30,11 @@ namespace sanity
 
                 if (Input.GetKey(KeyCode.W))                                                    //increase
                 {
-                    shader_manage.sanity_bar.sanity_fSprite.alpha += alphaFactor;
-                    shader_manage.no_idea_bar.no_idea_FSprite.alpha -= alphaFactor;
+                    shader_manage.sanity_bar.spr_sanity.alpha += alphaFactor;
                 }
                 if (Input.GetKey(KeyCode.S))                                                    //decrease
                 {
-                    shader_manage.sanity_bar.sanity_fSprite.alpha -= alphaFactor;
-                    shader_manage.no_idea_bar.no_idea_FSprite.alpha += alphaFactor;
+                    shader_manage.sanity_bar.spr_sanity.alpha -= alphaFactor;
                 }
             }
         }
@@ -86,7 +83,6 @@ namespace sanity
         /// <param name="self"></param>
         public static void sanity_calc(Player self)
         {
-
             //shader_manage.sanity_bar.f_dessanity.alpha += num;
             float accumulative = 0f;    //amout of accumulative value.
             Room room = self.room;
@@ -97,7 +93,6 @@ namespace sanity
                 {
                     if (obj != self && obj is Creature creature)
                     {
-
                         var template = creature.Template.type;  //template.
                         var ancestor = creature.Template.ancestor;  //ancestor
 
@@ -105,15 +100,10 @@ namespace sanity
 
                         if (dist <= 120f)   //if the distance its below than 120f
                         {
-
                             accumulative += Def_values.get_sanity_value(creature.Template);  //Get the sanity value for this creature
-
                         }
-
                     }
-
                 }
-
             }
 
             ///------------------------------------------------------
@@ -124,37 +114,26 @@ namespace sanity
             float idwtwton = 0.0015f;
             float timer = 100f;
 
-            shader_manage.sanity_bar.sanity_fSprite.alpha -= accumulative;
-            if (!threat)
+            shader_manage.sanity_bar.spr_sanity.alpha -= accumulative;
+            if (!threat && (!self.dead || !self.Consious))
             {
-
                 if (lastThreat >= timer)
                 {
-
-                    shader_manage.sanity_bar.sanity_fSprite.alpha += idwtwton;
-
+                    shader_manage.sanity_bar.spr_sanity.alpha += idwtwton;
                 }
 
                 lastThreat += 1f;
-
             }
             else
             {
-
                 lastThreat = 0f;
-
             }
 
-            if (shader_manage.sanity_bar.sanity_fSprite.alpha == 0f)
+            if (shader_manage.sanity_bar.spr_sanity.alpha == 0f)
             {
-
                 self.Blink(5);
-                self.SaintStagger(5);
-
             }
-
         }
-
         #endregion
         #region reset_sanityBar
 
@@ -168,16 +147,12 @@ namespace sanity
         /// <param name="newMalnourished"></param>
         public static void reset_sanityBar(On.SaveState.orig_SessionEnded orig, SaveState self, RainWorldGame game, bool survived, bool newMalnourished)
         {
-
             lastThreat = 0f;
-            shader_manage.sanity_bar.sanity_fSprite.alpha = 1f;
+            shader_manage.sanity_bar.spr_sanity.alpha = 1f;
 
             orig(self, game, survived, newMalnourished);
-
         }
 
         #endregion
-
     }
-
 }

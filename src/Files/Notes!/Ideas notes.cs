@@ -27,7 +27,7 @@
 
 - It can kill you if you are riding on it
 - Its hostile, but only if you touch on it
-  ^ Maybe neutral, idk
+  ^ Maybe neutral, stun)skill
 
 --------------------------
         Spawns

@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using sanity;
 using particle_manager;
 using sounded;
+using CWT;
 
 namespace marshaw.skill
 {
@@ -22,7 +23,6 @@ namespace marshaw.skill
     {
         public static SlugcatStats.Name marshaw { get => Plugin.Marshaw; }    //name of my slugcat
         public static ManualLogSource Logger { get => Plugin.Logger; }
-        public static uint MedallionsGot;
 
         #region Puppied
         public static class Pupfy
@@ -218,9 +218,9 @@ namespace marshaw.skill
 
             public static void jump_ground(On.Player.orig_TerrainImpact orig, Player self, int chunk, RWCustom.IntVector2 direction, float speed, bool firstContact)
             {
-                if (self.CanSkill().HasDoubleJumpMedallion == true)
+                if (self.Skill().HasDoubleJumpMedallion == true)
                 {
-                    self.CanSkill().playerAlreadyJumped = false;
+                    self.Skill().playerAlreadyJumped = false;
                 }
 
                 orig(self, chunk, direction, speed, firstContact);
@@ -232,7 +232,7 @@ namespace marshaw.skill
             public static void movement_upd(On.Player.orig_MovementUpdate orig, Player self, bool eu)
             {
                 Room room = self.room;
-                if (self.CanSkill().playerAlreadyJumped == true && self.CanSkill().HasDoubleJumpMedallion == true &&!self.input[1].jmp && self.input[0].jmp)
+                if (self.Skill().playerAlreadyJumped == true && self.Skill().HasDoubleJumpMedallion == true && !self.input[1].jmp && self.input[0].jmp)
                 {
                     room.PlaySound(CustomSFX.EFF_doubleJump, self.mainBodyChunk.pos);
                     room.AddObject(new PlayerBubbles(self, 3f, 0f, 1f, self.ShortCutColor()));
@@ -242,7 +242,7 @@ namespace marshaw.skill
 
                 orig(self, eu); //call Orig
 
-                if (self.CanSkill().HasDoubleJumpMedallion == true && self.CanSkill().playerAlreadyJumped == true)
+                if (self.Skill().HasDoubleJumpMedallion == true && self.Skill().playerAlreadyJumped == true)
                 {
                     if (!self.Consious ||
                     self.Stunned || self.animation == Player.AnimationIndex.HangFromBeam ||
@@ -251,7 +251,7 @@ namespace marshaw.skill
                     self.bodyMode == Player.BodyModeIndex.WallClimb || self.bodyMode == Player.BodyModeIndex.Swimming ||
                     (self.bodyMode == Player.BodyModeIndex.ZeroG || self.room.gravity <= 0.5f) && (self.wantToJump > 0))
                     {
-                        self.CanSkill().playerAlreadyJumped = false;
+                        self.Skill().playerAlreadyJumped = false;
                     }
                 }
             }
@@ -263,15 +263,15 @@ namespace marshaw.skill
             {
                 orig(self);
 
-                if (self.CanSkill().HasDoubleJumpMedallion == true)
+                if (self.Skill().HasDoubleJumpMedallion == true)
                 {
-                    if (self.CanSkill().playerAlreadyJumped == true)
+                    if (self.Skill().playerAlreadyJumped == true)
                     {
-                        self.CanSkill().playerAlreadyJumped = false;
+                        self.Skill().playerAlreadyJumped = false;
                     }
                     else
                     {
-                        self.CanSkill().playerAlreadyJumped = true;
+                        self.Skill().playerAlreadyJumped = true;
                         self.canJump = 1;
                     }
                 }
@@ -281,22 +281,31 @@ namespace marshaw.skill
         }
 
         #endregion
-    }
-    public static class GetSkills
-    {
-        public class skill   //store data
+        #region stun
+
+        public class StunHooks
         {
-            /// DOUBLE JUMP
+            public static void StunSkill(On.Player.orig_Update orig, Player self, bool eu)
+            {
+                var room = self.room;
+                var cwt = self.Skill();
+                var i = self.input;
 
-            public bool HasDoubleJumpMedallion; //if this scug have the [DOUBLE JUMP] medallion
-            public bool playerAlreadyJumped;    //if this scug already jumped
+                if (cwt.HasStunMedallion)   //if the scug have medallion
+                {
+                    foreach (Creature c in room.FindObjectsNearby<Creature>(self.mainBodyChunk.pos, 200f))  //checks for the distance
+                    {
+                        if (i[1].thrw && i[0].thrw && i[0].y == 1 && c is not Player)  //if its pressing some inputs
+                        {
+                            c.Stun(10);  //stuns
+                        }
+                    }
+                }
 
-            /// OTHER SKILL
-
+                orig(self, eu);
+            }
         }
 
-        public static readonly ConditionalWeakTable<Player, skill> CWT = new();          //????
-        public static skill CanSkill(this Player self) => CWT.GetValue(self, _ => new()); ////????
-
+        #endregion
     }
 }

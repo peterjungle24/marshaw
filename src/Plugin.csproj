@@ -12,6 +12,9 @@
     </ItemGroup>
     
     <ItemGroup>
+		<Reference Include="DevConsole">
+		  <HintPath>dlls\DevConsole.dll</HintPath>
+		</Reference>
 		<Reference Include="Microsoft.CSharp" Version="4.7.0">
 			<Private>false</Private>
 		</Reference>

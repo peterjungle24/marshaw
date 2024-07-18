@@ -1,6 +1,8 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using Helpers;
+using sounded;
+using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -38,6 +40,34 @@ namespace slugg.skills
             }
 
             return orig(self, obj);
+
+        }
+
+        #endregion
+        #region RANDOM DEATH SOUNDS
+
+        /// <summary>
+        /// Every time if Slugg dies, will play a random sound. Cool, right?
+        /// </summary>
+        /// <param name="orig"></param>
+        /// <param name="self"></param>
+        public static void slugg_dies_illa(On.Player.orig_Die orig, Player self)
+        {
+            try
+            {
+                //Reference for a Deepwoken OST init
+                Room room = self.room;
+
+                room.PlaySound(DeathSounds.random_sound[UnityEngine.Random.Range(1, 19)], self.mainBodyChunk.pos);
+                room.AddObject(new ShockWave(self.mainBodyChunk.pos, 130f, 50f, 10, true));
+
+                orig(self);
+
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError("An error ocurred. Please run to the montains!! " + ex);
+            }
 
         }
 

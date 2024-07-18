@@ -453,14 +453,14 @@ In programming, data type is an important concept. Variables can store data of d
 Python tem os seguintes tipos de dados integrados por padrão, nestas categorias:
 Python has the following data types built-in by default, in these categories:
 
-Text Type // tipo Texto:                        str
+Text MedalType // tipo Texto:                        str
 Numeric Types // tipo Numéricos:                int, float, complex
 Sequence Types // tipo Sequências:              list, tuple, range
-Mapping Type // tipo Mapeamennto:               crit_dict
+Mapping MedalType // tipo Mapeamennto:               crit_dict
 Set Types // tipo Set:                          set, frozenset
-Boolean Type // tipo Booleano:                  bool
+Boolean MedalType // tipo Booleano:                  bool
 Binary Types // tipo Binários:                  bytes, bytearray, memoryview
-None Type // tipo NADA:                         NoneType
+None MedalType // tipo NADA:                         NoneType
 
 
 */
@@ -489,7 +489,7 @@ x = None	                                            = NoneType
 ]
 
 */
-/* Setting the Specific Data Type
+/* Setting the Specific Data MedalType
 
 Se quiser especificar o tipo de dados, você pode usar as seguintes funções construtoras:
 If you want to specify the data type, you can use the following constructor functions:
@@ -1619,7 +1619,7 @@ list1 = ["abc", 34, True, 40, "male"]
 ]
 
 */
-/* Type()
+/* MedalType()
 
 Pela perspectiva do Python, listas são definidos como objetos com o tipo de data [ list ]
 From Python's perspective, lists are defined as objects with the data type [ list ]:

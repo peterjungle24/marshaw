@@ -1,58 +1,25 @@
 ﻿using Helpers;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using System;
+using IL.Menu;
+using BepInEx.Logging;
 
 namespace shader_manage
 {
 
     public static class shaders
     {
-
         public static string HoldButtonCircle = "HoldButtonCircle";
         public static string VectorCircle = "VectorCircle";
         public static string GhostDisto = "GhostDisto";
-
     }
-
-    public class no_idea_bar
-    {
-
-        public static SlugcatStats.Name marshaw { get => Plugin.Marshaw; }    //name of my slugcat
-        public static FSprite no_idea_FSprite = new FSprite("Futile_White");           // uses the fucking atlas [ Futile_White ]
-
-        #region noIdea_add
-
-        /// <summary>
-        /// create circles for the Bar....
-        /// </summary>
-        /// <param name="self"></param>
-        /// <param name="player"></param>
-        public static void noIdea_add(RoomCamera self)
-        {
-
-            //create circles
-
-            no_idea_FSprite.shader = self.game.rainWorld.Shaders[shaders.VectorCircle];  // cria o círculo
-            self.ReturnFContainer("HUD").AddChild(no_idea_FSprite);    //put the sprite in a HUD layer
-
-            no_idea_FSprite.scale = 7.50f;
-            no_idea_FSprite.y = 526f;       // controla a posição Y
-            no_idea_FSprite.x = 1234;       // controla a posição X
-
-            no_idea_FSprite.color = Color.grey;
-
-        }
-
-        #endregion
-
-
-    }
-
     public class sanity_bar
     {
 
         public static SlugcatStats.Name marshaw { get => Plugin.Marshaw; }    //name of my slugcat
-        public static FSprite sanity_fSprite = new FSprite("Futile_White");                           // uses the fucking atlas [ Futile_White ]
+        public static FSprite spr_sanity = new FSprite("Futile_White");                           // uses the fucking atlas [ Futile_White ]
+        public static ManualLogSource Logger { get => Plugin.Logger; }
 
         #region agony_of_this_controller
 
@@ -62,19 +29,19 @@ namespace shader_manage
         /// <param name="s"></param>
         public static void agony_of_this_controller(RoomCamera s)
         {
-            switch ( sanity_fSprite.alpha )
+            switch ( spr_sanity.alpha )
             {
                 case 0.75f:
                     s.effect_desaturation = 0.25f;
                 break;
                 case 0.50f:
                     s.effect_desaturation = 0.50f;
-                    sanity_fSprite.color = Color.yellow;
+                    spr_sanity.color = Color.yellow;
                     s.effect_darkness = 0.10f;
                 break;
                 case 0.25f:
                     s.effect_desaturation = 0.75f;
-                    shader_manage.sanity_bar.sanity_fSprite.color = Color.red;
+                    shader_manage.sanity_bar.spr_sanity.color = Color.red;
                     s.effect_darkness = 0.15f;
                 break;
                 case 0.10f:
@@ -98,12 +65,12 @@ namespace shader_manage
 
             if (self.slugcatStats.name == marshaw)      //if the slugcat is the MARSHAW
             {
-                sanity_fSprite.isVisible = true;            // makes visible only for MARSHAWWWWWWWWWWW
+                spr_sanity.isVisible = true;            // makes visible only for MARSHAWWWWWWWWWWW
                 agony_of_this_controller(s);                          // run the method above. takes agony to see that
             }
             else                                        // else if its not Marshaw
             {
-                s.ReturnFContainer("HUD").RemoveChild(sanity_fSprite);         // remove the bar :)
+                s.ReturnFContainer("HUD").RemoveChild(spr_sanity);         // remove the bar :)
             }
 
         }
@@ -118,27 +85,32 @@ namespace shader_manage
         /// <param name="player"></param>
         public static void sanityBar_add(RoomCamera self, Player player)
         {
-
-            if (player.slugcatStats.name == marshaw)
+            try
             {
-                //create circles
+                if (player.slugcatStats.name == marshaw)
+                {
+                    //create circles
+                    self.ReturnFContainer("HUD").AddChild(spr_sanity);    //put the sprite in a HUD layer
 
-                self.ReturnFContainer("ForeGround").AddChild(sanity_fSprite);    //put the sprite in a HUD layer
+                    spr_sanity.shader = self.game.rainWorld.Shaders[shaders.HoldButtonCircle];
+                    spr_sanity.scaleX = 10f;    //
+                    spr_sanity.scaleY = 10f;    //
+                    spr_sanity.y = 668f;        //
+                    spr_sanity.x = 1234;        //
+                    spr_sanity.color = Color.white;
+                }
+                else
+                {
+                    self.ReturnFContainer("HUD").RemoveChild(spr_sanity);         // remove the bar :)
+                }
 
-                sanity_fSprite.scaleX = 10f;    //
-                sanity_fSprite.scaleY = 10f;    //
-                sanity_fSprite.y = 668f;        //
-                sanity_fSprite.x = 1234;        //
-                sanity_fSprite.color = Color.white;
-                
+                sanityBar_effect(player.room.game.cameras[0], player);                       // runs the code above.
             }
-            else
+            catch (Exception ex)
             {
-                self.ReturnFContainer("HUD").RemoveChild(sanity_fSprite);         // remove the bar :)
+                Logger.LogError("{ shader_manage/sanityBar_add() } Some error was occured.");
+                Logger.LogError(ex);
             }
-
-            sanityBar_effect(player.room.game.cameras[0], player);                       // runs the code above.
-
         }
 
         #endregion

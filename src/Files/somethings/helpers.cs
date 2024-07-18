@@ -8,6 +8,9 @@ using System;
 using System.Linq;
 using BepInEx.Logging;
 using Collectables_Misc;
+using RWCustom;
+using AssetBundles;
+using marshaw.skill;
 
 namespace Helpers
 {
@@ -61,7 +64,7 @@ namespace Helpers
             float value;                                //value
 
             ///_______________________________________________________
-            ///             Type
+            ///             MedalType
             ///_______________________________________________________
 
             //check the crit_type
@@ -112,31 +115,10 @@ namespace Helpers
         }
 
     }
-    
+
     #endregion
+    #region file_manager
 
-    public class help
-    {  
-        
-        public static ManualLogSource Logger { get => Plugin.Logger; }
-
-        /// <summary>
-        /// load any sprite with the File path_elements.
-        /// </summary>
-        /// <param name="element"> element as a String. literally i make them as a 'static string' field </param>
-        /// <param name="path_elements"> path_elements. obviously </param>
-        public static FAtlas LoadSprite(string file, params string[] path_elements)  //i really hate return methods
-        {
-            file = Path.Combine(path_elements);  //a string variable for specify the path1.
-                
-            if (Futile.atlasManager.DoesContainElementWithName(file))  // if was registered
-            {
-                Logger.LogInfo("the name exists");   // log
-            }
-            return Futile.atlasManager.LoadImage(file);   //ATLAS FUCKING this in image the load [ read in other way ]
-        }
-
-    }
     public class file_manager
     {
         public static readonly string file_name = AssetManager.ResolveFilePath("medallion.txt"); 
@@ -180,6 +162,9 @@ namespace Helpers
         }
 
     }
+
+    #endregion
+    #region GML_input
     public class GML_input
     {
         /// <summary>
@@ -207,4 +192,129 @@ namespace Helpers
             return Input.GetKeyUp(key);
         }
     }
+
+    #endregion
+    #region crits
+
+    public static class Crits
+    {
+
+        /// <summary>
+        /// Finds all objects belonging to a room instance at or within a given distance from an origin point
+        /// </summary>
+        /// <param name="room">The room to check</param>
+        /// <param name="origin">The point to compare the distance to</param>
+        /// <param name="distanceThreshold">The desired distance to the origin point</param>
+        /// <returns>All results that match the specified conditions</returns>
+        public static IEnumerable<PhysicalObject> FindObjectsNearby(this Room room, Vector2 origin, float distanceThreshold)
+        {
+            if (room == null) return new PhysicalObject[0]; //Null data returns an empty set
+            return room.GetAllObjects().Where(o => Custom.Dist(origin, o.firstChunk.pos) <= distanceThreshold);
+        }
+
+        /// <summary>
+        /// Finds all objects belonging to a room instance at or within a given distance from an origin point that are of the type T
+        /// </summary>
+        /// <param name="room">The room to check</param>
+        /// <param name="origin">The point to compare the distance to</param>
+        /// <param name="distanceThreshold">The desired distance to the origin point</param>
+        /// <returns>All results that match the specified conditions</returns>
+        public static IEnumerable<PhysicalObject> FindObjectsNearby<T>(this Room room, Vector2 origin, float distanceThreshold) where T : PhysicalObject
+        {
+            if (room == null) return new PhysicalObject[0]; //Null data returns an empty set
+
+            return room.GetAllObjects().OfType<T>().Where(o => RWCustom.Custom.Dist(origin, o.firstChunk.pos) <= distanceThreshold);
+        }
+
+        /// <summary>
+        /// Returns all objects belonging to a room instance
+        /// </summary>
+        /// <param name="room">The room to check</param>
+        public static IEnumerable<PhysicalObject> GetAllObjects(this Room room)
+        {
+            if (room == null) yield break; //Null data returns an empty set
+
+            for (int m = 0; m < room.physicalObjects.Length; m++)
+            {
+                for (int n = 0; n < room.physicalObjects[m].Count; n++)
+                {
+                    yield return room.physicalObjects[m][n]; //Returns the objects one at a time
+                }
+            }
+        }
+
+    }
+
+    #endregion
+    #region timer
+
+    public static class timer_manage
+    {
+        public static List<Timer> TimerRegistered = new();  //current timers
+    }
+
+    public class Timer
+    {
+        public float value_wanted; //The number of ticks to run the stealthTimer for
+        public float current_value; //The number of ticks processed since starting the stealthTimer
+        public bool is_running => current_value > 0 && !value_reached;  //GET -- Returns.... that
+        public bool value_reached => current_value >= value_wanted;     //GET -- Returns.... that
+
+        public bool Shit(bool what)
+        {
+            return what = value_reached;
+        }
+
+        public Timer(float counter)
+        {
+            value_wanted = counter;
+        }
+
+        /// <summary>
+        /// start the counter
+        /// </summary>
+        public void Start()
+        {
+            current_value = 0f; //resets the stealthTimer
+
+            if (!timer_manage.TimerRegistered.Contains(this))
+            {
+                timer_manage.TimerRegistered.Add(this);
+            }
+        }
+
+        /// <summary>
+        /// update the stealthTimer numbers
+        /// </summary>
+        public void Advance()
+        {
+            current_value++;
+
+            Debug.Log($"Current value:  {current_value}");
+        }
+        public void Stop()
+        {
+            //Set fields back to default values
+            current_value = 0;
+
+            //Unregister this stealthTimer to prevent future updates
+            timer_manage.TimerRegistered.Remove(this);
+        }
+    }
+
+    #endregion
+    #region cost
+
+    public class AbilityCost
+    {
+        public FSprite sanity_spr { get => sanity_bar.spr_sanity; }
+        public SlugcatStats.Name Marshaw { get => Plugin.Marshaw; }
+
+        public static void deal_with_fucking_structs(On.Player.orig_Update orig, Player self, bool eu)
+        {
+            orig(self, eu);
+        }
+    }
+
+    #endregion
 }
