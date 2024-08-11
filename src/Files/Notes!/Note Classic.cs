@@ -237,12 +237,12 @@ public class ClassA
 
 public class ClassB
 {
-    public event Action EventTrigger;
+    public event Action ev_trigger;
 
-    //Activate EventTrigger
+    //Activate ev_trigger
     public TriggerEvent()
     {
-      EventTrigger?.Invoke();
+      ev_trigger?.Invoke();
     }
 }
 
@@ -253,8 +253,8 @@ public static class ClassC
     ClassA A = new ClassA();
     ClassB B = new ClassB();
 
-    //Subscribe ClassA event delegate to EventTrigger
-    B.EventTrigger += A.OnEventTrigger;
+    //Subscribe ClassA event delegate to ev_trigger
+    B.ev_trigger += A.OnEventTrigger;
 
     DoSomething(B);
   }
@@ -276,15 +276,15 @@ PO resultado:
 
 - Quando a ClassA não precisar mais lidar com eventos da ClassB, ela poderá cancelar a assinatura da ClassB, o que precisa de uma referência.
 
- ---- B.EventTrigger -= A.OnEventTrigger;
+ ---- B.ev_trigger -= A.OnEventTrigger;
 
 - Mas e se A não for mais referenciado? Você poderia armazenar o manipulador de eventos da classe A e usá-lo para cancelar a assinatura
 
  ---- Action eventHandlerA = A.OnEventTrigger;
- ---- B.EventTrigger += eventHandlerA;
+ ---- B.ev_trigger += eventHandlerA;
 
  ---- //Arbitrary code here
- ---- B.EventTrigger -= eventHandlerA;
+ ---- B.ev_trigger -= eventHandlerA;
 
 
 - se você for descartar um objeto, deverá cancelar a assinatura de seus manipuladores de eventos. Este é um motivo comum para tornar um objeto IDisposable e substituir o método Dispose
@@ -333,7 +333,7 @@ Mexico
 #region Update Hooks
 /*
 
-Qualquer coisa com [ Collect ] no nome, será reproduzido a cada frame
+Qualquer coisa com [ Trigger ] no nome, será reproduzido a cada frame
 ou seja, nem loop precisa :3
 
  */
@@ -431,7 +431,7 @@ também provável que funcione. é uma funcionalidade pré definida
 Verificar chaves apenas uma vez é opcional. Sinta-se à vontade para ficar sem ele. Se você observar como as ferramentas de desenvolvimento lidam com entradas, verá que há booleanos perdidos 
 chamados oDown, hDown. Não são ótimos nomes de variáveis, mas funcionam para ferramentas de desenvolvimento
 
-Sim, você precisa incluir LogLevel como parte do nome do método ou fornecê-lo como argumento para o Logger.
+Sim, você precisa incluir LogLevel como parte do nome do método ou fornecê-lo como argumento para o log.
 
  */
 #endregion
@@ -482,7 +482,7 @@ Além disso, você deve saber e fazer anotações para não esquecer.
  
  ---- Saída de registro
 
- ---- Logger.Log registra apenas em mods.log/LogOutput
+ ---- log.Log registra apenas em mods.log/LogOutput
  
  ---- Debug.Log registra apenas em console.log
 
@@ -490,7 +490,7 @@ Além disso, você deve saber e fazer anotações para não esquecer.
 
  ---- Nem todos os métodos de log são iguais.
 
- ---- Logger.Log é mais confiável. Ele fará login em locais que o Debug.Log não pode.
+ ---- log.Log é mais confiável. Ele fará login em locais que o Debug.Log não pode.
  
  ---- Debug.Log envia para o console de registro acessível no jogo pressionando H e depois K com o mod devtools ativo.
 
@@ -499,7 +499,7 @@ Você pode registrar chaves em tempo real no console se configurá-lo da maneira
                                                                                         --------|        |--------
 
 e Os métodos de log não aceitam apenas strings, mas você pode colocar qualquer objeto em uma dessas instruções e ele registrará o ToString() para esse objeto, 
-ou o tipo de dados do objeto se ele não tiver um ToString(), ou seu value se for um tipo de valor.
+ou o tipo de dados do objeto se ele não tiver um ToString(), ou seu Svalue se for um tipo de valor.
     
                                                                                         --------|        |--------
 
@@ -510,13 +510,13 @@ Sim, você pode usar ambos.
 
 Você vai me odiar por dizer isso, mas cada um tem seus altos e baixos e você deve escolher o que funciona melhor na situação ou de acordo com suas preferências.
 
- [ Logger.Log ]    ----   Você obtém arquivos de log mais legíveis, mas não obtém a saída exibida no mesmo console.
+ [ log.Log ]    ----   Você obtém arquivos de log mais legíveis, mas não obtém a saída exibida no mesmo console.
 
  [ Debug.Log ]     ----   possui o console do jogo, mas seus logs não são formatados.
 
                                                                                         --------|        |---------
 
-                                                                                        [       Logger.Log        ]
+                                                                                        [       log.Log        ]
 
 ----        Cria uma mensagem com o nome do seu mod + nível de log à esquerda no BepInEx pllugins porra
 
@@ -1188,7 +1188,6 @@ For clarity, [ myDel ] is a variable of a Delegate type. Do not confuse defining
 
 */
 #endregion
-
 #region Extension methods
 /*
 
@@ -1257,8 +1256,8 @@ AssetManger.ResolveFilePath(filepath);
 #region string
 /*
 
-You can never change a string's value directly by invoking one of its helper method. 
-The changed result is also returned as a value you must store
+You can never change a string's Svalue directly by invoking one of its helper method. 
+The changed result is also returned as a Svalue you must store
 
 */
 #endregion
@@ -1271,6 +1270,21 @@ Trim doesn't change the original string, it returns a modified string that is tr
 #endregion
 
 #endregion
+#region disable/enable feature
+/*
+
+-- Rawra
+Yes this is works everywhere where you have a boolean value to work with, in C# you'd just use x = !x of course, rather than not.
+________________________________
+x = !x; // needs be booleans
+________________________________
+
+-- Moth 2 (not Vyn's alt)
+Normally visibility isn't done with a bool but with a float that determines the opacity of the UI, in order to allow a smooth transition.
+
+*/
+#endregion
+
 #endregion
 
 #endregion

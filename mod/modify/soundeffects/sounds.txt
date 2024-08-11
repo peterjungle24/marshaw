@@ -9,7 +9,7 @@
 [ADD]GLUE/vol=0.50/dopplerFac=0.0 : sfx-glue
 [ADD]half-death/vol=0.50/dopplerFac=0.0 : sfx-half-life-death
 [ADD]slaps/vol=0.50/dopplerFac=0.0 : sfx-jotaro
-[ADD]robloc/vol=0.50/dopplerFac=0.0 : sfx-lego-broke
+[ADD]robloc/vol=0.50/dopplerFac=0.0/minPitch=0.50/maxPitch=1 : sfx-lego-broke
 [ADD]MORTIS/vol=0.50/dopplerFac=0.0 : sfx-mortix
 [ADD]minceraft/vol=0.50/dopplerFac=0.0 : sfx-oof
 [ADD]plants-vs-noooo/vol=0.50/dopplerFac=0.0 : sfx-pvs-nooo

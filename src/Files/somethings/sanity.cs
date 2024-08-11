@@ -8,33 +8,35 @@ using UnityEngine;
 
 namespace sanity
 {
-
-    ///class for the sanity bar.
+    ///class for the sanity bar. 
+    ///<summary>
+    /// i dont lost sanity, YOU lost sanity
+    /// </summary>
     public static class sanity_bar
     {
         public static SlugcatStats.Name marshaw { get => Plugin.Marshaw; }    //name of my slugcat
         public static ManualLogSource Logger { get => Plugin.Logger; }
         public static Dictionary<CreatureTemplate.Type, float> crit_dict { get => dict_storage.crit_dict; }
         public static List<CreatureTemplate.Type> friendly_creature_types { get => list_storage.friendly_creature_types; }
-
         public static float lastThreat = 0f;  //last threat;
 
         #region SanityActive
 
-        public static void add_sanityBar(Player self)
+        public static void sanityBar_add(Player self)
         {
             if (self.slugcatStats.name == marshaw)                                              //check if the slugcat its Marshwawwww
             {
                 shader_manage.sanity_bar.sanityBar_add(self.room.game.cameras[0], self);        //draw the bar and the circles
-                float alphaFactor = 0.02f;                                                      //the float consumes/desconsumes
+                shader_manage.sanity_bar.Lerp_in_CSharp_still_weird_beter_in_GMK(self.room.game.cameras[0]);
+                float alphaFactor = 0.05f;                                                      //the float consumes/desconsumes
 
                 if (Input.GetKey(KeyCode.W))                                                    //increase
                 {
-                    shader_manage.sanity_bar.spr_sanity.alpha += alphaFactor;
+                    shader_manage.sanity_bar.sprite.alpha += alphaFactor;
                 }
                 if (Input.GetKey(KeyCode.S))                                                    //decrease
                 {
-                    shader_manage.sanity_bar.spr_sanity.alpha -= alphaFactor;
+                    shader_manage.sanity_bar.sprite.alpha -= alphaFactor;
                 }
             }
         }
@@ -50,7 +52,7 @@ namespace sanity
         {
 
             //hmmmm
-            /// - check the dictionary to get a valid value from it.
+            /// - check the dictionary to get a valid Svalue from it.
             /// - otherwise you check if it's in the friendly list.
             /// - any other situation, you apply the default
 
@@ -84,7 +86,7 @@ namespace sanity
         public static void sanity_calc(Player self)
         {
             //shader_manage.sanity_bar.f_dessanity.alpha += num;
-            float accumulative = 0f;    //amout of accumulative value.
+            float accumulative = 0f;    //amout of accumulative Svalue.
             Room room = self.room;
 
             foreach (var list in self.room.physicalObjects)
@@ -95,12 +97,18 @@ namespace sanity
                     {
                         var template = creature.Template.type;  //template.
                         var ancestor = creature.Template.ancestor;  //ancestor
-
                         var dist = (creature.mainBodyChunk.pos - self.mainBodyChunk.pos).magnitude; //Calculates the distance between a creature and the _player
 
-                        if (dist <= 120f)   //if the distance its below than 120f
+                        if (creature.dead == false) //if is NOT dead
                         {
-                            accumulative += Def_values.get_sanity_value(creature.Template);  //Get the sanity value for this creature
+                            if (dist <= 120f)   //if the distance its below than 120f
+                            {
+                                accumulative += Def_values.get_sanity_value(creature.Template);  //Get the sanity Svalue for this creature
+                            }
+                        }
+                        else
+                        {
+                            continue; //does nothing
                         }
                     }
                 }
@@ -114,12 +122,12 @@ namespace sanity
             float idwtwton = 0.0015f;
             float timer = 100f;
 
-            shader_manage.sanity_bar.spr_sanity.alpha -= accumulative;
+            shader_manage.sanity_bar.sprite.alpha -= accumulative;
             if (!threat && (!self.dead || !self.Consious))
             {
                 if (lastThreat >= timer)
                 {
-                    shader_manage.sanity_bar.spr_sanity.alpha += idwtwton;
+                    shader_manage.sanity_bar.sprite.alpha += idwtwton;
                 }
 
                 lastThreat += 1f;
@@ -129,7 +137,7 @@ namespace sanity
                 lastThreat = 0f;
             }
 
-            if (shader_manage.sanity_bar.spr_sanity.alpha == 0f)
+            if (shader_manage.sanity_bar.sprite.alpha == 0f)
             {
                 self.Blink(5);
             }
@@ -148,7 +156,7 @@ namespace sanity
         public static void reset_sanityBar(On.SaveState.orig_SessionEnded orig, SaveState self, RainWorldGame game, bool survived, bool newMalnourished)
         {
             lastThreat = 0f;
-            shader_manage.sanity_bar.spr_sanity.alpha = 1f;
+            shader_manage.sanity_bar.sprite.alpha = 1f;
 
             orig(self, game, survived, newMalnourished);
         }

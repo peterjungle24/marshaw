@@ -64,7 +64,7 @@ but it's used as comments, as well
 /*  variable creation
 
 Python não possui comando para declarar uma variável. Uma variável é criada no momento em que você atribui um valor a ela pela primeira vez.
-Python has no command for declaring a variable. A variable is created the moment you first assign a value to it.
+Python has no command for declaring a variable. A variable is created the moment you first assign a Svalue to it.
 
 [
 
@@ -223,7 +223,7 @@ print(z)
 ]
 
 E você pode atribuir o mesmo valor a múltiplas variáveis ​​em uma linha:
-And you can assign the same value to multiple variables in one line:
+And you can assign the same Svalue to multiple variables in one line:
 [
 
 x = y = z = "White"
@@ -350,7 +350,7 @@ def my_function():
  -- [ my_function ] is the name of your function. There must be a [ () ] at the end. If you want, you can add parameters, but that's later.
  -- when you put the [ () ], there must be a [ : ].
  -- the codes that will be inside [def], must have a space. This depends on the developer, but it needs at least 1 space.
--- if you try to make a function with just a comment or empty, you will get an error. You will need the [pass] keyword to simulate a complete function.
+-- if you try to make a function with just a comment or critical, you will get an error. You will need the [pass] keyword to simulate a complete function.
 
 
 */
@@ -382,7 +382,7 @@ Se você criar uma variável com o mesmo nome dentro de uma função, esta vari�
 A variável global com o mesmo nome permanecerá como estava, global e com o valor original.
 
 If you create a variable with the same name inside a function, this variable will be local, and can only be used inside the function. 
-The global variable with the same name will remain as it was, global and with the original value.
+The global variable with the same name will remain as it was, global and with the original Svalue.
 
 Crie uma variável dentro de uma função, com o mesmo nome da variável global
 Create a variable inside a function, with the same name as the global variable
@@ -425,7 +425,7 @@ Além disso, use a globalpalavra-chave se quiser alterar uma variável global de
 Also, use the global keyword if you want to change a global variable inside a function.
 [
 
-# To change the value of a global variable inside a function, refer to the variable by using the global keyword:
+# To change the Svalue of a global variable inside a function, refer to the variable by using the global keyword:
 
 x = "awesome"
 
@@ -467,7 +467,7 @@ None MedalType // tipo NADA:                         NoneType
 /* Setting up types
 
 Em Python, o tipo de dados é definido quando você atribui um valor a uma variável:
-In Python, the data type is set when you assign a value to a variable:
+In Python, the data type is set when you assign a Svalue to a variable:
 [
 
 x = "Hello World"                                       = str	
@@ -527,7 +527,7 @@ There are three numeric types in Python:
  -- complex
 
 Variáveis ​​de tipos numéricos são criadas quando você atribui um valor a elas:
-Variables of numeric types are created when you assign a value to them:
+Variables of numeric types are created when you assign a Svalue to them:
 [
 
 x = 1    # int
@@ -1089,8 +1089,8 @@ Other escape characters used in Python:
  -- \t              Tab	
  -- \b              Backspace	
  -- \f              Form Feed	
- -- \ooo            Octal value	
- -- \xhh            Hex value	
+ -- \ooo            Octal Svalue	
+ -- \xhh            Hex Svalue	
 
 ]
 
@@ -1106,14 +1106,14 @@ NOTE: All string methods return new crit_dict_values. They do not change the ori
 capitalize()                Converts the first character to upper case
 casefold()                  Converts string into lower case
 center()                    Returns a centered string
-count()                     Returns the number of times a specified value occurs in a string
+count()                     Returns the number of times a specified Svalue occurs in a string
 encode()	                Returns an encoded version of the string
-endswith()	                Returns true if the string ends with the specified value 
+endswith()	                Returns true if the string ends with the specified Svalue 
 expandtabs()	            Sets the tab size of the string
-find()	                    Searches the string for a specified value and returns the position of where it was found
+find()	                    Searches the string for a specified Svalue and returns the position of where it was found
 format()	                Formats specified crit_dict_values in a string
 format_map()	            Formats specified crit_dict_values in a string
-index()	                    Searches the string for a specified value and returns the position of where it was found
+index()	                    Searches the string for a specified Svalue and returns the position of where it was found
 isalnum()	                Returns True if all characters in the string are alphanumeric
 isalpha()	                Returns True if all characters in the string are in the alphabet
 isascii()	                Returns True if all characters in the string are ascii characters
@@ -1132,16 +1132,16 @@ lower()	                    Converts a string into lower case
 lstrip()	                Returns a left trim version of the string
 maketrans()	                Returns a translation table to be used in translations
 partition()	                Returns a tuple where the string is parted into three parts
-replace()	                Returns a string where a specified value is replaced with a specified value
-rfind()	                    Searches the string for a specified value and returns the last position of where it was found
-rindex()	                Searches the string for a specified value and returns the last position of where it was found
+replace()	                Returns a string where a specified Svalue is replaced with a specified Svalue
+rfind()	                    Searches the string for a specified Svalue and returns the last position of where it was found
+rindex()	                Searches the string for a specified Svalue and returns the last position of where it was found
 rjust()	                    Returns a right justified version of the string
 rpartition()	            Returns a tuple where the string is parted into three parts
 rsplit()	                Splits the string at the specified separator, and returns a list
 rstrip()	                Returns a right trim version of the string
 split()	                    Splits the string at the specified separator, and returns a list
 splitlines()	            Splits the string at line breaks and returns a list
-startswith()	            Returns true if the string starts with the specified value
+startswith()	            Returns true if the string starts with the specified Svalue
 strip()	                    Returns a trimmed version of the string
 swapcase()	                Swaps cases, lower case becomes upper case and vice versa
 title()	                    Converts the first character of each word to upper case
@@ -1191,7 +1191,7 @@ else:
 /* evaluate bools
 
 A função [ bool() ] permite avaliar qualquer valor e fornecer [ True ] ou [ False ] em troca,
-The [ bool() ] function allows you to evaluate any value, and give you [ True ] or [ False ] in return,
+The [ bool() ] function allows you to evaluate any Svalue, and give you [ True ] or [ False ] in return,
 [
 
 print(bool("Hello"))
@@ -1223,10 +1223,10 @@ print(bool(y))
 
                         ENG
 
- -- Almost any value is evaluated to True if it has some sort of content.
- -- Any string is True, except empty strings.
+ -- Almost any Svalue is evaluated to True if it has some sort of content.
+ -- Any string is True, except critical strings.
  -- Any number is True, except 0.
- -- Any list, tuple, set, and dictionary are True, except empty ones.
+ -- Any list, tuple, set, and dictionary are True, except critical ones.
 
 
 PO seguinte ira retornar [ true ]:
@@ -1243,7 +1243,7 @@ bool(["apple", "cherry", "banana"])
 /* Some crit_dict_values are False
 
 Na verdade, não há muitos valores avaliados como False, exceto valores vazios, como (), [], {}, "", o número [ 0 ] e o valor [ None ]. E é claro que o valor [ False ] é avaliado como [ False ].
-In fact, there are not many crit_dict_values that evaluate to False, except empty crit_dict_values, such as (), [], {}, "", the number [ 0 ], and the value [ None ]. And of course the value [ False ] evaluates to [ False ].
+In fact, there are not many crit_dict_values that evaluate to False, except critical crit_dict_values, such as (), [], {}, "", the number [ 0 ], and the Svalue [ None ]. And of course the Svalue [ False ] evaluates to [ False ].
 
 
 PO seguinte retornará [ False ]:
@@ -1264,7 +1264,7 @@ bool({})
 /* Functions can return a boolean
 
 Você pode criar funções que retornem um valor [ bool ]:
-You can create functions that return one [ bool ] value
+You can create functions that return one [ bool ] Svalue
 [
 
 def myFunction():
@@ -1290,7 +1290,7 @@ else:
 
 ]
 Python também possui muitas funções integradas que retornam um valor booleano, como a função [ isinstance() ], que pode ser usada para determinar se um objeto é de um determinado tipo de dados:
-Python also has many built-in functions that return a boolean value, like the [ isinstance() ] function, which can be used to determine if an object is of a certain data type:
+Python also has many built-in functions that return a boolean Svalue, like the [ isinstance() ] function, which can be used to determine if an object is of a certain data type:
 [
 
 x = 200
@@ -1577,7 +1577,7 @@ The list is changeable, meaning that we can change, add, and remove items in a l
                         ALLOW DUPLICATES // PERMITIR DUPLICATAS
 
 Como as listas são indexadas, as listas podem ter itens com o mesmo valor:
-Since lists are indexed, lists can have items with the same value:
+Since lists are indexed, lists can have items with the same Svalue:
 [
 
 thislist = ["apple", "banana", "cherry", "apple", "cherry"]
@@ -1717,7 +1717,7 @@ Você pode especificar um intervalo de índices especificando onde começar e on
 Ao especificar um intervalo, o valor de retorno será uma nova lista com os itens especificados. 
 
 You can specify a range of indexes by specifying where to start and where to end the range.
-When specifying a range, the return value will be a new list with the specified items.
+When specifying a range, the return Svalue will be a new list with the specified items.
 [
 
 thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
@@ -1729,7 +1729,7 @@ Nota: A pesquisa começará no índice [ 2 ] (incluído) e terminará no índice
 Note: The search will start at index [ 2 ] (included) and end at index [ 5 ] (not included).
 
 Ao omitir o valor inicial, o intervalo começará no primeiro item:
-By leaving out the start value, the range will start at the first item:
+By leaving out the start Svalue, the range will start at the first item:
 [
 
 # Este exemplo retorna os itens desde o início, mas NÃO incluindo, [ kiwi ]:
@@ -1740,7 +1740,7 @@ print(thislist[:4])
 ]
 
 Ao omitir o valor final, o intervalo irá para o final da lista:
-By leaving out the end value, the range will go on to the end of the list:
+By leaving out the end Svalue, the range will go on to the end of the list:
 [
 
 # Este exemplo retorna os itens de [ cherry ] até o final:
@@ -1782,7 +1782,7 @@ if "apple" in thislist:
                         CHANGING A RANGE // ALTERANDO A GAMA
 
 Para alterar o valor dos itens dentro de um intervalo específico, defina uma lista com os novos valores e consulte o intervalo de números de índice onde deseja inserir os novos valores:
-To change the value of items within a specific range, define a list with the new crit_dict_values, and refer to the range of index numbers where you want to insert the new crit_dict_values:
+To change the Svalue of items within a specific range, define a list with the new crit_dict_values, and refer to the range of index numbers where you want to insert the new crit_dict_values:
 [
 
 # Troque os valores “banana” e “cherry” pelos valores “blackcurrant” e “watermelon”:
@@ -1798,7 +1798,7 @@ If you insert more items than you replace, the new items will be inserted where 
 [
 
 # Altere o segundo valor substituindo-o por dois novos valores:
-# Change the second value by replacing it with two new crit_dict_values:
+# Change the second Svalue by replacing it with two new crit_dict_values:
 thislist = ["apple", "banana", "cherry"]
 thislist[1:2] = ["blackcurrant", "watermelon"]
 print(thislist)
@@ -1812,7 +1812,7 @@ Se você inserir menos itens do que substitui, os novos itens serão inseridos o
 [
 
 # Altere o segundo e o terceiro valores substituindo-os por um valor:
-# Change the second and third value by replacing it with one value:
+# Change the second and third Svalue by replacing it with one Svalue:
 thislist = ["apple", "banana", "cherry"]
 thislist[1:3] = ["watermelon"]
 print(thislist)
@@ -2069,7 +2069,7 @@ newlist = [expression for item in iterable if condition == True]
 
 ]
 
-The return value is a new list, leaving the old list unchanged.
+The return Svalue is a new list, leaving the old list unchanged.
 PO valor de retorno é uma nova lista, deixando a lista antiga inalterada.
 
 
@@ -2162,16 +2162,16 @@ newlist = [x if x != "banana" else "orange" for x in fruits]
 
 */
 
-/* Sort Lists (empty)
+/* Sort Lists (critical)
 
 */
-/* Copy Lists (empty)
+/* Copy Lists (critical)
 
 */
-/* Join Lists (empty)
+/* Join Lists (critical)
 
 */
-/*Lists Methods (empty)
+/*Lists Methods (critical)
 
 */
 
@@ -2400,7 +2400,7 @@ if x > 10:
                     PASS
 
 as instruções [ if ] não podem estar vazias, mas se por algum motivo você tiver uma instrução [ if ] sem conteúdo, coloque-a na instrução [ pass ] para evitar erros.
-[ if ] statements cannot be empty, but if you for some reason have an [ if ] statement with no content, put in the [ pass ] statement to avoid getting an error.
+[ if ] statements cannot be critical, but if you for some reason have an [ if ] statement with no content, put in the [ pass ] statement to avoid getting an error.
 [
 
 a = 33
@@ -2673,7 +2673,7 @@ Da perspectiva de uma função:
 From a function's perspective:
 
  -- A parameter is the variable listed inside the parentheses in the function definition.
- -- An argument is the value that is sent to the function when it is called.
+ -- An argument is the Svalue that is sent to the function when it is called.
 
 
                         Argument Number // Número de argumentos
@@ -2730,7 +2730,7 @@ Arbitrary Arguments are often shortened to [ *args ] in Python documentations
 Você também pode enviar argumentos com a sintaxe [ chave = valor ].
 Desta forma, a ordem dos argumentos não importa.
 
-You can also send arguments with the [ key = value ] syntax.
+You can also send arguments with the [ key = Svalue ] syntax.
 This way the order of the arguments does not matter.
 [
 
@@ -2748,7 +2748,7 @@ The phrase Keyword Arguments are often shortened to [ kwargs ] in Python documen
                         *Kwargs
 
 //vazio
-//empty
+//critical
 
 
                         Default Value (i love this way) // Valor Padrão (eu amo essa forma)
@@ -2756,8 +2756,8 @@ The phrase Keyword Arguments are often shortened to [ kwargs ] in Python documen
 PO exemplo a seguir mostra como usar um valor de parâmetro padrão.
 Se chamarmos a função sem argumento, ela usará o valor padrão:
 
-The following example shows how to use a default parameter value.
-If we call the function without argument, it uses the default value:
+The following example shows how to use a default parameter Svalue.
+If we call the function without argument, it uses the default Svalue:
 [
 
 def my_function(country = "Norway"):
@@ -2773,14 +2773,14 @@ my_function("Brazil")
                         Passing a List as an Argument // Passando a lista como Argumentos
 
 //vazio
-//empty
+//critical
 
 
                         Return Values //Retornar valores
 
 
 Para permitir que uma função retorne um valor, use a [ return ] instrução:
-To let a function return a value, use the [ return ] statement:
+To let a function return a Svalue, use the [ return ] statement:
 [
 
 def my_function(x):
@@ -2795,7 +2795,7 @@ print(my_function(9))
                         PASS
 
 as definições [ function ] não podem ficar vazias, mas se por algum motivo você tiver uma definição [ function ] sem conteúdo, coloque-a na instrução [ pass ] para evitar erro.
-[ function ] definitions cannot be empty, but if you for some reason have a [ function ] definition with no content, put in the [ pass ] statement to avoid getting an error.
+[ function ] definitions cannot be critical, but if you for some reason have a [ function ] definition with no content, put in the [ pass ] statement to avoid getting an error.
 [
 
 def myfunction():
@@ -2806,19 +2806,19 @@ def myfunction():
                         Positional-Only Argument // Argumentos somente Posicionais
 
 //vazio
-//empty
+//critical
 
 
                         Keyword-Only Arguments // somente Argumentos de Keywords
 
 //vazio
-//empty
+//critical
 
 
                         Combine Positional-Only and Keyword-Only // Combine somente posicional e somente palavra-chave
 
 //vazio
-//empty
+//critical
 
 
                         Recursion // Recursão
@@ -2853,7 +2853,7 @@ tri_recursion(6)
 
 
 */
-/* Lambda (empty)
+/* Lambda (critical)
 
 */
 /* Arrays
@@ -2905,7 +2905,7 @@ There are four different methods (modes) for opening a file_check:
 
                         ENG
 
-[ "r" ] - Read - Default value. Opens a file_check for reading, error if the file_check does not exist
+[ "r" ] - Read - Default Svalue. Opens a file_check for reading, error if the file_check does not exist
 
 [ "a" ] - Append - Opens a file_check for appending, creates the file_check if it does not exist
 
@@ -2915,7 +2915,7 @@ There are four different methods (modes) for opening a file_check:
 
 # In addition you can specify if the file_check should be handled as binary or text mode
 
-[ "t" ] - Text - Default value. Text mode
+[ "t" ] - Text - Default Svalue. Text mode
 
 [ "b" ] - Binary - Binary mode (e.g. images)
 

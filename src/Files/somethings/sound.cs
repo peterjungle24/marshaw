@@ -8,7 +8,6 @@ namespace sounded
 
     public static class DeathSounds
     {
-     
         //Sounds YAYDAYDAYDADOHSADIAODASODWP
 
         //part 1
@@ -87,13 +86,11 @@ namespace sounded
         };
 
         /// <summary>
-        /// Initialize these fucking sounds in the [ RainWorld.Awake ] hook.
+        /// Initialize these fucking sounds in the [ RainWorld.OnModsInit ] hook.
         /// </summary>
-        internal static void DeathSound_Init()
+        public static void DeathSound_Init()
         {
-
             //part 1
-
             echoLG =          new ("echolg", true);
             rideBike =        new ("rideBike", true);
             boomSR =          new ("boomSR", true);
@@ -114,7 +111,6 @@ namespace sounded
             waa =             new("waa", true);
             
             //part 2
-            
             acataelinodorokiabla =              new("acataelinodorokiabla", true);
             alien =                             new("alien", true);
             bitconeeee =                        new("bitconeeee", true);

@@ -11,10 +11,11 @@ using Collectables_Misc;
 using RWCustom;
 using AssetBundles;
 using marshaw.skill;
+using CWT;
+using System.Data;
 
 namespace Helpers
 {
-
     #region ResourceHelper
 
     /*
@@ -48,7 +49,7 @@ namespace Helpers
         {
 
             //Constants variables CAN'T BE CHANGED.
-            const float def = 0.0005f;  //Default value.
+            const float def = 0.0005f;  //Default Svalue.
             const float friendly_regen = 0.0035f;   //Sanity change may be positive or negative
 
             if (crit == null)
@@ -61,7 +62,7 @@ namespace Helpers
             //....i think i already defined
             var crit_type = crit.type;                  //type
             var crit_ancestor = crit.ancestor;     //ancestors
-            float value;                                //value
+            float value;                                //Svalue
 
             ///_______________________________________________________
             ///             MedalType
@@ -198,7 +199,6 @@ namespace Helpers
 
     public static class Crits
     {
-
         /// <summary>
         /// Finds all objects belonging to a room instance at or within a given distance from an origin point
         /// </summary>
@@ -208,10 +208,9 @@ namespace Helpers
         /// <returns>All results that match the specified conditions</returns>
         public static IEnumerable<PhysicalObject> FindObjectsNearby(this Room room, Vector2 origin, float distanceThreshold)
         {
-            if (room == null) return new PhysicalObject[0]; //Null data returns an empty set
+            if (room == null) return new PhysicalObject[0]; //Null data returns an critical set
             return room.GetAllObjects().Where(o => Custom.Dist(origin, o.firstChunk.pos) <= distanceThreshold);
         }
-
         /// <summary>
         /// Finds all objects belonging to a room instance at or within a given distance from an origin point that are of the type T
         /// </summary>
@@ -221,18 +220,17 @@ namespace Helpers
         /// <returns>All results that match the specified conditions</returns>
         public static IEnumerable<PhysicalObject> FindObjectsNearby<T>(this Room room, Vector2 origin, float distanceThreshold) where T : PhysicalObject
         {
-            if (room == null) return new PhysicalObject[0]; //Null data returns an empty set
+            if (room == null) return new PhysicalObject[0]; //Null data returns an critical set
 
             return room.GetAllObjects().OfType<T>().Where(o => RWCustom.Custom.Dist(origin, o.firstChunk.pos) <= distanceThreshold);
         }
-
         /// <summary>
         /// Returns all objects belonging to a room instance
         /// </summary>
         /// <param name="room">The room to check</param>
         public static IEnumerable<PhysicalObject> GetAllObjects(this Room room)
         {
-            if (room == null) yield break; //Null data returns an empty set
+            if (room == null) yield break; //Null data returns an critical set
 
             for (int m = 0; m < room.physicalObjects.Length; m++)
             {
@@ -242,7 +240,6 @@ namespace Helpers
                 }
             }
         }
-
     }
 
     #endregion
@@ -250,6 +247,23 @@ namespace Helpers
 
     public static class timer_manage
     {
+        public static bool test_bool;
+        public static void ApplyHooks()
+        {
+            foreach (var timer in timer_manage.TimerRegistered)
+            {
+                timer.Advance();
+
+                //if the current Svalue is same as value_wanted, it restart
+                if (timer.current_value >= timer.value_wanted)
+                {
+                    test_bool = true;
+                }
+            }
+
+            TimerRegistered.RemoveAll(t => t.value_reached); //Cleanup
+        }
+
         public static List<Timer> TimerRegistered = new();  //current timers
     }
 
@@ -259,11 +273,7 @@ namespace Helpers
         public float current_value; //The number of ticks processed since starting the stealthTimer
         public bool is_running => current_value > 0 && !value_reached;  //GET -- Returns.... that
         public bool value_reached => current_value >= value_wanted;     //GET -- Returns.... that
-
-        public bool Shit(bool what)
-        {
-            return what = value_reached;
-        }
+        public bool is_equal => current_value == value_wanted;
 
         public Timer(float counter)
         {
@@ -289,8 +299,6 @@ namespace Helpers
         public void Advance()
         {
             current_value++;
-
-            Debug.Log($"Current value:  {current_value}");
         }
         public void Stop()
         {
@@ -299,20 +307,6 @@ namespace Helpers
 
             //Unregister this stealthTimer to prevent future updates
             timer_manage.TimerRegistered.Remove(this);
-        }
-    }
-
-    #endregion
-    #region cost
-
-    public class AbilityCost
-    {
-        public FSprite sanity_spr { get => sanity_bar.spr_sanity; }
-        public SlugcatStats.Name Marshaw { get => Plugin.Marshaw; }
-
-        public static void deal_with_fucking_structs(On.Player.orig_Update orig, Player self, bool eu)
-        {
-            orig(self, eu);
         }
     }
 

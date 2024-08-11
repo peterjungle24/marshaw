@@ -1,6 +1,8 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using CWT;
 using Helpers;
+using remix_menu;
 using sounded;
 using System;
 using System.Runtime.CompilerServices;
@@ -11,7 +13,6 @@ namespace slugg.skills
 
     public class SluggSkills
     {
-
         public static ManualLogSource Logger { get => Plugin.Logger; }
         public static SlugcatStats.Name Slugg { get => Plugin.slugg; }
 
@@ -55,50 +56,33 @@ namespace slugg.skills
         {
             try
             {
-                //Reference for a Deepwoken OST init
                 Room room = self.room;
+                var cwt = self.YourIssue();
 
-                room.PlaySound(DeathSounds.random_sound[UnityEngine.Random.Range(1, 19)], self.mainBodyChunk.pos);
-                room.AddObject(new ShockWave(self.mainBodyChunk.pos, 130f, 50f, 10, true));
+                Debug.Log(slugg_options.cb_deathNoises.Value);
+
+                //i just coded it
+
+                if (slugg_options.cb_deathNoises.Value == true)
+                {
+                    room.PlaySound(DeathSounds.random_sound[UnityEngine.Random.Range(1, 19)], self.mainBodyChunk.pos);
+                    room.AddObject(new ShockWave(self.mainBodyChunk.pos, 130f, 50f, 10, true));
+                }
+                else
+                {
+                    Debug.Log("");
+                }
 
                 orig(self);
-
             }
             catch (Exception ex)
             {
-                Logger.LogError("An error ocurred. Please run to the montains!! " + ex);
+                Logger.LogError("player was slain by ExcreptionError. " + ex);
             }
-
         }
 
         #endregion
 
     }
-
-    #region double jump CWT
-
-    public static class cwt_slugg
-    {
-        public class cwt_doubleJ
-        {
-
-            //insert data here. i guess
-            public int Jumped;
-            public float JumpHeigth;
-
-            public cwt_doubleJ()
-            {
-
-
-
-            }
-
-        }
-
-        public static readonly ConditionalWeakTable<Player, cwt_doubleJ> CWT = new();
-        public static cwt_doubleJ double_jump(this Player self) => CWT.GetValue(self, _ => new());
-
-    }
-    #endregion
 
 }

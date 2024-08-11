@@ -8,44 +8,63 @@ using Menu;
 
 namespace remix_menu
 {
-
-    public class Remix : OptionInterface
+    public class slugg_options : OptionInterface
     {
+        public static Configurable<bool> cb_deathNoises;   //IS STATIC
+        public static bool initialized; //if was initialized
+
+        public slugg_options()
+        {
+            //checkbox
+            cb_deathNoises = config.Bind("cb_deathNoises", true, new ConfigurableInfo(Translate("disable/enable the death sounds for all the slugcats"), null, "", new object[] { }));
+        }
+
         public override void Initialize()
         {
-
-            Tabs = new OpTab[]
+            try
             {
-                new(this, Translate("Slugg")),
-                new(this, Translate("Marshaw")),
-            };
+                base.Initialize();
+                
+                Debug.Log($"--------- {this} is initialized now. --------- ");
 
-            var wtf = config.Bind("KEY", true, new ConfigurableInfo("disable/enable the death sounds for all the slugcats", null, "", new object[]
-            {
-                //call function here?
-                "tag test"  //and why tags?
-            }));
-
-            UIelement[] Tab0_Array = new UIelement[]        //array of elements
-            {
-                new OpLabel(10f, 550f, "Cosmetic ones", true),      //creates a big text
-                new OpCheckBox(wtf, new Vector2(10f, 480))
+                Tabs = new OpTab[]
                 {
-                    description = wtf.info.description,
-                    colorEdge = Color.yellow,
-                },
-                new OpLabel(60f, 480f, Translate("Enable the Death Random Sounds for all the slugcats")),
-            };
+                    new OpTab(this, Translate("Slugg"))
+                    {
+                        colorCanvas = Color.yellow
+                    }
+                };
 
-            UIelement[] Tab1_Array = new UIelement[]        //array of elements
+                UIelement[] Tab0_Array = new UIelement[]        //array of elements
+                {
+                    new OpLabel(10f, 550f, Translate("Cosmetic ones"), true),       //creates a big text
+                    new OpCheckBox(cb_deathNoises, new Vector2(10f, 480))                      //creates a checkbox....
+                    {
+                        description = cb_deathNoises.info.description,
+                        colorEdge = Color.yellow,
+                    },
+                    new OpLabel(60f, 480f, Translate("Enable the Death Random Sounds for all the slugcats")),   //creats a text
+                };
+
+                Tabs[0].AddItems(Tab0_Array); //adds the elements to the tab [ SLUGG ]
+            }
+            catch (Exception eu)
             {
-                new OpLabel(10f, 550f, "Cosmetic ones", true),      //creates a big text
-            };
+                Debug.Log($">: Marshaw/SluggOptions/Initialize :<");
+                Debug.Log(eu);
 
-            Tabs[0].AddItems(Tab0_Array); //adds the elemebt to the tab
-            Tabs[1].AddItems(Tab1_Array); //adds the elemebt to the tab
+                //nah
+                //i remember i deleted somethings about
+                //none of excreption
+            }
         }
 
     }
-
+    
+    public static class Static
+    {
+        public static void Method(bool nonstatic_variable_in_a_static_way)
+        {
+        }
+    }
 }

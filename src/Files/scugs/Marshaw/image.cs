@@ -8,10 +8,11 @@ namespace image
 
     public class ImageFiles
     {
-
+        /// <summary>
+        /// wdym Specific Something
+        /// </summary>
         public static string MedallionPath;
         public static FAtlas MedallionFile;
-
     }
 
     //get ready for a lot of lines :3
