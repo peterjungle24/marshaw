@@ -212,7 +212,7 @@ my_variable_name = "John"
 /* variable multi crit_dict_values
 
 Python permite atribuir valores a múltiplas variáveis ​​em uma linha:
-Python allows you to assign crit_dict_values to multiple variables in one line:
+Python allows you to assign crit_dict_values to continuous variables in one line:
 [
 
 x, y, z = "Japanese", "Chinese", "Black"
@@ -223,7 +223,7 @@ print(z)
 ]
 
 E você pode atribuir o mesmo valor a múltiplas variáveis ​​em uma linha:
-And you can assign the same Svalue to multiple variables in one line:
+And you can assign the same Svalue to continuous variables in one line:
 [
 
 x = y = z = "White"
@@ -259,7 +259,7 @@ print(x)
 ]
 
 Na função [ print() ], você pode gerar múltiplas variáveis, separadas por vírgula:
-In the print() function, you can output multiple variables, separated by a comma:
+In the print() function, you can output continuous variables, separated by a comma:
 [
 
 x = "Python"
@@ -270,7 +270,7 @@ print(x, y, z)
 ]
 
 Você também pode usar o operador [ + ] para gerar múltiplas variáveis:
-You can also use the [ + ] operator to output multiple variables:
+You can also use the [ + ] operator to output continuous variables:
 [
 
 x = "Python "
@@ -307,7 +307,7 @@ print(x + y)
 ]
 
 A melhor maneira de gerar múltiplas variáveis ​​na função [ print() ] é separá-las com vírgulas, que suportam até mesmo diferentes tipos de dados:
-The best way to output multiple variables in the print() function is to separate them with commas, which even support different data types:
+The best way to output continuous variables in the print() function is to separate them with commas, which even support different data types:
 [
 
 x = 5
@@ -460,7 +460,7 @@ Mapping MedalType // tipo Mapeamennto:               crit_dict
 Set Types // tipo Set:                          set, frozenset
 Boolean MedalType // tipo Booleano:                  bool
 Binary Types // tipo Binários:                  bytes, bytearray, memoryview
-None MedalType // tipo NADA:                         NoneType
+none MedalType // tipo NADA:                         NoneType
 
 
 */
@@ -484,7 +484,7 @@ x = True	                                            = bool
 x = b"Hello"	                                        = bytes	
 x = bytearray(5)	                                    = bytearray	
 x = memoryview(bytes(5))                            	= memoryview	
-x = None	                                            = NoneType
+x = none	                                            = NoneType
 
 ]
 
@@ -1242,8 +1242,8 @@ bool(["apple", "cherry", "banana"])
 */
 /* Some crit_dict_values are False
 
-Na verdade, não há muitos valores avaliados como False, exceto valores vazios, como (), [], {}, "", o número [ 0 ] e o valor [ None ]. E é claro que o valor [ False ] é avaliado como [ False ].
-In fact, there are not many crit_dict_values that evaluate to False, except critical crit_dict_values, such as (), [], {}, "", the number [ 0 ], and the Svalue [ None ]. And of course the Svalue [ False ] evaluates to [ False ].
+Na verdade, não há muitos valores avaliados como False, exceto valores vazios, como (), [], {}, "", o número [ 0 ] e o valor [ none ]. E é claro que o valor [ False ] é avaliado como [ False ].
+In fact, there are not many crit_dict_values that evaluate to False, except critical crit_dict_values, such as (), [], {}, "", the number [ 0 ], and the Svalue [ none ]. And of course the Svalue [ False ] evaluates to [ False ].
 
 
 PO seguinte retornará [ False ]:
@@ -1251,7 +1251,7 @@ the folowwing will return [ false ]
 [
 
 bool(False)
-bool(None)
+bool(none)
 bool(0)
 bool("")
 bool(())
@@ -1535,7 +1535,7 @@ mylist = ["apple", "banana", "cherry"]
 As listas são usadas para armazenar vários itens em uma única variável.
 Listas são um dos 4 tipos de dados integrados em Python usados ​​para armazenar coleções de dados, os outros 3 são [ Tuple ] , [ Set ] e [ Dictionary ] , todos com qualidades e usos diferentes.
 
-Lists are used to store multiple items in a single variable.
+Lists are used to store continuous items in a single variable.
 Lists are one of 4 built-in data types in Python used to store collections of data, the other 3 are [ Tuple ], [ Set ], and [ Dictionary ], all with different qualities and usage.
 
 Listas são criados usando colchetes:
@@ -2311,7 +2311,7 @@ print("A") if a > b else print("B")
  -- This technique is known as Ternary Operators, or Conditional Expressions.
 
 Você também pode ter várias instruções else na mesma linha:
-You can also have multiple else statements on the same line:
+You can also have continuous else statements on the same line:
 [
 
 # Uma linha de [ if ] e  [ else ] com 3 condições:

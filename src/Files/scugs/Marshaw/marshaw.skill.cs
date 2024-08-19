@@ -75,9 +75,9 @@ namespace marshaw.skill
 
             public static bool Marshaw_Gapes(On.Player.orig_GraspsCanBeCrafted orig, Player self)
             {
-                //On.Player.GraspsCanBeCrafted hook
+                //On.player.GraspsCanBeCrafted hook
 
-                //if the Player its Marshaw
+                //if the player its Marshaw
                 if (self.SlugCatClass == marshaw)
                 {
                     //return this input for up and method is not null
@@ -92,7 +92,7 @@ namespace marshaw.skill
 
             public static objType Marshaw_CResults(On.Player.orig_CraftingResults orig, Player self)
             {
-                //On.Player.CraftingResults hook
+                //On.player.CraftingResults hook
 
                 //if the grasps length is less than 2 and the class is not Marshaw
                 if (self.grasps.Length < 2 || self.SlugCatClass != marshaw)
@@ -329,7 +329,7 @@ namespace marshaw.skill
 
             public static void stealthValues(On.PlayerGraphics.orig_DrawSprites orig, PlayerGraphics self, RoomCamera.SpriteLeaser sLeaser, RoomCamera rCam, float timeStacker, Vector2 camPos)
             {
-                var player = self.player;    //easier for use the Player variable
+                var player = self.player;    //easier for use the player variable
                 var cwt = player.Skill();    //CWT local variable
 
                 if (cwt.HasStealthMedallion == true)    //if they have a medallion

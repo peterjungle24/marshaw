@@ -80,7 +80,7 @@ namespace Helpers
             if (list_storage.friendly_creature_types.Contains(crit_type))
             {
 
-                return -friendly_regen; //Creature restores sanity of _player when it is nearby
+                return -friendly_regen; //creature restores sanity of _player when it is nearby
 
             }
 
@@ -105,7 +105,7 @@ namespace Helpers
                 if (list_storage.friendly_creature_types.Contains(crit_ancestor.type))
                 {
 
-                    return -friendly_regen; //Creature restores sanity of _player when it is nearby
+                    return -friendly_regen; //creature restores sanity of _player when it is nearby
 
                 }
 
@@ -248,6 +248,7 @@ namespace Helpers
     public static class timer_manage
     {
         public static bool test_bool;
+
         public static void ApplyHooks()
         {
             foreach (var timer in timer_manage.TimerRegistered)
@@ -271,18 +272,22 @@ namespace Helpers
     {
         public float value_wanted; //The number of ticks to run the stealthTimer for
         public float current_value; //The number of ticks processed since starting the stealthTimer
+
         public bool is_running => current_value > 0 && !value_reached;  //GET -- Returns.... that
         public bool value_reached => current_value >= value_wanted;     //GET -- Returns.... that
         public bool is_equal => current_value == value_wanted;
+
+        public virtual float _value_wanted { get => value_wanted; set => value_wanted = value; }
 
         public Timer(float counter)
         {
             value_wanted = counter;
         }
+        public Timer()
+        {
 
-        /// <summary>
-        /// start the counter
-        /// </summary>
+        }
+
         public void Start()
         {
             current_value = 0f; //resets the stealthTimer
@@ -292,10 +297,6 @@ namespace Helpers
                 timer_manage.TimerRegistered.Add(this);
             }
         }
-
-        /// <summary>
-        /// update the stealthTimer numbers
-        /// </summary>
         public void Advance()
         {
             current_value++;
@@ -307,6 +308,22 @@ namespace Helpers
 
             //Unregister this stealthTimer to prevent future updates
             timer_manage.TimerRegistered.Remove(this);
+        }
+    }
+    public class FlagTimer : Timer
+    {
+        public float timer_limit = -1f;   //probabily infinite
+        public int interval;            //frequency.... frequency?
+
+        public FlagTimer(int interval, int timer_limit) : base(timer_limit)
+        {
+            this.interval = interval;
+            this.timer_limit = timer_limit;
+        }
+        public FlagTimer(int interval) : base()
+        {
+            this.interval = interval;
+            Timer oof = this as Timer;
         }
     }
 

@@ -1,3 +1,3 @@
 Template: NONE
-Palette: 400
-PlacedObjects: Stun Medallion><1032.661><357.5708><, Swim Medallion><1103.492><356.1998><, Double Jump Medallion><972.6669><355.5681><, Stealth Medallion><911.2859><355.8032><, 
+Palette: 1
+PlacedObjects: CGDrySpot><347.2707><165.0511><100~50~239^-30~True~None, 

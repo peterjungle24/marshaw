@@ -1,4 +1,4 @@
-﻿//Don't read this with Github, it's rubbish because there's no way to collapse ``#region``
+﻿//Don't read this with Github, it's rubbish beause there's no way to collapse ``#region``
 //unless you can read it, good luck
 
 #region Modding notes (again)
@@ -333,7 +333,7 @@ Mexico
 #region Update Hooks
 /*
 
-Qualquer coisa com [ Trigger ] no nome, será reproduzido a cada frame
+Qualquer coisa com [ trigger ] no nome, será reproduzido a cada frame
 ou seja, nem loop precisa :3
 
  */
@@ -345,7 +345,7 @@ ou seja, nem loop precisa :3
 #region Game Input 
 /*
 
-Rain World usa esse tipo de coisa pra poder pegar os inputs do ``Player``
+Rain World usa esse tipo de coisa pra poder pegar os inputs do ``player``
 
 [ .jmp ]            - quando aperta pra pular
 [ .thrw ]           - quando aperta pra jogar
@@ -744,7 +744,7 @@ Deixe-o de fora e o código base nunca será executado.
 
 Observe o [ : ]
 
-public CustomExplosion(Creature creature, Vector2 Pos) : this(creature.room, creature, Pos, null) <------------------------------->
+public CustomExplosion(creature creature, Vector2 Pos) : this(creature.room, creature, Pos, null) <------------------------------->
 {
     //faz código
 }
@@ -793,7 +793,7 @@ Limitações disso:
  ---- A lógica base será aplicada antes que o valor entre chaves seja atribuído. Às vezes isso será importante, especialmente com a lógica do RainWorld. Tome cuidado.
  ---- Isto é funcionalmente o mesmo que atribuir dentro do próprio construtor
 
-public CustomExplosion(Creature creature): this(creature, creature.bodyChunks[0].Pos, null)
+public CustomExplosion(creature creature): this(creature, creature.bodyChunks[0].Pos, null)
 {
   //Isso não será alterado até que a lógica base seja executada primeiro
   LifetIme = 5;
@@ -888,10 +888,10 @@ public static class cwt_slugg
         }
     }
 
-    public static readonly ConditionalWeakTable<Player, bool_something> CWT = new();
-    public static bool_something get_cwt(this Player self) => CWT.GetValue(self, _ => new());
+    public static readonly ConditionalWeakTable<player, bool_something> CWT = new();
+    public static bool_something get_cwt(this player self) => CWT.GetValue(self, _ => new());
 
-    public static void PLS(Player self)
+    public static void PLS(player self)
     {
         self.get_cwt();
     }
@@ -1208,7 +1208,7 @@ ____________________________________________
 public static class SomeClass
 {
 |
-|   public static void MyExtension(this Player self)
+|   public static void MyExtension(this player self)
 |   {
 |   |    
 |   |   var self_room = self.room;
@@ -1284,7 +1284,134 @@ Normally visibility isn't done with a bool but with a float that determines the 
 
 */
 #endregion
+#region SCALE is not SIZE, and it isn't DISTANCE either. 
+/*
 
+Scale is shimply what the sprite framework multiplies the height and width values.
+
+- It is not a position
+- It is not a distance
+- width * height * scale is the scaled size
+
+image.scale = 40f; --> 40x40
+
+width * height * scale should be correct?
+
+It is not the same as
+(width * scale) * (height * scale)
+It is not the same as (width * scale) + (height * scale) either.
+
+w = 2, h = 4, scale = 2
+
+2 * 4 * scale = 16
+(2 * 2) * (4 * 2) = 4 * 8 = 32
+(2 * 2) + (4 * 2) = 4 + 8 = 12
+
+So in a situations where there is a scaleX and scaleY, I'm not sure if it is applying a scale accurately to the entire sprite.
+
+*/
+#endregion
+#region inheritances
+
+/* ------------- NEW method
+- Hides the things inside of the parent class
+
+>>>>>>>>>>>>>>>>>>>>>>>>>
+base
+{
+    GetMethod();
+}
+
+child : base
+{
+    new GetMethod();
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>
+*/
+/* ------------- OVERRIDE method
+- Overrides (replace) the things marked with [ virtual ] for replace their logic
+
+>>>>>>>>>>>>>>>>>>>>>>>>>
+base
+{
+    virtual GetMethod();
+}
+
+child : base
+{
+    override GetMethod();
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>
+*/
+/* ------------- ABSTRACT method
+- All the things that the Abstract member have, the child is forced to have
+- Also, they need to be inside of the [ abstract ] class.
+- weee uuuu weee uuuu
+
+>> [ abstract ] keyowrds can be used in methods or properties (fields no). Rules:
+>> Only works with Properties, not fields
+>> Methods doesnt have ANY BODY for finish it
+>> For use these members on the child class, use a [ override ] keyword
+
+>>>>>>>>>>>>>>>>>>>>>>>>
+abstract base
+{
+    abstract GetMethod();
+}
+
+// if doesnt have the method, will have a error here
+child : base
+{
+    override GetMethod()
+    {
+        
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>
+
+*/
+/* ------------- Setting fields in a ctor
+- For set values of the fields, does NOT is like normal fields, you need to set the value IN A CTOR
+- BRUHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+>>>>>>>>>>>>>>>>>>>>>>>>>
+base
+{
+  public string oof;
+}
+
+child : base
+{
+    public child()
+    {
+        base.oof = " MY FUCKING VALUE THAT I NEEDED TO SET INSIDE TO THE CTOR OOOOOOOOOOOOOOOOOOOOF ";
+    }
+}
+>>>>>>>>>>>>>>>>>>>>>>>>>
+
+*/
+
+#endregion
+
+#endregion
+
+#endregion
+#region ideas guy
+
+#region cool triggers
+/*
+
+--> Continuous
+> "almost" each frame with a certain cooldown.
+-> for not overload or etc. Maybe give issues
+-> good for Slugpup Dispenser (i will kill all of them to the VOID or to the Lava)
+
+--> Once
+> triggers only once when inside
+-> entering and exiting will trigger it again.
+-> also fits with Pressure Triggers
+
+*/
 #endregion
 
 #endregion

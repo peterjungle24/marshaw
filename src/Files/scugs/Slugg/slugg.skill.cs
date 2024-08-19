@@ -65,7 +65,7 @@ namespace slugg.skills
 
                 if (slugg_options.cb_deathNoises.Value == true)
                 {
-                    room.PlaySound(DeathSounds.random_sound[UnityEngine.Random.Range(1, 19)], self.mainBodyChunk.pos);
+                    room.PlaySound(DeathSounds.random_sound[UnityEngine.Random.Range(1, DeathSounds.random_sound.Length)], self.mainBodyChunk.pos);
                     room.AddObject(new ShockWave(self.mainBodyChunk.pos, 130f, 50f, 10, true));
                 }
                 else

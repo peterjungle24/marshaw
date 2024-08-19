@@ -35,6 +35,22 @@ namespace Helpers // @object of the space init
         private OptionInterface options;            //options for the remix menu ones LESS GOOOOOOO
         public static slugg_options FUCK;           //options for the remix menu ones LESS GOOOOOOO
 
+        public static FAtlas aqua_medallion_file;
+        public static FAtlas thunder_medallion_file;
+        public static FAtlas fire_medallion_file;
+        public static FAtlas stealth_medallion_file;
+        public static FAtlas wind_medallion_file;
+        public static FAtlas clone_medallion_file;
+
+        public static string aqua_medallion = Path.Combine("sprites", "colletables", "aqua_medallion");
+        public static string thunder_medallion = Path.Combine("sprites", "colletables", "thunder_medallion");
+        public static string fire_medallion = Path.Combine("sprites", "colletables", "fire_medallion");
+        public static string stealth_medallion = Path.Combine("sprites", "colletables", "stealth_medallion");
+        public static string wind_medallion = Path.Combine("sprites", "colletables", "wind_medallion");
+        public static string clone_medallion = Path.Combine("sprites", "colletables", "clone_medallion");
+
+        public static ev_trigger oop;
+
         //Add hooks to the hooks for the mod work bc the codes mod can't run without hooks
         public void OnEnable()
         {
@@ -56,7 +72,7 @@ namespace Helpers // @object of the space init
             On.Player.ctor += MarshawSkills.Pupfy.Marshaw_Pup;                              // [ PLAYER ] pup.
             On.Player.Grabability += MarshawSkills.SpearDeal.SpearDealer;                   // [ PLAYER ] double spear init.
             On.Player.UpdateAnimation += marshaw_effect.FLipEffect;                         // [ PLAYER ] the flip effect init.
-            On.Player.Update += MarshawSkills.distance;                                     // [ SANITY ] makes the distance work, in Player Trigger.
+            On.Player.Update += MarshawSkills.distance;                                     // [ SANITY ] makes the distance work, in player trigger.
             On.SaveState.SessionEnded += sanity.sanity_bar.reset_sanityBar;                 // [ SANITY ] resets the bar when you pass the cycle.
 
             //////// Marshaw - MEDALLION HOOKS
@@ -73,28 +89,21 @@ namespace Helpers // @object of the space init
 
             //////// test
             On.Player.Update += edro;
-
         }
 
         private void edro(On.Player.orig_Update orig, Player self, bool eu)
         {
-            self.room.AddObject(new particle_manager.PlayerBubbles(self, 1f, 1000f, 0.50f, Color.blue));
+            if (Custom.DistLess(self.mainBodyChunk.pos, ev_trigger._self.pos, ev_trigger.DISTANCE + 30f) || self.dead != true)
+            {
+                ev_trigger.is_colliding = true;
+            }
+            else
+            {
+                ev_trigger.is_colliding = false;
+            }
+
             orig(self, eu);
         }
-
-        public static FAtlas aqua_medallion_file;
-        public static FAtlas thunder_medallion_file;
-        public static FAtlas fire_medallion_file;
-        public static FAtlas stealth_medallion_file;
-        public static FAtlas wind_medallion_file;
-        public static FAtlas clone_medallion_file;
-
-        public static string aqua_medallion     = Path.Combine("sprites", "colletables", "aqua_medallion");
-        public static string thunder_medallion  = Path.Combine("sprites", "colletables", "thunder_medallion");
-        public static string fire_medallion     = Path.Combine("sprites", "colletables", "fire_medallion");
-        public static string stealth_medallion  = Path.Combine("sprites", "colletables", "stealth_medallion");
-        public static string wind_medallion     = Path.Combine("sprites", "colletables", "wind_medallion");
-        public static string clone_medallion    = Path.Combine("sprites", "colletables", "clone_medallion");
 
         #region UpdateTimerFrames
 
@@ -112,12 +121,14 @@ namespace Helpers // @object of the space init
         private void pom_objects()
         {
             string @object = "Slugg object";
+            string others = "Slugg others";
 
             RegisterManagedObject<DoubleJ_Medallion_UAD, DoubleJ_Medallion_managedData, DoubleJ_Medallion_repr>("Double Jump Medallion", @object, false);
             RegisterManagedObject<ThunderMedallion_UAD,    ThunderMedallion_manageData, ThunderMedallion_repr>("Stun Medallion", @object, false);
             RegisterManagedObject<AquaMedallion_UAD,    AquaMedallion_manageData, AquaMedallion_repr>("Aqua Medallion", @object, false);
             RegisterManagedObject<StealthMedallion_UAD, StealthMedallion_manageData, StealthMedallion_repr>("Stealth Medallion", @object, false);
 
+            RegisterManagedObject<ev_trigger, ev_trigger_managedData, ev_trigger_REPR>("Thing Trigger", others, false);
             Debug.Log($"Registering POM objects... sad ('slugg' mod)");
         }
 
@@ -135,9 +146,10 @@ namespace Helpers // @object of the space init
 
             try
             {
-                Logger.LogInfo("Marshaw says: (he said nothing)");
+                Logger.LogInfo("Marshaw says: 'Delegates are a fascinating subject and I can't wait to use them'");
 
                 //CREATE INSTANCES
+                oop = new();
                 FUCK = new();
 
                 //REGISTER
@@ -204,44 +216,4 @@ namespace Helpers // @object of the space init
 // GreatestGrasshopper
 // StormTheCat (Slugpup Safari Dev)
 
-#endregion
-#region Scug Notes (ignore)
-/*
-
--- SLUGCAT Run Speed Default Values
-{
-    //VANILLA
-    White -> 1f
-    Yellow -> 1f
-    Red -> 1f
-
-    // DOWNPOUR
-    Rivulet -> 1.75f
-    Artificer -> 1.2f
-    Saint -> 1f
-    Spearmaster -> 1.2f
-    Gourmand -> 1f
-
-    // MY MODDED
-    Marshaw -> 1.5f
-}
-
--- SLUGCAT Lung Capacity Default Values
-{
-    //VANILLA
-    White -> 1f
-    Yellow -> 0.8f
-    Red -> 1.2f
-
-    // DOWNPURR
-    Rivulet -> 0.15f
-    Artificer -> 1f (explode in 3 seconds)
-    Saint -> 1f
-    Spearmaster -> 1f
-    Gourmand -> 1f
-
-    // MY MODDED
-    Marshaw -> 2f (5 seconds)
-}
-*/
 #endregion
