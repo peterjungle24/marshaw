@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <LangVersion>11</LangVersion>
+    </PropertyGroup>
+	
+    <ItemGroup>
+        <Reference Include="../lib/*.dll">
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+	
+    <ItemGroup>
+      <PackageReference Include="System.Text.Json" Version="8.0.4" />
+    </ItemGroup>
+    
+    <ItemGroup>
+		<Reference Include="DevConsole">
+		  <HintPath>dlls\DevConsole.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.CSharp" Version="4.7.0">
+			<Private>false</Private>
+		</Reference>
+      <Reference Include="Fisobs">
+        <HintPath>dlls\Fisobs.dll</HintPath>
+      </Reference>
+      <Reference Include="Mono.Cecil.Mdb">
+        <HintPath>dlls\Mono.Cecil.Mdb.dll</HintPath>
+      </Reference>
+      <Reference Include="Mono.Cecil.Pdb">
+        <HintPath>dlls\Mono.Cecil.Pdb.dll</HintPath>
+      </Reference>
+      <Reference Include="Mono.Security">
+        <HintPath>dlls\Mono.Security.dll</HintPath>
+      </Reference>
+      <Reference Include="MonoMod.Common">
+        <HintPath>dlls\MonoMod.Common.dll</HintPath>
+      </Reference>
+      <Reference Include="MonoMod.RuntimeDetour">
+        <HintPath>dlls\MonoMod.RuntimeDetour.dll</HintPath>
+      </Reference>
+      <Reference Include="MonoMod.Utils">
+        <HintPath>dlls\MonoMod.Utils.dll</HintPath>
+      </Reference>
+      <Reference Include="Plugin">
+        <HintPath>dlls\Plugin.dll</HintPath>
+      </Reference>
+      <Reference Include="Pom">
+        <HintPath>dlls\Pom.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.InputLegacyModule">
+        <HintPath>dlls\UnityEngine.InputLegacyModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.InputModule">
+        <HintPath>dlls\UnityEngine.InputModule.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+    <Target Name="GenerateMod" AfterTargets="PostBuildEvent">
+		<ItemGroup>
+			<RemovePlugins Include="../mod/plugins/*.dll" />
+		</ItemGroup>
+		<ItemGroup>
+			<CopyPlugins Include="$(TargetPath)" />
+		</ItemGroup>
+		
+        <Delete Files="@(RemovePlugins)" />
+        <Copy SourceFiles="@(CopyPlugins)" DestinationFolder="../mod/plugins/" />
+    </Target>
+    
+</Project>

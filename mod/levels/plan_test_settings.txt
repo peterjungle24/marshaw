@@ -1,0 +1,5 @@
+Template: NONE
+Palette: 400
+PlacedObjects: Stealth Medallion><-146.6643><183.886><, Stun Medallion><10.2879><184.4464><, Double Jump Medallion><-65.04999><185.4994><, Aqua Medallion><121.2593><184.3002><, Thing Trigger><916.3445><209.1244><, 
+Triggers: Spot<tA>event<tB>ShowProjectedImageEvent<eA>afterEncounter<eB>0<eA>fromCycle<eB>0<eA>onlyWhenShowingDirection<eB>0<tA>multiUse<tB>1<tA>toCycle<tB>-1<tA>fromCycle<tB>0<tA>delay<tB>0<tA>panPos<tB>712.0946<tB>214.6241<tA>fireChance<tB>1<tA>entrance<tB>-1<tA>karma<tB>0<tA>slugcats<tB><tA>pos<tB>378.0946<tB>182.6241<tA>handlePos<tB>-128.3553<tB>-56.35535, 
+FadePalette: 10, 0.5326087
