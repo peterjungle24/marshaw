@@ -1,3 +1,0 @@
-Template: NONE
-Palette: 1
-PlacedObjects: CGDrySpot><347.2707><165.0511><100~50~239^-30~True~None, 

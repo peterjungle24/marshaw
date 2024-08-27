@@ -1,0 +1,12 @@
+﻿{
+	"id": "grey.grey.grey.grey",
+	"name": "Marshawwwwwwwwwwwww",
+	"version": "0.1.1",
+	"target_game_version" :  "v1.9.15b",
+	"authors": ["Slug (Pedro)", "TheVileOne"],
+	"description": "A slugcat thats was my first totally simple mod. <LINE> With the 'TheVileOne' help. ",
+	"requirements": [ "slime-cubed.slugbase", "moreslugcats", "bro.mergefix" ],
+	"requirements_names": [ "SlugBase ", "[ More Slugcats DLC ]", "a Mergedmod fix" ],
+	"tags": [ "Custom Slugcat", "Slugg Productiond" ],
+	"checksum_override_version" : false
+}
