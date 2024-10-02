@@ -1,7 +1,6 @@
 ﻿using BepInEx.Logging;
-using Music;
 using Helpers;
-using System;
+using particle_manager;
 using System.Collections.Generic;
 using thing_storage;
 using UnityEngine;
@@ -137,8 +136,9 @@ namespace sanity
                 lastThreat = 0f;
             }
 
-            if (shader_manage.sanity_bar.sprite.alpha == 0f)
+            if (shader_manage.sanity_bar.sprite.alpha <= 0.10f)
             {
+                room.AddObject(new PlayerBubbles( self, 1f, 1f, 1f, new Color(255, 90, 0) ) );
                 self.Blink(5);
             }
         }

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+
+<!--? and here go try xml then. !-->
+
+<ideas>
+	<marshaw>
+		<!--! all the changes here-->
+		<changes>
+			<timeline> monk </timeline> <!--! the timeline where will pass. -->
+			<food> 4 | 0 </food>		<!--! amount of food the scug can eat | can store -->
+			<world_changes>				<!--! all the world changes. -->
+				- is normal as Monk timeline
+				- Is little more eroded than normal.... i guess it worth?
+			</world_changes>
+			<main_changes>					<!--! all the main changes -->
+				- sanity features
+				- medallions for get (wil give more skills)
+				- new items in Dev Tools
+				- some spawns will be changed
+				- idk, something else
+			</main_changes>
+		</changes>
+		
+		<!--! creature ideas -->
+		<creatures>
+			
+			
+		</creatures>
+		
+		<!--! item ideas-->
+		<items>
+			
+		</items>
+		
+		<features>
+			<sanity>
+				
+			</sanity>
+		</features>
+	</marshaw>
+</ideas>

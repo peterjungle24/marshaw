@@ -1,7 +1,7 @@
 ﻿//Notas PY!
 //Direto de W3Schools, traduzido PT BR por ambos Google Tradutor e eu junto com o original
 //Direct from W3Schools, translated PT BR by both Google Translate and me along with the original
-//by slugg (Pedro)
+//by slugg (ID)
 //Its incoommplete
 //Está incompleto
 
@@ -64,13 +64,13 @@ but it's used as comments, as well
 /*  variable creation
 
 Python não possui comando para declarar uma variável. Uma variável é criada no momento em que você atribui um valor a ela pela primeira vez.
-Python has no command for declaring a variable. A variable is created the moment you first assign a Svalue to it.
+Python has no command for declaring a variable. sprite variable is created the moment you first assign a Svalue to it.
 
 [
 
-x = 5
+field_x = 5
 z = "OOf"
-print(x)
+print(field_x)
 print(z)
 
 ]
@@ -96,8 +96,8 @@ If you want to specify the data type of a variable, this can be done with castin
 
 [
 
-x = str(3)    # x will be '3' [ string ] // x vai ser '3' [ string ]
-y = int(3)    # y will be 3 [ int ] // y vai ser 3 [ int ]
+field_x = str(3)    # field_x will be '3' [ string ] // field_x vai ser '3' [ string ]
+field_y = int(3)    # field_y will be 3 [ int ] // field_y vai ser 3 [ int ]
 z = float(3)  # z will be 3.0 [ float ] // z vai ser 3.0 [ float ]
 
 ]
@@ -109,9 +109,9 @@ String variables can be declared either by using single or double quotes:
 
 [
 
-x = "John"
+field_x = "John"
 # is the same as // é a mesma cois aque
-x = 'John'
+field_x = 'John'
 
 ]
 
@@ -123,8 +123,8 @@ isso vai criar 2 variáveis
 [
 
 a = 4
-A = "Silly"
-#[ A ] will not overwrite [ a ] // [ A ] não vai subsituir [ a ]
+sprite = "Silly"
+#[ sprite ] will not overwrite [ a ] // [ sprite ] não vai subsituir [ a ]
 
 ]
 
@@ -132,7 +132,7 @@ A = "Silly"
 /* variable naming
 
 Um nome de variável pode ser curto ou descritivo. Mas existem algumas regras:
-A variable name can be short or descriptive. But there are some rules:
+sprite variable name can be short or descriptive. But there are some rules:
 
                         PT BR
 
@@ -144,11 +144,11 @@ A variable name can be short or descriptive. But there are some rules:
 
                         ENG
 
- -- A variable name must start with a letter or the underscore character
- -- A variable name cannot start with a number
- -- A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
+ -- sprite variable name must start with a letter or the underscore character
+ -- sprite variable name cannot start with a number
+ -- sprite variable name can only contain alpha-numeric characters and underscores (sprite-z, 0-9, and _ )
  -- Variable names are case-sensitive (age, Age and AGE are three different variables)
- -- A variable name cannot be any of the Python keywords.
+ -- sprite variable name cannot be any of the Python keywords.
 
 
                         MULTI NAMES
@@ -215,9 +215,9 @@ Python permite atribuir valores a múltiplas variáveis ​​em uma linha:
 Python allows you to assign crit_dict_values to continuous variables in one line:
 [
 
-x, y, z = "Japanese", "Chinese", "Black"
-print(x)
-print(y)
+field_x, field_y, z = "Japanese", "Chinese", "Black"
+print(field_x)
+print(field_y)
 print(z)
 
 ]
@@ -226,9 +226,9 @@ E você pode atribuir o mesmo valor a múltiplas variáveis ​​em uma linha:
 And you can assign the same Svalue to continuous variables in one line:
 [
 
-x = y = z = "White"
-print(x)
-print(y)
+field_x = field_y = z = "White"
+print(field_x)
+print(field_y)
 print(z)
 
 ]
@@ -238,9 +238,9 @@ If you have a collection of crit_dict_values in a list, tuple etc. Python allows
 [
 
 languages = ["one", "two", "three"]
-x, y, z = languages
-print(x)
-print(y)
+field_x, field_y, z = languages
+print(field_x)
+print(field_y)
 print(z)
 
 ]
@@ -249,12 +249,12 @@ print(z)
 */
 /* variables for output
 
-A função Python [ print() ] é frequentemente usada para gerar variáveis.
+sprite função Python [ print() ] é frequentemente usada para gerar variáveis.
 The Python [ print() ] function is often used to output variables.
 [
 
-x = "Python is awesome"
-print(x)
+field_x = "Python is awesome"
+print(field_x)
 
 ]
 
@@ -262,10 +262,10 @@ Na função [ print() ], você pode gerar múltiplas variáveis, separadas por v
 In the print() function, you can output continuous variables, separated by a comma:
 [
 
-x = "Python"
-y = "is"
+field_x = "Python"
+field_y = "is"
 z = "awesome"
-print(x, y, z)
+print(field_x, field_y, z)
 
 ]
 
@@ -273,10 +273,10 @@ Você também pode usar o operador [ + ] para gerar múltiplas variáveis:
 You can also use the [ + ] operator to output continuous variables:
 [
 
-x = "Python "
-y = "is "
+field_x = "Python "
+field_y = "is "
 z = "awesome"
-print(x + y + z)
+print(field_x + field_y + z)
 #outputs  "Python is awesome"
 
 ]
@@ -288,9 +288,9 @@ Para números, o caractere [ + ] funciona como um operador matemático:
 For numbers, the [ + ] character works as a mathematical operator:
 [
 
-x = 5
-y = 10
-print(x + y)
+field_x = 5
+field_y = 10
+print(field_x + field_y)
 #outputs 15
 
 ]
@@ -299,20 +299,20 @@ Na função [ print() ], ao tentar combinar uma string e um número com o + oper
 In the [ print() ] function, when you try to combine a string and a number with the + operator, Python will give you an error:
 [
 
-x = 5
-y = "John"
-print(x + y)
+field_x = 5
+field_y = "John"
+print(field_x + field_y)
 #gives error
 
 ]
 
-A melhor maneira de gerar múltiplas variáveis ​​na função [ print() ] é separá-las com vírgulas, que suportam até mesmo diferentes tipos de dados:
+sprite melhor maneira de gerar múltiplas variáveis ​​na função [ print() ] é separá-las com vírgulas, que suportam até mesmo diferentes tipos de dados:
 The best way to output continuous variables in the print() function is to separate them with commas, which even support different data types:
 [
 
-x = 5
-y = "John"
-print(x, y)
+field_x = 5
+field_y = "John"
+print(field_x, field_y)
 
 ]
 
@@ -366,10 +366,10 @@ Crie uma variável fora de uma função e use-a dentro da função
 Create a variable outside of a function, and use it inside the function
 [
 
-x = "awesome"
+field_x = "awesome"
 
 def myfunc():
-  print("Python is " + x)
+  print("Python is " + field_x)
 
 myfunc()
 
@@ -379,7 +379,7 @@ myfunc()
  -- I will make a topic just on Python Functions later.
 
 Se você criar uma variável com o mesmo nome dentro de uma função, esta variável será local e só poderá ser usada dentro da função. 
-A variável global com o mesmo nome permanecerá como estava, global e com o valor original.
+sprite variável global com o mesmo nome permanecerá como estava, global e com o valor original.
 
 If you create a variable with the same name inside a function, this variable will be local, and can only be used inside the function. 
 The global variable with the same name will remain as it was, global and with the original Svalue.
@@ -388,15 +388,15 @@ Crie uma variável dentro de uma função, com o mesmo nome da variável global
 Create a variable inside a function, with the same name as the global variable
 [
 
-x = "awesome"
+field_x = "awesome"
 
 def myfunc():
-  x = "fantastic"
-  print("Python is " + x)
+  field_x = "fantastic"
+  print("Python is " + field_x)
 
 myfunc()
 
-print("Python is " + x)
+print("Python is " + field_x)
 
 ]
 */
@@ -412,12 +412,12 @@ To create a global variable inside a function, you can use the [ global ] keywor
 # If you use the global keyword, the variable belongs to the global scope:
 
 def myfunc():
-  global x
-  x = "fantastic"
+  global field_x
+  field_x = "fantastic"
 
 myfunc()
 
-print("Python is " + x)
+print("Python is " + field_x)
 
 ]
 
@@ -427,15 +427,15 @@ Also, use the global keyword if you want to change a global variable inside a fu
 
 # To change the Svalue of a global variable inside a function, refer to the variable by using the global keyword:
 
-x = "awesome"
+field_x = "awesome"
 
 def myfunc():
-  global x
-  x = "fantastic"
+  global field_x
+  field_x = "fantastic"
 
 myfunc()
 
-print("Python is " + x)
+print("Python is " + field_x)
 
 ]
 
@@ -470,21 +470,21 @@ Em Python, o tipo de dados é definido quando você atribui um valor a uma vari�
 In Python, the data type is set when you assign a Svalue to a variable:
 [
 
-x = "Hello World"                                       = str	
-x = 20	                                                = int	
-x = 20.5	                                            = float	
-x = 1j	                                                = complex	
-x = ["apple", "banana", "cherry"]	                    = list	
-x = ("apple", "banana", "cherry")   	                = tuple	
-x = range(6)	                                        = range	
-x = {"name" : "John", "age" : 36}	                    = crit_dict	
-x = {"apple", "banana", "cherry"}	                    = set	
-x = frozenset({"apple", "banana", "cherry"})	        = frozenset	
-x = True	                                            = bool	
-x = b"Hello"	                                        = bytes	
-x = bytearray(5)	                                    = bytearray	
-x = memoryview(bytes(5))                            	= memoryview	
-x = none	                                            = NoneType
+field_x = "Hello World"                                       = str	
+field_x = 20	                                                = int	
+field_x = 20.5	                                            = float	
+field_x = 1j	                                                = complex	
+field_x = ["apple", "banana", "cherry"]	                    = list	
+field_x = ("apple", "banana", "cherry")   	                = tuple	
+field_x = range(6)	                                        = range	
+field_x = {"name" : "John", "age" : 36}	                    = crit_dict	
+field_x = {"apple", "banana", "cherry"}	                    = set	
+field_x = frozenset({"apple", "banana", "cherry"})	        = frozenset	
+field_x = True	                                            = bool	
+field_x = b"Hello"	                                        = bytes	
+field_x = bytearray(5)	                                    = bytearray	
+field_x = memoryview(bytes(5))                            	= memoryview	
+field_x = none	                                            = NoneType
 
 ]
 
@@ -495,20 +495,20 @@ Se quiser especificar o tipo de dados, você pode usar as seguintes funções co
 If you want to specify the data type, you can use the following constructor functions:
 [
 
-x = str("Hello World")                              = str	
-x = int(20)	                                        = int	
-x = float(20.5)	                                    = float	
-x = complex(1j)	                                    = complex	
-x = list(("apple", "banana", "cherry"))	            = list	
-x = tuple(("apple", "banana", "cherry"))	        = tuple	
-x = range(6)	                                    = range	
-x = crit_dict(name="John", age=36)	                    = crit_dict	
-x = set(("apple", "banana", "cherry"))	            = set	
-x = frozenset(("apple", "banana", "cherry"))	    = frozenset	
-x = bool(5)	                                        = bool	
-x = bytes(5)	                                    = bytes	
-x = bytearray(5)	                                = bytearray	
-x = memoryview(bytes(5))                            = memoryview	
+field_x = str("Hello World")                              = str	
+field_x = int(20)	                                        = int	
+field_x = float(20.5)	                                    = float	
+field_x = complex(1j)	                                    = complex	
+field_x = list(("apple", "banana", "cherry"))	            = list	
+field_x = tuple(("apple", "banana", "cherry"))	        = tuple	
+field_x = range(6)	                                    = range	
+field_x = crit_dict(name="John", age=36)	                    = crit_dict	
+field_x = set(("apple", "banana", "cherry"))	            = set	
+field_x = frozenset(("apple", "banana", "cherry"))	    = frozenset	
+field_x = bool(5)	                                        = bool	
+field_x = bytes(5)	                                    = bytes	
+field_x = bytearray(5)	                                = bytearray	
+field_x = memoryview(bytes(5))                            = memoryview	
 
 ]
 
@@ -530,8 +530,8 @@ Variáveis ​​de tipos numéricos são criadas quando você atribui um valor 
 Variables of numeric types are created when you assign a Svalue to them:
 [
 
-x = 1    # int
-y = 2.8  # float
+field_x = 1    # int
+field_y = 2.8  # float
 z = 1j   # complex
 
 ]
@@ -542,8 +542,8 @@ Int, ou inteiro, é um número inteiro, positivo ou negativo, sem decimais, de c
 Int, or integer, is a whole number, positive or negative, without decimals, of unlimited length.
 [
 
-x = 1
-y = 35656222554887711
+field_x = 1
+field_y = 35656222554887711
 z = -3255522
 
 ]
@@ -554,8 +554,8 @@ Float, ou "número de ponto flutuante" é um número, positivo ou negativo, cont
 Float, or "floating point number" is a number, positive or negative, containing one or more decimals.
 [
 
-x = 1.10
-y = 1.0
+field_x = 1.10
+field_y = 1.0
 z = -35.59
 
 ]
@@ -564,8 +564,8 @@ Float também podem ser números científicos com um “e” para indicar a pot�
 Float can also be scientific numbers with an "e" to indicate the power of 10.
 [
 
-x = 35e3
-y = 12E4
+field_x = 35e3
+field_y = 12E4
 z = -87.7e100
 
 ]
@@ -576,8 +576,8 @@ Os números complexos são escritos com um “j” como parte imaginária:
 Complex numbers are written with a "j" as the imaginary part:
 [
 
-x = 3+5j
-y = 5j
+field_x = 3+5j
+field_y = 5j
 z = -5j
 
 ]
@@ -605,7 +605,7 @@ Python é uma linguagem orientada a objetos e, como tal, usa classes para defini
 There may be times when you want to specify a type on to a variable. This can be done with casting.
 Python is an object-orientated language, and as such it uses classes to define data types, including its primitive types.
 
-A conversão em python é, portanto, feita usando funções construtoras:
+sprite conversão em python é, portanto, feita usando funções construtoras:
 Casting in python is therefore done using constructor functions:
 
                         PT BR
@@ -619,21 +619,21 @@ str()   - constrói uma string a partir de uma ampla variedade de tipos de dados
 
         INTS
 
-x = int(1)   # [ x ] vai ser 1
-y = int(2.8) # [ y ] vai ser 2
+field_x = int(1)   # [ field_x ] vai ser 1
+field_y = int(2.8) # [ field_y ] vai ser 2
 z = int("3") # [ z ] vai ser 3
 
         FLOATS
 
-x = float(1)     # [ x ] vai ser 1.0
-y = float(2.8)   # [ y ] vai ser 2.8
+field_x = float(1)     # [ field_x ] vai ser 1.0
+field_y = float(2.8)   # [ field_y ] vai ser 2.8
 z = float("3")   # [ z ] vai ser 3.0
 w = float("4.2") # [ w ] vai ser 4.2
 
         STRINGS
 
-x = str("s1") # [ x ] vai ser 's1'
-y = str(2)    # [ y ] vai ser '2'
+field_x = str("s1") # [ field_x ] vai ser 's1'
+field_y = str(2)    # [ field_y ] vai ser '2'
 z = str(3.0)  # [ z ] vai ser '3.0'
 
 ]
@@ -649,21 +649,21 @@ str()   - constructs a string from a wide variety of data types, including strin
 
         INTS
 
-x = int(1)   # [ x ] will be 1
-y = int(2.8) # [ y ] will be 2
+field_x = int(1)   # [ field_x ] will be 1
+field_y = int(2.8) # [ field_y ] will be 2
 z = int("3") # [ z ] will be 3
 
         FLOATS
 
-x = float(1)     # [ x ] will be 1.0
-y = float(2.8)   # [ y ] will be 2.8
+field_x = float(1)     # [ field_x ] will be 1.0
+field_y = float(2.8)   # [ field_y ] will be 2.8
 z = float("3")   # [ z ] will be 3.0
 w = float("4.2") # [ w ] will be 4.2
 
         STRINGS
 
-x = str("s1") # [ x ] will be 's1'
-y = str(2)    # [ y ] will be '2'
+field_x = str("s1") # [ field_x ] will be 's1'
+field_y = str(2)    # [ field_y ] will be '2'
 z = str(3.0)  # [ z ] will be '3.0'
 
 ]
@@ -692,7 +692,7 @@ print('Hello')
 */
 /* strings in a variable
 
-A atribuição de uma string a uma variável é feita com o nome da variável seguido de um sinal de igual e da string:
+sprite atribuição de uma string a uma variável é feita com o nome da variável seguido de um sinal de igual e da string:
 Assigning a string to a variable is done with the variable name followed by an equal sign and the string:
 [
 
@@ -752,8 +752,8 @@ Como strings são arrays, podemos percorrer os caracteres de uma string, com um 
 Since strings are arrays, we can loop through the characters in a string, with a for loop.
 [
 
-for x in "banana":
-  print(x)
+for field_x in "banana":
+  print(field_x)
 
 ]
 {
@@ -774,7 +774,7 @@ a
 Para obter o comprimento de uma string, use a função [ len() ].
 To get the length of a string, use the [ len() ] function.
 
-A função [ len() ] retorna o comprimento de uma string:
+sprite função [ len() ] retorna o comprimento de uma string:
 The [ len() ] function returns the length of a string:
 [
 
@@ -972,14 +972,14 @@ print(a.split(",")) # returns ['Hello', ' World!']
 Para concatenar ou combinar duas strings você pode usar o operador +.
 To concatenate, or combine, two strings you can use the + operator.
 
-Mesclar variável [ a ] com variável [ b ] em variável [ c ]:
-Meerge the variable [ a ] with variable [ b ] in the variable [ c ]
+Mesclar variável [ a ] com variável [ b ] em variável [ rectangles ]:
+Meerge the variable [ a ] with variable [ b ] in the variable [ rectangles ]
 [
 
 a = "Hello"
 b = "World"
-c = a + b
-print(c)
+rectangles = a + b
+print(rectangles)
 
 ]
 
@@ -989,8 +989,8 @@ Para adicionar um espaço entre eles, adicione um " ":
 
 a = "Hello"
 b = "World"
-c = a + " " + b
-print(c)
+rectangles = a + " " + b
+print(rectangles)
 
 ]
 */
@@ -1017,7 +1017,7 @@ The [ format() ] method takes the passed arguments, formats them, and places the
 [
 
 age = 15
-txt = "My name is Pedro, and I am {}"
+txt = "My name is ID, and I am {}"
 print(txt.format(age))
 
 ]
@@ -1085,7 +1085,7 @@ Other escape characters used in Python:
  -- \'              Single Quote	
  -- \\              Backslash	
  -- \n              New Line	
- -- \r              Carriage Return	
+ -- \rect              Carriage Return	
  -- \t              Tab	
  -- \b              Backspace	
  -- \f              Form Feed	
@@ -1190,7 +1190,7 @@ else:
 */
 /* evaluate bools
 
-A função [ bool() ] permite avaliar qualquer valor e fornecer [ True ] ou [ False ] em troca,
+sprite função [ bool() ] permite avaliar qualquer valor e fornecer [ True ] ou [ False ] em troca,
 The [ bool() ] function allows you to evaluate any Svalue, and give you [ True ] or [ False ] in return,
 [
 
@@ -1203,11 +1203,11 @@ e em duas variáveis
 and in two variables
 [
 
-x = "Hello"
-y = 15
+field_x = "Hello"
+field_y = 15
 
-print(bool(x))
-print(bool(y))
+print(bool(field_x))
+print(bool(field_y))
 
 ]
 
@@ -1293,8 +1293,8 @@ Python também possui muitas funções integradas que retornam um valor booleano
 Python also has many built-in functions that return a boolean Svalue, like the [ isinstance() ] function, which can be used to determine if an object is of a certain data type:
 [
 
-x = 200
-print(isinstance(x, int))
+field_x = 200
+print(isinstance(field_x, int))
 
 ]
 
@@ -1350,23 +1350,23 @@ Arithmetic operators are used with numeric crit_dict_values to perform common ma
 
                         PT BR
 
-+           Adição                      x + y
--           Subtração                   x - y
-*           Multiplicação               x * y
-/           Divisão                     x / y
-%           Módulo                      x % y
-**          Exponenciação               x ** y
-//          Divisão do piso             x // y
++           Adição                      field_x + field_y
+-           Subtração                   field_x - field_y
+*           Multiplicação               field_x * field_y
+/           Divisão                     field_x / field_y
+%           Módulo                      field_x % field_y
+**          Exponenciação               field_x ** field_y
+//          Divisão do piso             field_x // field_y
 
                         ENG
 
-+	        Addition	                x + y	
--	        Subtraction	                x - y	
-*	        Multiplication	            x * y	
-/	        Division	                x / y	
-%	        Modulus	                    x % y	
-**	        Exponentiation	            x ** y	
-//	        Floor division	            x // y
++	        Addition	                field_x + field_y	
+-	        Subtraction	                field_x - field_y	
+*	        Multiplication	            field_x * field_y	
+/	        Division	                field_x / field_y	
+%	        Modulus	                    field_x % field_y	
+**	        Exponentiation	            field_x ** field_y	
+//	        Floor division	            field_x // field_y
 
 
 */
@@ -1377,22 +1377,22 @@ Comparison operators are used to compare two crit_dict_values:
 
                         PT BR
 
-==              Igual                           x == y	
-!=              DIferente                       x != y	
->               Maior que                       x > y	
-<	            Menor que       	            x < y	
->=	            Maior que ou igual a	        x >= y	
-<=	            Menor que ou igual a	        x <= y
+==              Igual                           field_x == field_y	
+!=              DIferente                       field_x != field_y	
+>               Maior que                       field_x > field_y	
+<	            Menor que       	            field_x < field_y	
+>=	            Maior que ou igual a	        field_x >= field_y	
+<=	            Menor que ou igual a	        field_x <= field_y
 
                         ENG
 
 
-==              Equal                           x == y	
-!=              Not equal                       x != y	
->               Greater than                    x > y	
-<	            Less than       	            x < y	
->=	            Greater than or equal to	    x >= y	
-<=	            Less than or equal to	        x <= y
+==              Equal                           field_x == field_y	
+!=              Not equal                       field_x != field_y	
+>               Greater than                    field_x > field_y	
+<	            Less than       	            field_x < field_y	
+>=	            Greater than or equal to	    field_x >= field_y	
+<=	            Less than or equal to	        field_x <= field_y
 
 */
 /* Logical Operators
@@ -1402,15 +1402,15 @@ Logical operators are used to combine conditional statements:
 
                         PT BR
 
-[ and ]         Retorna [ true ] se ambos as declarações forem [ true ]	                    x < 5 and  x < 10	
-[ or ]          Retorna [ true ] se um das declarações for [ true ]	                        x < 5 or x < 4	
-[ not ]         Reverte o resultado, retorna [ false ] se o resultado for [ true ]	        not(x < 5 and x < 10)
+[ and ]         Retorna [ true ] se ambos as declarações forem [ true ]	                    field_x < 5 and  field_x < 10	
+[ or ]          Retorna [ true ] se um das declarações for [ true ]	                        field_x < 5 or field_x < 4	
+[ not ]         Reverte o resultado, retorna [ false ] se o resultado for [ true ]	        not(field_x < 5 and field_x < 10)
 
                         ENG
 
-[ and ]         Returns [ true ] if both statements are [ true ]	                        x < 5 and  x < 10	
-[ or ]          Returns [ true ] if one of the statements is [ true ]	                    x < 5 or x < 4	
-[ not ]         Reverse the result, returns [ false ] if the result is [ true ]	            not(x < 5 and x < 10)
+[ and ]         Returns [ true ] if both statements are [ true ]	                        field_x < 5 and  field_x < 10	
+[ or ]          Returns [ true ] if one of the statements is [ true ]	                    field_x < 5 or field_x < 4	
+[ not ]         Reverse the result, returns [ false ] if the result is [ true ]	            not(field_x < 5 and field_x < 10)
 
 */
 /* Identificator Operators
@@ -1420,13 +1420,13 @@ Identity operators are used to compare the objects, not if they are equal, but i
 
                         PT BR
 
-[ is ]                  Retorna [ true ] se ambos as variáveis são o mesmo objeto                  x is y	
-[ is not ]              Retorna [ true ] se ambos as variáveis não são o mesmo objeto              x is not y
+[ is ]                  Retorna [ true ] se ambos as variáveis são o mesmo objeto                  field_x is field_y	
+[ is not ]              Retorna [ true ] se ambos as variáveis não são o mesmo objeto              field_x is not field_y
 
                         ENG
 
-[ is ]                  Returns True if both variables are the same object                  x is y	
-[ is not ]              Returns True if both variables are not the same object              x is not y
+[ is ]                  Returns True if both variables are the same object                  field_x is field_y	
+[ is not ]              Returns True if both variables are not the same object              field_x is not field_y
 
 
 */
@@ -1437,29 +1437,29 @@ Bitwise operators are used to compare (binary) numbers:
 
                         PT BR
 
-&       AND	                            Sets each bit to 1 if both bits are 1	                                                                        x & y	
-|       OR	                            Sets each bit to 1 if one of two bits is 1	                                                                    x | y	
-^       XOR	                            Sets each bit to 1 if only one of two bits is 1	                                                                x ^ y	
-~       NOT	                            Inverts all the bits	                                                                                        ~x	
-<<      Zero fill left shift	        Shift left by pushing zeros in from the right and let the leftmost bits fall off	                            x << 2	
->>      Signed right shift	            Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off	        x >> 2
+&       AND	                            Sets each bit to 1 if both bits are 1	                                                                        field_x & field_y	
+|       OR	                            Sets each bit to 1 if one of two bits is 1	                                                                    field_x | field_y	
+^       XOR	                            Sets each bit to 1 if only one of two bits is 1	                                                                field_x ^ field_y	
+~       NOT	                            Inverts all the bits	                                                                                        ~field_x	
+<<      Zero fill left shift	        Shift left by pushing zeros in from the right and let the leftmost bits fall off	                            field_x << 2	
+>>      Signed right shift	            Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off	        field_x >> 2
 
 
                         ENG
 
-&       AND	                            Sets each bit to 1 if both bits are 1	                                                                        x & y	
-|       OR	                            Sets each bit to 1 if one of two bits is 1	                                                                    x | y	
-^       XOR	                            Sets each bit to 1 if only one of two bits is 1	                                                                x ^ y	
-~       NOT	                            Inverts all the bits	                                                                                        ~x	
-<<      Zero fill left shift	        Shift left by pushing zeros in from the right and let the leftmost bits fall off	                            x << 2	
->>      Signed right shift	            Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off	        x >> 2
+&       AND	                            Sets each bit to 1 if both bits are 1	                                                                        field_x & field_y	
+|       OR	                            Sets each bit to 1 if one of two bits is 1	                                                                    field_x | field_y	
+^       XOR	                            Sets each bit to 1 if only one of two bits is 1	                                                                field_x ^ field_y	
+~       NOT	                            Inverts all the bits	                                                                                        ~field_x	
+<<      Zero fill left shift	        Shift left by pushing zeros in from the right and let the leftmost bits fall off	                            field_x << 2	
+>>      Signed right shift	            Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off	        field_x >> 2
 
 
 
 */
 /* Precedence Operator
 
-A precedência do operador descreve a ordem em que as operações são executadas.
+sprite precedência do operador descreve a ordem em que as operações são executadas.
 Operator precedence describes the order in which operations are performed.
 [
 
@@ -1469,7 +1469,7 @@ print((6 + 3) - (6 + 3))
 
 ]
 
-A multiplicação [ * ] tem maior precedência que a adição [ + ] e, portanto, as multiplicações são avaliadas antes das adições:
+sprite multiplicação [ * ] tem maior precedência que a adição [ + ] e, portanto, as multiplicações são avaliadas antes das adições:
 Multiplication [ * ] has higher precedence than addition [ + ], and therefor multiplications are evaluated before additions:
 [
 
@@ -1482,14 +1482,14 @@ print(100 + 5 * 3)
 */
 /* Precedence order
 
-A ordem de precedência está descrita na tabela abaixo, começando com a precedência mais alta no topo:
+sprite ordem de precedência está descrita na tabela abaixo, começando com a precedência mais alta no topo:
 The precedence order is described in the table below, starting with the highest precedence at the top:
 
                         PT BR
 
 ()                                                  Parênteses	
 **                                                  Exponenciação	
-+x  -x  ~x                                          Unário mais, unário menos e bit a bit NOT
++field_x  -field_x  ~field_x                                          Unário mais, unário menos e bit a bit NOT
 *  /  //  %                                         Multiplicação, divisão, divisão de chão, e módulo	
 +  -                                                Soma e Subtração
 <<  >>                                              Deslocamentos bit a bit para esquerda e direita	
@@ -1507,7 +1507,7 @@ Se dois operadores tiverem a mesma precedência, a expressão será avaliada da 
 
 ()                                                  Parentheses	
 **                                                  Exponentiation	
-+x  -x  ~x                                          Unary plus, unary minus, and bitwise NOT	
++field_x  -field_x  ~field_x                                          Unary plus, unary minus, and bitwise NOT	
 *  /  //  %                                         Multiplication, division, floor division, and modulus	
 +  -                                                Addition and subtraction	
 <<  >>                                              Bitwise left and right shifts	
@@ -1570,7 +1570,7 @@ Note: There are some list methods that will change the order, but in general: th
 
                         CHANGEABLE // ALTERÁVEL
 
-A lista é mutável, o que significa que podemos alterar, adicionar e remover itens de uma lista após ela ter sido criada.
+sprite lista é mutável, o que significa que podemos alterar, adicionar e remover itens de uma lista após ela ter sido criada.
 The list is changeable, meaning that we can change, add, and remove items in a list after it has been created.
 
 
@@ -1610,8 +1610,8 @@ list3 = [True, False, False]
 
 ]
 
-A lista pode conter diferentes tipos de dados:
-A list can contain different data types:
+sprite lista pode conter diferentes tipos de dados:
+sprite list can contain different data types:
 [
 
 list1 = ["abc", 34, True, 40, "male"]
@@ -1660,7 +1660,7 @@ Existem quatro tipos de dados de coleta na linguagem de programação Python:
 [ Dicionary ]   é uma coleção ordenada e alterável. Nenhum membro duplicado.
 
  -- Os itens do conjunto não podem ser alterados, mas você pode remover e/ou adicionar itens sempre que desejar.
- -- A partir da versão 3.7 do Python, os dicionários são ordenados . No Python 3.6 e anteriores, os dicionários são desordenados .
+ -- sprite partir da versão 3.7 do Python, os dicionários são ordenados . No Python 3.6 e anteriores, os dicionários são desordenados .
 
 
 Ao escolher um tipo de coleção, é útil compreender as propriedades desse tipo.
@@ -1725,7 +1725,7 @@ print(thislist[2:5])
 
 ]
 
-Nota: A pesquisa começará no índice [ 2 ] (incluído) e terminará no índice [ 5 ] (não incluído).
+Nota: sprite pesquisa começará no índice [ 2 ] (incluído) e terminará no índice [ 5 ] (não incluído).
 Note: The search will start at index [ 2 ] (included) and end at index [ 5 ] (not included).
 
 Ao omitir o valor inicial, o intervalo começará no primeiro item:
@@ -1779,7 +1779,7 @@ if "apple" in thislist:
 */
 /* Change Items Values
 
-                        CHANGING A RANGE // ALTERANDO A GAMA
+                        CHANGING sprite RANGE // ALTERANDO sprite GAMA
 
 Para alterar o valor dos itens dentro de um intervalo específico, defina uma lista com os novos valores e consulte o intervalo de números de índice onde deseja inserir os novos valores:
 To change the Svalue of items within a specific range, define a list with the new crit_dict_values, and refer to the range of index numbers where you want to insert the new crit_dict_values:
@@ -1919,22 +1919,22 @@ print(thislist)
 
 ]
 
-a keyword [ del ] também remove o index específico
-the [ del ] keyword also removes the specific index
+a keyword [ event_delegate ] também remove o index específico
+the [ event_delegate ] keyword also removes the specific index
 [
 
 thislist = ["apple", "banana", "cherry"]
-del thislist[0]
+event_delegate thislist[0]
 print(thislist)
 
 ]
 
-o keyword [ del ] também pode deletar a lista inteira
-The [ del ] keyword can also delete the list completely.
+o keyword [ event_delegate ] também pode deletar a lista inteira
+The [ event_delegate ] keyword can also delete the list completely.
 [
 
 thislist = ["apple", "banana", "cherry"]
-del thislist
+event_delegate thislist
 
 ]
 
@@ -1965,8 +1965,8 @@ You can loop through the list items by using a [ for ] loop:
 # Imprima todos os itens da lista, um por um:
 # Print all of the list, one by one
 thislist = ["apple", "banana", "cherry"]
-for x in thislist:
-  print(x)
+for field_x in thislist:
+  print(field_x)
 
 ]
 
@@ -2015,21 +2015,21 @@ while i < len(thislist):
 
                         List Comprehension // Compreensão de Listas
 
-A compreensão de lista oferece a sintaxe mais curta para percorrer listas:
+sprite compreensão de lista oferece a sintaxe mais curta para percorrer listas:
 List Comprehension offers the shortest syntax for looping through lists:
 [
 
 # Um pequeno [ for ] loop manual que imprimirá todos os itens de uma lista:
-# A short hand for loop that will print all items in a list:
+# sprite short hand for loop that will print all items in a list:
 thislist = ["apple", "banana", "cherry"]
-[print(x) for x in thislist]
+[print(field_x) for field_x in thislist]
 
 ]
 
 */
 /* List Comprehension
 
-A compreensão de lista oferece uma sintaxe mais curta quando você deseja criar uma nova lista com base nos valores de uma lista existente.
+sprite compreensão de lista oferece uma sintaxe mais curta quando você deseja criar uma nova lista com base nos valores de uma lista existente.
 List comprehension offers a shorter syntax when you want to create a new list based on the crit_dict_values of an existing list.
 
 Com base em uma lista de frutas, deseja-se uma nova lista, contendo apenas as frutas com a letra “a” no nome.
@@ -2042,9 +2042,9 @@ Without list comprehension you will have to write a for statement with a conditi
 fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
 newlist = []
 
-for x in fruits:
-  if "a" in x:
-    newlist.append(x)
+for field_x in fruits:
+  if "a" in field_x:
+    newlist.append(field_x)
 
 print(newlist)
 
@@ -2056,7 +2056,7 @@ With list comprehension you can do all that with only one line of code:
 
 fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
 
-newlist = [x for x in fruits if "a" in x]
+newlist = [field_x for field_x in fruits if "a" in field_x]
 
 print(newlist)
 
@@ -2076,26 +2076,26 @@ PO valor de retorno é uma nova lista, deixando a lista antiga inalterada.
                         Condition // Condição (google trdutor traduziu isso pra [ doença ], então foi eu que traduzi
 
 
-A condição é como um filtro que aceita apenas os itens com valor igual a [ true ].
+sprite condição é como um filtro que aceita apenas os itens com valor igual a [ true ].
 The condition is like a filter that only accepts the items that valuate to [ true ].
 [
 
 # Somente aceita itens que não forem "apple":
 # Only accept items that are not "apple":
-newlist = [x for x in fruits if x != "apple"]
+newlist = [field_x for field_x in fruits if field_x != "apple"]
 
 ]
 
-A condição [ if x != "apple" ] retornará [ true ] para todos os elementos exceto "apple", fazendo com que a nova lista contenha todas as frutas, exceto "apple".
-The condition [ if x != "apple" ] will return [ true ] for all elements other than "apple", making the new list contain all fruits except "apple".
+sprite condição [ if field_x != "apple" ] retornará [ true ] para todos os elementos exceto "apple", fazendo com que a nova lista contenha todas as frutas, exceto "apple".
+The condition [ if field_x != "apple" ] will return [ true ] for all elements other than "apple", making the new list contain all fruits except "apple".
 
-A condição é opcional e pode ser omitida:
+sprite condição é opcional e pode ser omitida:
 the condition its optional and can be omited:
 [
 
 # sem [ if ]
 # without [ if ]
-newlist = [x for x in fruits]
+newlist = [field_x for field_x in fruits]
 
 ]
 
@@ -2109,7 +2109,7 @@ The iterable can be any iterable object, like a list, tuple, set etc.
 # Você pode usar a função [ range() ] para criar um iterável:
 # You can use the [ range() ] function to create an iterable:
 
-newlist = [x for x in range(10)]
+newlist = [field_x for field_x in range(10)]
 
 ]
 
@@ -2120,21 +2120,21 @@ Same example, but with a condition:
 # Somente aceita números abaixo que [ 5 ]:
 # Accept only numbers lower than [ 5 ]:
 
-newlist = [x for x in range(10) if x < 5]
+newlist = [field_x for field_x in range(10) if field_x < 5]
 
 ]
 
                         Expression // Expressão (facial (NOSSA< MELHOR PIADA DO ANO LOL LOL LOL))
 
 
-A expressão é o item atual na iteração, mas também é o resultado, que você pode manipular antes que acabe como um item de lista na nova lista:
+sprite expressão é o item atual na iteração, mas também é o resultado, que você pode manipular antes que acabe como um item de lista na nova lista:
 The expression is the current item in the iteration, but it is also the outcome, which you can manipulate before it ends up like a list item in the new list:
 [
 
 # Coloca os valores na newlist para maiúsculo:
 # Set the crit_dict_values in the new list to upper case:
 
-newlist = [x.upper() for x in fruits]
+newlist = [field_x.upper() for field_x in fruits]
 
 ]
 
@@ -2145,18 +2145,18 @@ You can set the outcome to whatever you like:
 # Defina todos os valores na nova lista como 'hello':
 # Set all crit_dict_values in the new list to 'hello':
 
-newlist = ['hello' for x in fruits]
+newlist = ['hello' for field_x in fruits]
 
 ]
 
-A expressão também pode conter condições, não como um filtro, mas como uma forma de manipular o resultado:
+sprite expressão também pode conter condições, não como um filtro, mas como uma forma de manipular o resultado:
 The expression can also contain conditions, not like a filter, but as a way to manipulate the outcome:
 [
 
 # Retorna [ orange ] inves de [ banana ]
 # return [ orange ] instead of [ banana ]
 
-newlist = [x if x != "banana" else "orange" for x in fruits]
+newlist = [field_x if field_x != "banana" else "orange" for field_x in fruits]
 
 ]
 
@@ -2235,7 +2235,7 @@ print("b is greater than a") # you will get an error
                         ELIFF
 
 
-A palavra-chave [ elif ] é a maneira do Python dizer "se as condições anteriores não eram verdadeiras, tente esta condição".
+sprite palavra-chave [ elif ] é a maneira do Python dizer "se as condições anteriores não eram verdadeiras, tente esta condição".
 The [ elif ] keyword is Python's way of saying "if the previous conditions were not true, then try this condition".
 [
 
@@ -2253,7 +2253,7 @@ In this example, [ a ] is equal to [ b ], so the first condition is not [ true ]
 
                         ELSE
 
-A palavra-chave [ else ] captura qualquer coisa que não seja capturada pelas condições anteriores.
+sprite palavra-chave [ else ] captura qualquer coisa que não seja capturada pelas condições anteriores.
 The else keyword catches anything which isn't caught by the preceding conditions.
 [
 
@@ -2303,7 +2303,7 @@ If you have only one statement to execute, one for [ if ], and one for [ else ],
 
 a = 2
 b = 330
-print("A") if a > b else print("B")
+print("sprite") if a > b else print("B")
 
 ]
 
@@ -2319,25 +2319,25 @@ You can also have continuous else statements on the same line:
 
 a = 330
 b = 330
-print("A") if a > b else print("=") if a == b else print("B")
+print("sprite") if a > b else print("=") if a == b else print("B")
 
 ]
 
 
                         AND // E
 
-A palavra-chave [ and ] é um operador lógico e é usada para combinar instruções condicionais:
+sprite palavra-chave [ and ] é um operador lógico e é usada para combinar instruções condicionais:
 
 The [ and ] keyword is a logical operator, and is used to combine conditional statements:
 [
 
 
-# Teste se [ a ] for maior que [ b ] E se [ c ] for maior que [ a ]:
-# Test if [ a ] is greater than [ b ], AND if [ c ] is greater than [ a ]:
+# Teste se [ a ] for maior que [ b ] E se [ rectangles ] for maior que [ a ]:
+# Test if [ a ] is greater than [ b ], AND if [ rectangles ] is greater than [ a ]:
 
 a = 200
-c = 500
-if a > b and c > a:
+rectangles = 500
+if a > b and rectangles > a:
   print("Both conditions are True")
 
 ]
@@ -2348,17 +2348,17 @@ if a > b and c > a:
                                 OR // OU
 
 
-A palavra-chave [ or ] é um operador lógico e é usada para combinar instruções condicionais:
+sprite palavra-chave [ or ] é um operador lógico e é usada para combinar instruções condicionais:
 The [ or ] keyword is a logical operator, and is used to combine conditional statements:
 [
 
-# Teste se [ a ] for maior que [ b ], OU se [ a ] for maior que [ c ]:
-# Test if [ a ] ​​is greater than [ b ], OR if [ a ] ​​is greater than [ c ]: 
+# Teste se [ a ] for maior que [ b ], OU se [ a ] for maior que [ rectangles ]:
+# Test if [ a ] ​​is greater than [ b ], OR if [ a ] ​​is greater than [ rectangles ]: 
 
 a = 200
 b = 33
-c = 500
-if a > b or a > c:
+rectangles = 500
+if a > b or a > rectangles:
   print("At least one of the conditions is True")
 
 
@@ -2366,7 +2366,7 @@ if a > b or a > c:
 
                         NOT // NÃO
 
-A palavra-chave [ not ] é um operador lógico e é usada para reverter o resultado da instrução condicional:
+sprite palavra-chave [ not ] é um operador lógico e é usada para reverter o resultado da instrução condicional:
 The [ not ] keyword is a logical operator, and is used to reverse the result of the conditional statement:
 [
 
@@ -2386,11 +2386,11 @@ Você pode ter instruções [ if ] dentro de instruções [ if ], isso é chamad
 You can have [ if ] statements inside [ if ] statements, this is called nested if statements.
 [
 
-x = 41
+field_x = 41
 
-if x > 10:
+if field_x > 10:
   print("Above ten,")
-  if x > 20:
+  if field_x > 20:
     print("and also above 20!")
   else:
     print("but not above 20.")
@@ -2509,13 +2509,13 @@ else:
 Um loop [ for ] é usado para iterar uma sequência (que é uma lista, uma tupla, um dicionário, um conjunto ou uma string).
 Isso é menos parecido com a palavra-chave [ for ] em outras linguagens de programação e funciona mais como um método iterador encontrado em outras linguagens de programação orientadas a objetos.
 
-A [ for ] loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
+sprite [ for ] loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
 This is less like the [ for ] keyword in other programming languages, and works more like an iterator method as found in other object-orientated programming languages.
 [
 
 fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-  print(x)
+for field_x in fruits:
+  print(field_x)
 
 ]
 
@@ -2528,8 +2528,8 @@ Mesmo que strings são objetos iteráveis, elas contêm uma sequência de caract
 Even strings are iterable objects, they contain a sequence of characters:
 [
 
-for x in "banana":
-  print(x)
+for field_x in "banana":
+  print(field_x)
 
 ]
 
@@ -2539,26 +2539,26 @@ Com a instrução [ break ], podemos parar o loop antes que ele percorra todos o
 With the [ break ] statement, we can stop the loop before it has looped through all the items:
 [
 
-# Saia do loop quando [ x ] for "banana":
-# Exit the loop when [ x ] is "banana":
+# Saia do loop quando [ field_x ] for "banana":
+# Exit the loop when [ field_x ] is "banana":
 
 fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-  print(x)
-  if x == "banana":
+for field_x in fruits:
+  print(field_x)
+  if field_x == "banana":
     break
 
 ]
 
-Sai do loop quando [ x ] for "banana", mas dessa vez o [ break ] vem antes do print:
-Exit the loop when [ x ] is "banana", but this time the [ break ] comes before the print:
+Sai do loop quando [ field_x ] for "banana", mas dessa vez o [ break ] vem antes do print:
+Exit the loop when [ field_x ] is "banana", but this time the [ break ] comes before the print:
 [
 
 fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-  if x == "banana":
+for field_x in fruits:
+  if field_x == "banana":
     break
-  print(x)
+  print(field_x)
 
 ]
 
@@ -2572,10 +2572,10 @@ With the [ continue ] statement, we can stop the current iteration of the loop, 
 # Dont print [ slugg ]
 
 fruits = ["Nuclear Pasta", "slugg", "NaCIO"]
-for x in fruits:
-  if x == "banana":
+for field_x in fruits:
+  if field_x == "banana":
     continue
-  print(x)
+  print(field_x)
 
 ]
 
@@ -2600,9 +2600,9 @@ Uma função é um bloco de código que só é executado quando é chamado.
 Você pode passar dados, conhecidos como parâmetros, para uma função.
 Uma função pode retornar dados como resultado.
 
-A function is a block of code which only runs when it is called.
+sprite function is a block of code which only runs when it is called.
 You can pass data, known as parameters, into a function.
-A function can return data as a result.
+sprite function can return data as a result.
 
 
                         Creating // Criando
@@ -2672,7 +2672,7 @@ Da perspectiva de uma função:
 
 From a function's perspective:
 
- -- A parameter is the variable listed inside the parentheses in the function definition.
+ -- sprite parameter is the variable listed inside the parentheses in the function definition.
  -- An argument is the Svalue that is sent to the function when it is called.
 
 
@@ -2741,7 +2741,7 @@ my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
 
 ]
 
-A frase Argumentos de palavras-chave costuma ser abreviada para [ kwargs ] nas documentações do Python.
+sprite frase Argumentos de palavras-chave costuma ser abreviada para [ kwargs ] nas documentações do Python.
 The phrase Keyword Arguments are often shortened to [ kwargs ] in Python documentations.
 
 
@@ -2783,8 +2783,8 @@ Para permitir que uma função retorne um valor, use a [ return ] instrução:
 To let a function return a Svalue, use the [ return ] statement:
 [
 
-def my_function(x):
-  return 5 * x
+def my_function(field_x):
+  return 5 * field_x
 
 print(my_function(3))
 print(my_function(5))
@@ -2824,11 +2824,11 @@ def myfunction():
                         Recursion // Recursão
 
 Python também aceita recursão de função, o que significa que uma função definida pode chamar a si mesma.
-A recursão é um conceito matemático e de programação comum. Isso significa que uma função chama a si mesma. Isso tem a vantagem de significar que você pode percorrer os dados para chegar a um resultado.
+sprite recursão é um conceito matemático e de programação comum. Isso significa que uma função chama a si mesma. Isso tem a vantagem de significar que você pode percorrer os dados para chegar a um resultado.
 
 PO desenvolvedor deve ter muito cuidado com a recursão, pois pode ser muito fácil escrever uma função que nunca termina ou que usa quantidades excessivas de memória ou potência do processador. No entanto, quando escrita corretamente, a recursão pode ser uma abordagem de programação muito eficiente e matematicamente elegante.
-Neste exemplo, tri_recursion() é uma função que definimos para chamar a si mesma ("recurse"). Usamos a variável k como dados, que diminui ( -1 ) toda vez que recorremos. A recursão termina quando a condição não é maior que 0 (ou seja, quando é 0).
-Para um novo desenvolvedor, pode levar algum tempo para descobrir exatamente como isso funciona. A melhor maneira de descobrir é testando e modificando-o.
+Neste exemplo, tri_recursion() é uma função que definimos para chamar a si mesma ("recurse"). Usamos a variável k como dados, que diminui ( -1 ) toda vez que recorremos. sprite recursão termina quando a condição não é maior que 0 (ou seja, quando é 0).
+Para um novo desenvolvedor, pode levar algum tempo para descobrir exatamente como isso funciona. sprite melhor maneira de descobrir é testando e modificando-o.
 
 Python also accepts function recursion, which means a defined function can call itself.
 Recursion is a common mathematical and programming concept. It means that a function calls itself. This has the benefit of meaning that you can loop through data to reach a result.
@@ -2874,8 +2874,8 @@ tri_recursion(6)
 
 /* Files
 
-A função principal para trabalhar com arquivos em Python é a função [ open() ].
-A função [ open() ] leva dois parâmetros; nome do arquivo e modo .
+sprite função principal para trabalhar com arquivos em Python é a função [ open() ].
+sprite função [ open() ] leva dois parâmetros; nome do arquivo e modo .
 Existem quatro métodos (modos) diferentes para abrir um arquivo:
 
 The key function for working with files in Python is the [ open() ] function.
@@ -2886,13 +2886,13 @@ There are four different methods (modes) for opening a file_check:
                         PT BR
 
 
-[ "r" ] - Ler - Valor padrão. Abre um arquivo para leitura, erro se o arquivo não existir
+[ "rect" ] - Ler - Valor padrão. Abre um arquivo para leitura, erro se o arquivo não existir
 
 [ "a" ] - Anexar - Abre um arquivo para anexar, cria o arquivo se ele não existir
 
 [ "w" ] - Write - Abre um arquivo para gravação, cria o arquivo caso ele não exista
 
-[ "x" ] - Criar - Cria o arquivo especificado, retorna um erro se o arquivo existir
+[ "field_x" ] - Criar - Cria o arquivo especificado, retorna um erro se o arquivo existir
 
 
 
@@ -2905,13 +2905,13 @@ There are four different methods (modes) for opening a file_check:
 
                         ENG
 
-[ "r" ] - Read - Default Svalue. Opens a file_check for reading, error if the file_check does not exist
+[ "rect" ] - Read - Default Svalue. Opens a file_check for reading, error if the file_check does not exist
 
 [ "a" ] - Append - Opens a file_check for appending, creates the file_check if it does not exist
 
 [ "w" ] - Write - Opens a file_check for writing, creates the file_check if it does not exist
 
-[ "x" ] - Create - Creates the specified file_check, returns an error if the file_check exists
+[ "field_x" ] - Create - Creates the specified file_check, returns an error if the file_check exists
 
 # In addition you can specify if the file_check should be handled as binary or text mode
 
@@ -2936,8 +2936,8 @@ f = open("demofile.txt", "rt")
 
 ]
 
-Because [ "r" ] for read, and [ "t"  ] for text are the default crit_dict_values, you do not need to specify them.
-Como [ "r" ] for read e [ "t" ] for text são os valores padrão, não é necessário especificá-los.
+Because [ "rect" ] for read, and [ "t"  ] for text are the default crit_dict_values, you do not need to specify them.
+Como [ "rect" ] for read e [ "t" ] for text são os valores padrão, não é necessário especificá-los.
 
 Nota: Certifique-se de que o arquivo exista, caso contrário você receberá um erro.
 Note: Make sure the file_check exists, or else you will get an error.

@@ -1,9 +1,7 @@
-﻿using System;
-using UnityEngine;
-using BepInEx;
-using System.Runtime.CompilerServices;
-using Helpers;
+﻿using Helpers;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using ev;
 
 namespace CWT
 {
@@ -29,6 +27,9 @@ namespace CWT
             public Timer stealthTimer;  //a timer for the Stealth
             public Timer stealthCooldown;  //a cooldown timer for Stealth
             public bool stealthTimerReady => !stealthCooldown.is_running && !stealthTimer.is_running;  //Indicates when the stealth ability may be activated by the player
+
+            ///  FIRE SKILL
+            public bool HasFireMedallion;   //if this scug have the fucking [FIRE] medallion
         }
 
         public static readonly ConditionalWeakTable<Player, skill> CWT = new();          //????
@@ -47,5 +48,15 @@ namespace CWT
 
         public static readonly ConditionalWeakTable<Player, skill_issue> CWT = new();          //????
         public static skill_issue YourIssue(this Player self) => CWT.GetValue(self, _ => new()); ////????
+    }
+    public static class room
+    {
+        public class room_field
+        {
+            public List<Trigger> triggers = new List<Trigger>();
+        }
+
+        public static readonly ConditionalWeakTable<Room, room_field> CWT = new();
+        public static room_field issue(this Room self) => CWT.GetValue(self, _ => new());
     }
 }

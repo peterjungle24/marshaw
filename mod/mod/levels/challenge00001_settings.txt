@@ -1,4 +1,0 @@
-Template: NONE
-Palette: 16
-Effects: FairyParticles-0.4021739-20-20, 
-PlacedObjects: Double Jump Medallion><497.7158><344.4471><, FreeformDecalOrSprite><98.05048><-54.98645><81~343~0;0^764;-1^762;766^3;760~glape~1~Basic~BackgroundShortcuts~255~True~FFFFFF, 

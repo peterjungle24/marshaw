@@ -74,7 +74,7 @@ namespace particle_manager
         }
 
         /// <summary>
-        /// trigger.
+        /// ev.
         /// </summary>
         /// <param name="eu"></param>
         public override void Update(bool eu)

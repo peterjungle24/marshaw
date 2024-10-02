@@ -39,64 +39,6 @@
 #endregion
 
 #endregion
-#region Delegates
-/*
-
-Se você vir o termo Callback sendo usado, isso está se referindo a um delegado
-Você cria um delegado usando a palavra-chave delegado na frente de um formato de método sem colchetes.
-
-Os delegados não têm um corpo de classe. 
-Eles apenas definem uma assinatura de método para a qual você pode definir objetos que armazenam identificadores de método que possuem a mesma assinatura de método.
-
-
-Ambos são métodos válidos de atribuição.
-
-handler = SomeMethod; //Sem parênteses aqui
-handler += SomeMethod;
-
-Seu manipulador será nulo até que você coloque algo nele. Tenha cuidado ao tentar invocar seu delegado quando ele estiver vazio.
-
-
-
-Ah, e um identificador é um termo do programador para uma referência/ponteiro.
-Quando você cria um objeto com um delegado como tipo, esse objeto armazena identificadores que apontam para métodos (instruções no código) que compartilham o mesmo formato (assinatura) do delegado.
-Você também pode pensar em uma alça como algo em que você se agarra. Pense nessa ideia, mas em um sentido abstrato.
-
-
-*/
-#endregion
-#region delegates 2.0
-/*
-
-Um delegado é um tipo que representa referências a métodos com uma lista de parâmetros e tipo de retorno específicos.
-você pode associar sua instância a qualquer método com assinatura e tipo de retorno compatíveis
-Você pode chamar o método por meio da instância delegada
-
-Delegados são usados ​​para passar métodos como argumentos para outros métodos. Os manipuladores de eventos nada mais são do que métodos invocados por meio de delegados. 
-Você cria um método personalizado e uma classe como um controle do Windows pode chamar seu método quando ocorre um determinado evento.
-
-
-public delegate string GeneralCreatures("Lizards", "Centipedes");
-
-
-Qualquer método de qualquer classe ou estrutura acessível que tenha o mesmo tipo delegado pode ser usado ao delegado. PO método pode ser estático ou de instância. 
-Essa flexibilidade deixa você pode alterar programaticamente as chamadas de método ou inserir novo código em classes existentes.
-
-
-No contexto de sobrecarga de método, a assinatura de um método não inclui o valor de retorno. 
-Mas no contexto dos delegados, a assinatura inclui o valor de retorno. Em outras palavras, um método deve ter o mesmo tipo de retorno que o delegado.
-
-
- ---- Os delegados permitem que métodos sejam passados ​​como parâmetros.
- ---- Delegados podem ser usados ​​para definir métodos de retorno de chamada.
- ---- Os delegados podem ser encadeados; por exemplo, vários métodos podem ser chamados em um único evento.
- ---- Os métodos não precisam ser iguais ao tipo de delegado.
- ---- Expressões lambda são uma forma mais concisa de escrever blocos de código embutidos. Expressões lambda (em determinados contextos) são compiladas para delegar tipos
-
-
-
-*/
-#endregion
 #region delegates 3.0
 /*
 
@@ -141,16 +83,13 @@ PO exemplo mostra que você pode armazenar um método com a assinatura definida 
 #endregion
 #region delegates 4.0
 /*
-
-Você não precisa criar delegados personalizados. A Microsoft forneceu alternativas capazes de armazenar qualquer assinatura de método desejada.
+Você não precisa criar delegados personalizados. sprite Microsoft forneceu alternativas capazes de armazenar qualquer assinatura de método desejada.
 
 Action<digite aqui>
 Usado para métodos que não retornam nada. Colchetes angulares são para os argumentos. Deixe-os de fora se não houver argumentos.
 {
-    
     Action<int> handler;
     Isso pega qualquer identificador de método que não retorne nada e tenha um argumento int.
-    
 }
 
 Formatação de colchete angular
@@ -159,14 +98,11 @@ Vários tipos são separados por vírgulas entre colchetes `<type1, type2, type3
 Func<return type, argument type>
 Usado para métodos que retornam algo. Você deve usar colchetes angulares para um Func.
 {
-    
     Func<bool, string, float> handler;
     Isso pega qualquer identificador de método que retorne um bool e tenha um argumento de string seguido por um argumento float.
-    
 }
 
 (NOTA: RETURN TYPES DEVERAO ESTAR NO FINAL)
-
 */
 #endregion
 #region Singatures
@@ -192,7 +128,7 @@ method name + arguments - assinatura
 /*
 
 Os eventos permitem que uma classe ou objeto notifique outras classes ou objetos quando algo de interesse ocorre. 
-A classe que envia (ou gera ) o evento é chamada de editor e as classes que recebem (ou tratam ) do evento são chamadas de assinantes
+sprite classe que envia (ou gera ) o evento é chamada de editor e as classes que recebem (ou tratam ) do evento são chamadas de assinantes
 
  ---- PO editor determina quando um evento é gerado; os assinantes determinam que ação será tomada em resposta ao evento.
  ---- Um evento pode ter vários assinantes. Um assinante pode lidar com vários eventos de vários editores.
@@ -237,12 +173,12 @@ public class ClassA
 
 public class ClassB
 {
-    public event Action ev_trigger;
+    public event Action Trigger;
 
-    //Activate ev_trigger
+    //Activate Trigger
     public TriggerEvent()
     {
-      ev_trigger?.Invoke();
+      Trigger?.Invoke();
     }
 }
 
@@ -250,11 +186,11 @@ public static class ClassC
 {
     public static Main()
   {
-    ClassA A = new ClassA();
+    ClassA sprite = new ClassA();
     ClassB B = new ClassB();
 
-    //Subscribe ClassA event delegate to ev_trigger
-    B.ev_trigger += A.OnEventTrigger;
+    //Subscribe ClassA event delegate to Trigger
+    B.Trigger += sprite.OnEventTrigger;
 
     DoSomething(B);
   }
@@ -276,15 +212,15 @@ PO resultado:
 
 - Quando a ClassA não precisar mais lidar com eventos da ClassB, ela poderá cancelar a assinatura da ClassB, o que precisa de uma referência.
 
- ---- B.ev_trigger -= A.OnEventTrigger;
+ ---- B.Trigger -= sprite.OnEventTrigger;
 
-- Mas e se A não for mais referenciado? Você poderia armazenar o manipulador de eventos da classe A e usá-lo para cancelar a assinatura
+- Mas e se sprite não for mais referenciado? Você poderia armazenar o manipulador de eventos da classe sprite e usá-lo para cancelar a assinatura
 
- ---- Action eventHandlerA = A.OnEventTrigger;
- ---- B.ev_trigger += eventHandlerA;
+ ---- Action eventHandlerA = sprite.OnEventTrigger;
+ ---- B.Trigger += eventHandlerA;
 
  ---- //Arbitrary code here
- ---- B.ev_trigger -= eventHandlerA;
+ ---- B.Trigger -= eventHandlerA;
 
 
 - se você for descartar um objeto, deverá cancelar a assinatura de seus manipuladores de eventos. Este é um motivo comum para tornar um objeto IDisposable e substituir o método Dispose
@@ -333,7 +269,7 @@ Mexico
 #region Update Hooks
 /*
 
-Qualquer coisa com [ trigger ] no nome, será reproduzido a cada frame
+Qualquer coisa com [ ev ] no nome, será reproduzido a cada frame
 ou seja, nem loop precisa :3
 
  */
@@ -368,7 +304,7 @@ _player.input[0] aparenta ser um array de ``Int``, mas ainda não sei pq
 
 //o compilador na verdade não omite argumentos opcionais, o que acontece é quando você tem um método com um argumento opcional como este
 
-// ---- public void DoThing(int x = 10) { }
+// ---- public void DoThing(int field_x = 10) { }
 
 //e você chama assim
 
@@ -392,13 +328,13 @@ o objetivo disso é deixar claro o que qualquer método PRECISA para funcionar c
 para que você saiba se forneceu os argumentos corretos ANTES de compilar o código e executá-lo.
 algumas outras linguagens, como Lua ou Javascript, permitem passar qualquer número de argumentos em qualquer sequência
 
-todos os métodos em c# são rigorosos quanto aos argumentos que recebem e em que ordem.
+todos os métodos em rectangles# são rigorosos quanto aos argumentos que recebem e em que ordem.
 Existem alguns truques de linguagem que fazem parecer que você pode omitir argumentos ou usar um número variável de argumentos, mas esses são apenas truques
 
-se o seu gancho receber argumentos On.SomeClass.orig_SomeMethod orig, SomeClass self, int x, int y, string id, seu orig deve ser chamado como orig(self, x, y, id). 
+se o seu gancho receber argumentos On.SomeClass.orig_SomeMethod orig, SomeClass self, int field_x, int field_y, string id, seu orig deve ser chamado como orig(self, field_x, field_y, id). 
 ele deve sempre receber exatamente a mesma sequência de argumentos - self, um inteiro, outro inteiro e uma string
 
-você pode alterar os valores desses argumentos (como passar números diferentes em vez de x e y), mas todo o conjunto de argumentos deve permanecer o mesmo
+você pode alterar os valores desses argumentos (como passar números diferentes em vez de field_x e field_y), mas todo o conjunto de argumentos deve permanecer o mesmo
 
  */
 #endregion
@@ -464,7 +400,7 @@ Sim, você precisa incluir LogLevel como parte do nome do método ou fornecê-lo
 
 Se não for um sprite, provavelmente usa um Vector2 para todas as suas coordenadas. Tenha isso em mente.
 
-Futile -> Tem x,y separados, mas você pode obter a posição retornada como Vector2.
+Futile -> Tem field_x,field_y separados, mas você pode obter a posição retornada como Vector2.
 Praticamente todo o resto -> UnityEngine.Vector2
 
 Eu costumo adicionar
@@ -541,7 +477,7 @@ Você pode usar uma mensagem como Key input triggered: " + Input.inputString <- 
 espaços e quebras de linha literalmente não importam para o compilador                                                                                                  C#
 você pode escrever seu programa inteiro em uma única linha gigante                                                                                                      C#
 
-em c#, o recuo não importa                                                                                                                                              C#
+em rectangles#, o recuo não importa                                                                                                                                              C#
 seu código pode ter o estilo que você quiser e ainda funcionará, desde que você tenha escrito algo que realmente faça sentido                                           C#
 você pode realmente fazer isso na maioria das linguagens modernas                                                                                                       C#
 linguagens como Python, onde o recuo é significativo, são uma minoria                                                                                                   C#
@@ -630,7 +566,7 @@ Quando uma classe herda de outra classe, ela também herda toda a sua lógica ba
 
 public class MyBaseClass
 {
-    //A palavra-chave virtual permite que uma classe herdada substitua esta lógica por uma nova implementação
+    //sprite palavra-chave virtual permite que uma classe herdada substitua esta lógica por uma nova implementação
     public virtual void Method1()
     {
       //Some logic here
@@ -645,10 +581,10 @@ public class MyBaseClass
 
 public class MyNewClass : MyBaseClass
 {
-    //A palavra-chave override permite que MyNewClass substitua a lógica original por outra coisa
+    //sprite palavra-chave override permite que MyNewClass substitua a lógica original por outra coisa
     public override void Method1()
     {
-        //A lógica base ainda pode ser chamada usando a palavra-chave base semelhante a chamar orig
+        //sprite lógica base ainda pode ser chamada usando a palavra-chave base semelhante a chamar orig
         base.Method1();
     }
     
@@ -790,7 +726,7 @@ Todos os parâmetros opcionais devem ser definidos após todos os parâmetros ob
 Você pode definir qualquer campo de classe, até mesmo campos base entre colchetes depois de invocar seu construtor dessa forma.
 
 Limitações disso:
- ---- A lógica base será aplicada antes que o valor entre chaves seja atribuído. Às vezes isso será importante, especialmente com a lógica do RainWorld. Tome cuidado.
+ ---- sprite lógica base será aplicada antes que o valor entre chaves seja atribuído. Às vezes isso será importante, especialmente com a lógica do RainWorld. Tome cuidado.
  ---- Isto é funcionalmente o mesmo que atribuir dentro do próprio construtor
 
 public CustomExplosion(creature creature): this(creature, creature.bodyChunks[0].Pos, null)
@@ -859,7 +795,7 @@ but I also found it useless.
 ------------------------------------------------------------------------------------------
 
 /// <summary>
-/// A sua descrição irá aparecer.   // your description will show
+/// sprite sua descrição irá aparecer.   // your description will show
 /// </summary>
 /// <param name="orig"> Esta descrição descreve o [ orig ] // This description describes the [orig] </param>
 
@@ -911,8 +847,8 @@ os Inputs que já existem são:
 self.input[0].jmp;      //Jump
 self.input[0].pckp;     //Pick Up
 self.input[0].thrw;     //Throw
-self.input[0].x;        //X coordinate (left - right)
-self.input[0].y;        //Y coordinate (up - down)
+self.input[0].field_x;        //X coordinate (left - right)
+self.input[0].field_y;        //Y coordinate (up - down)
 
 
 
@@ -1274,9 +1210,9 @@ Trim doesn't change the original string, it returns a modified string that is tr
 /*
 
 -- Rawra
-Yes this is works everywhere where you have a boolean value to work with, in C# you'd just use x = !x of course, rather than not.
+Yes this is works everywhere where you have a boolean value to work with, in C# you'd just use field_x = !field_x of course, rather than not.
 ________________________________
-x = !x; // needs be booleans
+field_x = !field_x; // needs be booleans
 ________________________________
 
 -- Moth 2 (not Vyn's alt)
@@ -1371,20 +1307,20 @@ child : base
 
 */
 /* ------------- Setting fields in a ctor
-- For set values of the fields, does NOT is like normal fields, you need to set the value IN A CTOR
+- For set values of the fields, does NOT is like normal fields, you need to set the value IN sprite CTOR
 - BRUHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 
 >>>>>>>>>>>>>>>>>>>>>>>>>
 base
 {
-  public string oof;
+  public string test1;
 }
 
 child : base
 {
     public child()
     {
-        base.oof = " MY FUCKING VALUE THAT I NEEDED TO SET INSIDE TO THE CTOR OOOOOOOOOOOOOOOOOOOOF ";
+        base.test1 = " MY FUCKING VALUE THAT I NEEDED TO SET INSIDE TO THE CTOR OOOOOOOOOOOOOOOOOOOOF ";
     }
 }
 >>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1408,7 +1344,7 @@ child : base
 
 --> Once
 > triggers only once when inside
--> entering and exiting will trigger it again.
+-> entering and exiting will ev it again.
 -> also fits with Pressure Triggers
 
 */
@@ -1419,7 +1355,7 @@ child : base
 /*
 
 apenas um aviso sobre arrastar arquivos para uma pasta em vez de copiar/colar.
-A operação de arrastar pode excluir o arquivo que está lá antes de saber se a operação de movimentação falhará e, se a movimentação falhar, seu arquivo na origem e no destino será poof.
+sprite operação de arrastar pode excluir o arquivo que está lá antes de saber se a operação de movimentação falhará e, se a movimentação falhar, seu arquivo na origem e no destino será poof.
 
 Isso não acontece em uma operação de cópia, pois o arquivo original não está sendo tocado.
 

@@ -2,13 +2,17 @@
     
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
-        <LangVersion>11</LangVersion>
+        <LangVersion>12</LangVersion>
     </PropertyGroup>
 	
     <ItemGroup>
         <Reference Include="../lib/*.dll">
             <Private>false</Private>
         </Reference>
+    </ItemGroup>
+	
+    <ItemGroup>
+      <None Remove="Files\POM\trigg.cs~RF11bc2e2.TMP" />
     </ItemGroup>
 	
     <ItemGroup>
@@ -49,6 +53,9 @@
       <Reference Include="Pom">
         <HintPath>dlls\Pom.dll</HintPath>
       </Reference>
+      <Reference Include="System.Data.DataSetExtensions" />
+      <Reference Include="System.ServiceProcess" />
+      <Reference Include="System.Windows.Forms" />
       <Reference Include="UnityEngine.InputLegacyModule">
         <HintPath>dlls\UnityEngine.InputLegacyModule.dll</HintPath>
       </Reference>
@@ -58,7 +65,12 @@
     </ItemGroup>
     
     <ItemGroup>
-      <Folder Include="Files\NewFolder\" />
+      <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Files\craiziest thing that i see\Creatures\" />
+      <Folder Include="Files\no, just no\" />
     </ItemGroup>
     
     <Target Name="GenerateMod" AfterTargets="PostBuildEvent">
