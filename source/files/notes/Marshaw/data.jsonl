@@ -2,6 +2,7 @@
 {
     "name": "Marshaw",
     "id": "marshaw",
+    "color": [65, 65, 65],
     "timeline": "Monk",
     "lore": "Lore.txt",
     "speed": "faster",
@@ -14,5 +15,12 @@
         "Sanity": true,
         "RealPlot": false,
         "TurnsYourCupIntoPopcorn": false
-    }
+    },
+    "creatures": [
+        {"name": "????", "type": "????", "heigth": "????"}
+        {"name": "????", "type": "????", "heigth": "????"}
+        {"name": "????", "type": "????", "heigth": "????"}
+        {"name": "????", "type": "????", "heigth": "????"}
+    ],
+    "items": ["nothing."]
 }

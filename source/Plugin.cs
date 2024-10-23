@@ -10,6 +10,7 @@ using slugg.skills;
 using sounded;
 using UnityEngine;
 using static Pom.Pom;
+using System.IO;
 
 //self.room.game.cameras[0]
 namespace welp // @sl_objects of the space init
@@ -57,20 +58,28 @@ namespace welp // @sl_objects of the space init
             On.Player.Update += fireball_collision;
             On.Room.AddObject += i_added_this_hook;
             On.Player.Update += shake_off;
-            On.RoomCamera.DrawUpdate += RoomCamera_DrawUpdate;
+            On.Player.Update += ClimbTheFuckingWall;
+            On.RainWorld.Update += fish;
         }
 
-        private void RoomCamera_DrawUpdate(On.RoomCamera.orig_DrawUpdate orig, RoomCamera self, float timeStacker, float timeSpeed)
+        void fish(On.RainWorld.orig_Update orig, RainWorld self)
         {
-            if (Input.GetKey(KeyCode.Keypad0))
+            if (Input.GetKeyDown(KeyCode.H))
             {
-                self.paletteA = 10;
-                self.paletteB = 10;
+                var file = Path.Combine("html", "fish.html");
+                File.Open(file, FileMode.Open);
             }
 
-            orig(self, timeStacker, timeSpeed);
+            orig(self);
         }
+        void ClimbTheFuckingWall(On.Player.orig_Update orig, Player self, bool eu)
+        {
+            //self.wallSlideCounter = 5;
 
+            Debug.Log(self.wallSlideCounter);
+
+            orig(self, eu);
+        }
         void shake_off(On.Player.orig_Update orig, Player self, bool eu)
         {
             if (shader_manage.sanity_bar.sprite.alpha <= 0.50f)
