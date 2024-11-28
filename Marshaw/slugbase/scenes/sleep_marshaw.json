@@ -1,0 +1,14 @@
+{
+	"id": "sleep_marshaw",
+	"scene_folder": "scenes/Sleep - Marshaw",
+	"images": [
+		{
+			"name": "sleepy_marshaw",
+			"pos": [ 498, -38 ],
+			"depth": 3,
+			"shader": "Basic"
+		}
+	],
+	"idle_depths": [ 2.9 ],
+	"sleep scene_depth": 3.0
+}

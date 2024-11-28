@@ -1,0 +1,28 @@
+<notes>
+    <cmd>
+        <dotnet>
+            <new>
+                you can create a new project from CMD, using dotnet
+                <code>
+                    dotnet new [template]
+                </code>
+                replace [template] with a actual template, like "console", "class library", etc
+                if you dont wanna use top level statements, you can use that:
+                <code>
+                    dotnet new [template] --use-program-main
+                </code>
+            </new>
+            <sln>
+                When you create a new project using the above, it doesnt create a .sln for you
+                so, you need to use that:
+                <code>
+                    dotnet new sln
+                </code>
+                you can also name it
+                <code>
+                    dotnet new sln --name my_file
+                </code>
+            </sln>
+        </dotnet>
+    </cmd>
+</notes>
